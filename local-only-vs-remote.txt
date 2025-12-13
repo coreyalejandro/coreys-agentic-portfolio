@@ -1,0 +1,61 @@
+Local root: /Users/coreyalejandro/dev/coreys-agentic-portfolio
+Remote: https://github.com/coreyalejandro/v0-corey-alejandro-main-portfolio-site/tree/coreys-agentic-portfolio
+Remote commit: 1eb0ae8dab5376b1e9b931882d5368998252ec90
+Remote tree: b7a5e7fc9185d886917128e80181c79de2983ac5
+Local files: 199
+Remote files: 145
+Local-only files: 54
+.cursor/rules/openmemory.mdc
+components/ui/accordion.tsx
+components/ui/alert-dialog.tsx
+components/ui/alert.tsx
+components/ui/aspect-ratio.tsx
+components/ui/avatar.tsx
+components/ui/breadcrumb.tsx
+components/ui/calendar.tsx
+components/ui/carousel.tsx
+components/ui/chart.tsx
+components/ui/checkbox.tsx
+components/ui/collapsible.tsx
+components/ui/command.tsx
+components/ui/context-menu.tsx
+components/ui/dialog.tsx
+components/ui/drawer.tsx
+components/ui/dropdown-menu.tsx
+components/ui/form.tsx
+components/ui/hover-card.tsx
+components/ui/input-otp.tsx
+components/ui/label.tsx
+components/ui/menubar.tsx
+components/ui/navigation-menu.tsx
+components/ui/pagination.tsx
+components/ui/popover.tsx
+components/ui/progress.tsx
+components/ui/radio-group.tsx
+components/ui/resizable.tsx
+components/ui/scroll-area.tsx
+components/ui/select.tsx
+components/ui/separator.tsx
+components/ui/sheet.tsx
+components/ui/sidebar.tsx
+components/ui/skeleton.tsx
+components/ui/slider.tsx
+components/ui/sonner.tsx
+components/ui/switch.tsx
+components/ui/table.tsx
+components/ui/tabs.tsx
+components/ui/toast.tsx
+components/ui/toaster.tsx
+components/ui/toggle-group.tsx
+components/ui/toggle.tsx
+components/ui/tooltip.tsx
+components/ui/use-mobile.tsx
+components/ui/use-toast.ts
+hooks/use-mobile.ts
+hooks/use-toast.ts
+next-env.d.ts
+openmemory.md
+pnpm-workspace.yaml
+scripts/handoff/check.mjs
+scripts/handoff/init.mjs
+scripts/handoff/template.md
