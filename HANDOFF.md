@@ -1,21 +1,25 @@
 # 🚀 Agent Handoff: v0-corey-alejandro-main-portfolio-site
 
-**Date:** Dec 11, 2025
-**Status:** Playground Enhanced (Auto-hiding Header)
+**Date:** Dec 13, 2025
+**Status:** Theme + Homepage/Resume Visual Fixes (Ready to Merge)
 
 ## 📋 What Was Just Completed
 
-- Updated `app/playground/page.tsx` to auto-hide the experiment toolbar when scrolling down.
-- Implemented scroll detection on the `#experiment-viewport` container (since it's an overflow container inside the layout).
-- Header slides up (`-translate-y-full`) when scrolling down > 50px, and reappears when scrolling up.
+- **CSS persisted (nav hover highlight):** Updated `components/floating-nav.tsx` hover highlight overlays to avoid explicitly setting `left/top` (removed `inset-0`, replaced with `right-0 bottom-0 w-full h-full`) while preserving the circular hover feedback.
+- **Homepage fix (Superpowers heading):** Fixed hidden “SUPERPOWERS” heading in `app/(home)/sections/CTASection.tsx` by defining missing theme compat vars in `app/globals.css` (notably `--theme-text`).
+- **Resume fixes:**
+  - Restored “breathing” background effect on the resume section by switching to shared `BreathingBackground` in `app/templates/resume/page.tsx`.
+  - Scoped the printable resume container to dark-on-white variables (local CSS custom properties) so headings/sections stay readable and PDF export remains clean.
+- **Git sanity:** Repo now has an initial commit and ignores local artifacts (`.DS_Store`, `.cursor/`, `.playwright-mcp/`). Because `origin/main` already had history, changes were pushed safely to `origin/local-sync` for PR/merge.
 
 ## 🎯 Current Project State
 
 ### What's Working
 
-- **Playground:** Central experiment hub.
-- **Navigation:** "Playground" link in main nav.
-- **Toolbar:** Auto-hides on scroll within the experiment area.
+- **Navigation:** Floating nav works; hover feedback remains visible and consistent.
+- **Theme system:** Theme variables are defined in `app/globals.css` and updated by `contexts/ColorThemeContext.tsx` with compat aliases for reliability.
+- **Homepage sections:** Superpowers heading renders (no longer transparent).
+- **Resume section:** Background matches other sections; printable resume remains readable.
 
 ### Project Structure
 
@@ -23,10 +27,12 @@
 
 ## 🎯 Recommended Next Steps
 
-1. Visit `http://localhost:3000/playground`.
-2. Select "3D Card Path" or "Scroll Trigger" (experiments with scrolling).
-3. Scroll down and watch the toolbar disappear.
-4. Scroll up and watch it reappear.
+1. Open the PR for branch `local-sync` and merge into `main`.
+2. Smoke test key routes: `/`, `/#superpowers`, `/templates/resume`.
+3. Confirm:
+   - Superpowers heading is visible
+   - Resume section has breathing background
+   - Printable resume content is readable and exports cleanly
 
 ## 📊 Remaining Enhancements to Implement
 
@@ -60,7 +66,8 @@
 ### Git Workflow
 
 - Branch: main
-- Remote: (unknown)
+- Remote: `https://github.com/coreyalejandro/v0-corey-alejandro-main-portfolio-site.git`
+- Note: local changes were pushed to `origin/local-sync` to avoid non-fast-forwarding `origin/main`.
 
 ## 🔧 Available Commands
 
@@ -86,13 +93,13 @@
 ## 📞 Quick Reference
 
 - **Project:** v0-corey-alejandro-main-portfolio-site
-- **Repository:** (unknown)
-- **Remote:** (unknown)
+- **Repository:** coreyalejandro/v0-corey-alejandro-main-portfolio-site
+- **Remote:** `https://github.com/coreyalejandro/v0-corey-alejandro-main-portfolio-site.git`
 - **Branch:** main
-- **Last Commit:** (unknown) - "(unknown)"
+- **Last Commit:** ba19e42 - "Initial commit"
 
 ---
 
 **Status:** Ready for Review
-**Recommendation:** Check scrolling behavior in Playground
-**Confidence:** High
+**Recommendation:** Merge `local-sync` PR, then smoke test `/`, `/#superpowers`, `/templates/resume`
+**Confidence:** Medium - needs quick visual confirmation after merge

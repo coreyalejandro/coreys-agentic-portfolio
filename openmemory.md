@@ -1,11 +1,13 @@
 # OpenMemory Guide — coreys-agentic-portfolio
 
 ## Overview
+
 - **App**: Next.js App Router portfolio/design-system playground with demos + docs.
 - **UI stack**: React + TypeScript, Tailwind CSS v4 (`app/globals.css` uses `@import "tailwindcss";`), shadcn/ui-style primitives in `components/ui/`.
 - **Key experiences**: “Creative Chaos” visual system, animation + color theme contexts, and an audio experience layer.
 
 ## Architecture
+
 - **Routing**: `app/` (Next.js App Router).
   - **Home route**: `app/(home)/page.tsx` (client orchestrator for sections + resume template).
   - **Global layout**: `app/layout.tsx` wraps the app with providers and renders `FloatingNav`.
@@ -16,6 +18,9 @@
 - **Styling**:
   - `app/globals.css` defines CSS variables + Tailwind layer usage and some bespoke demo styles (e.g., “card path”).
   - `postcss.config.mjs` configures Tailwind via `@tailwindcss/postcss`.
+- **Theme variables**:
+  - Base theme variables are defined in `app/globals.css` and updated at runtime by `contexts/ColorThemeContext.tsx`.
+  - Derived/compat aliases like `--theme-text`, `--theme-card`, and `--theme-border` exist to keep UI visible and consistent across components.
 - **Server/API** (Next.js route handlers in `app/api/`):
   - `app/api/contact/route.ts`: contact form POST with sanitization + rate limiting.
   - `app/api/playground/chat/route.ts`: LLM chat endpoint (uses `ai` SDK `generateText`).
@@ -24,6 +29,7 @@
   - `middleware.ts` sets CSP + security headers and applies to non-API routes.
 
 ## Components (high-signal)
+
 - **Audio Experience**
   - `components/audio-experience/audio-engine.tsx`: provider + audio API surface
   - `components/audio-experience/audio-toggle.tsx`, `audio-section.tsx`, `audio-button.tsx`: UI + narration hooks
@@ -34,11 +40,12 @@
   - `app/*-demo/page.tsx`: specific effect demos (card path, scroll card, table card, etc.)
 
 ## Patterns & Conventions
+
 - **App Router + mixed client/server**: pages that need hooks/interactivity are marked `'use client'` (e.g., `app/(home)/page.tsx`).
 - **Utilities live in `lib/`**: e.g., `lib/sanitize.ts`, `lib/rate-limiter.ts`.
 - **Config/data in `config/`**: e.g., `config/projects.ts` powers portfolio content.
 - **FloatingNav hover overlays**: in `components/floating-nav.tsx`, the circular hover background overlay uses `absolute right-0 bottom-0 w-full h-full` (instead of `inset-0`) to avoid explicitly setting `left/top`.
 
 ## User Defined Namespaces
-- [Leave blank - user populates]
 
+- [Leave blank - user populates]

@@ -49,6 +49,13 @@
   --theme-card-bg: rgba(38, 38, 38, 0.85);
   --theme-card-border: rgba(180, 83, 9, 0.4);
 
+  /* Derived/compat variables (used throughout the app) */
+  --theme-text: rgba(255, 255, 255, 0.92);
+  --theme-text-secondary: rgba(255, 255, 255, 0.72);
+  --theme-card: var(--theme-card-bg);
+  --theme-border: var(--theme-card-border);
+  --theme-gradient: linear-gradient(135deg, var(--theme-primary), var(--theme-secondary));
+
   /* Smooth transitions for theme changes */
   transition: background-color 3s ease-in-out, border-color 3s ease-in-out, color 3s ease-in-out, box-shadow 3s
     ease-in-out;

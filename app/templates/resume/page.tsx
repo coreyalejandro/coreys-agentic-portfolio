@@ -1,9 +1,10 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, type CSSProperties } from "react"
 import { Download, Mail, Github, Linkedin, MapPin, Phone, Sparkles, Zap, Star } from "lucide-react"
 import { AudioSection } from "@/components/audio-experience/audio-section"
 import { AudioButton } from "@/components/audio-experience/audio-button"
+import { BreathingBackground } from "@/components/animations/BreathingBackground"
 import Link from "next/link"
 
 export default function ResumeTemplate() {
@@ -86,35 +87,8 @@ export default function ResumeTemplate() {
       position={{ x: 0, y: 6, z: -8 }}
     >
       <section className="relative min-h-screen py-32 mb-16">
-        <div
-          className="absolute inset-0 rounded-3xl transition-all duration-3000"
-          style={{
-            background: mounted
-              ? `
-                radial-gradient(ellipse at ${20 + Math.sin(time) * 10}% ${30 + Math.cos(time * 0.7) * 15}%, 
-                  var(--theme-primary-rgb, 251, 191, 36) 0%, 
-                  var(--theme-secondary-rgb, 239, 68, 68) 30%, 
-                  var(--theme-accent-rgb, 194, 65, 12) 70%, 
-                  rgba(20, 20, 30, 1) 100%),
-                radial-gradient(ellipse at ${80 + Math.cos(time * 1.2) * 8}% ${70 + Math.sin(time * 0.9) * 12}%, 
-                  var(--theme-primary-rgb, 251, 146, 60) 0%, 
-                  transparent 50%)
-              `
-              : `
-                radial-gradient(ellipse at 20% 30%,
-                  var(--theme-primary-rgb, 251, 191, 36) 0%,
-                  var(--theme-secondary-rgb, 239, 68, 68) 30%,
-                  var(--theme-accent-rgb, 194, 65, 12) 70%,
-                  rgba(20, 20, 30, 1) 100%),
-                radial-gradient(ellipse at 80% 70%,
-                  var(--theme-primary-rgb, 251, 146, 60) 0%,
-                  transparent 50%)
-              `,
-            transform: mounted
-              ? `scale(${1 + Math.sin(time * 0.5) * 0.05}) rotate(${Math.sin(time * 0.3) * 2}deg)`
-              : "scale(1) rotate(0deg)",
-          }}
-        />
+        {/* Breathing, Living Background (shared pattern with HeroSection) */}
+        <BreathingBackground time={time} variant="hero" className="rounded-3xl" />
 
         {/* Floating particles */}
         <div className="absolute inset-0">
@@ -191,7 +165,14 @@ export default function ResumeTemplate() {
               transform: mounted
                 ? `perspective(1000px) rotateX(${mousePosition.y * 0.005}deg) rotateY(${mousePosition.x * 0.005}deg)`
                 : "perspective(1000px) rotateX(0deg) rotateY(0deg)",
-              backgroundColor: "var(--theme-card)",
+              // Keep the printable resume readable (dark-on-white), independent of global theme vars.
+              backgroundColor: "#ffffff",
+              ...( {
+                "--theme-card": "#ffffff",
+                "--theme-text": "rgba(17, 24, 39, 0.95)",
+                "--theme-text-secondary": "rgba(55, 65, 81, 0.9)",
+                "--theme-border": "rgba(17, 24, 39, 0.12)",
+              } as CSSProperties ),
             }}
           >
             <div
