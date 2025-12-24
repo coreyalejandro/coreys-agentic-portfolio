@@ -1,0 +1,1933 @@
+{
+  "$schema": "./COMPONENTS.schema.json",
+  "schemaVersion": "1.0.0",
+  "repo": {
+    "name": "coreys-agentic-portfolio",
+    "root": ".",
+    "lastUpdated": "2025-12-24T18:07:47.185Z"
+  },
+  "components": [
+    {
+      "id": "coreys-agentic-portfolio/app-shell",
+      "name": "Portfolio App Shell",
+      "type": "ui",
+      "description": "Primary UI shell and routing for the portfolio app.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "app"
+      ],
+      "interfaces": {
+        "inputs": [
+          "routes",
+          "page components"
+        ],
+        "outputs": [
+          "rendered pages"
+        ]
+      },
+      "dependencies": []
+    },
+    {
+      "id": "coreys-agentic-portfolio/ui-components",
+      "name": "UI Components",
+      "type": "ui",
+      "description": "Reusable UI components and composition blocks.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": []
+    },
+    {
+      "id": "coreys-agentic-portfolio/styles-system",
+      "name": "Styles System",
+      "type": "ui",
+      "description": "Global styles, tokens, and Tailwind configuration.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "styles",
+        "app/globals.css"
+      ],
+      "interfaces": {
+        "inputs": [
+          "tokens",
+          "class names"
+        ],
+        "outputs": [
+          "styled UI"
+        ]
+      },
+      "dependencies": []
+    },
+    {
+      "id": "coreys-agentic-portfolio/data-layer",
+      "name": "Data Layer",
+      "type": "package",
+      "description": "Shared utilities and data helpers for the app.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "lib"
+      ],
+      "interfaces": {
+        "inputs": [
+          "data",
+          "params"
+        ],
+        "outputs": [
+          "transformed data"
+        ]
+      },
+      "dependencies": []
+    },
+    {
+      "id": "coreys-agentic-portfolio/hooks",
+      "name": "Hooks",
+      "type": "package",
+      "description": "Shared React hooks and client-side helpers.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "hooks"
+      ],
+      "interfaces": {
+        "inputs": [
+          "hook params"
+        ],
+        "outputs": [
+          "hook results"
+        ]
+      },
+      "dependencies": []
+    },
+    {
+      "id": "coreys-agentic-portfolio/middleware",
+      "name": "Middleware",
+      "type": "service",
+      "description": "Request middleware and routing policies.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "middleware.ts"
+      ],
+      "interfaces": {
+        "inputs": [
+          "request"
+        ],
+        "outputs": [
+          "response"
+        ]
+      },
+      "dependencies": []
+    },
+    {
+      "id": "coreys-agentic-portfolio/public-assets",
+      "name": "Public Assets",
+      "type": "doc",
+      "description": "Static assets and public files for the site.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "public"
+      ],
+      "interfaces": {
+        "inputs": [
+          "asset files"
+        ],
+        "outputs": [
+          "served assets"
+        ]
+      },
+      "dependencies": []
+    },
+    {
+      "id": "coreys-agentic-portfolio/docs",
+      "name": "Docs",
+      "type": "doc",
+      "description": "Project documentation and reference materials.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "docs"
+      ],
+      "interfaces": {
+        "inputs": [
+          "source docs"
+        ],
+        "outputs": [
+          "docs"
+        ]
+      },
+      "dependencies": []
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/animations/BreathingBackground",
+      "name": "Animations / Breathingbackground",
+      "type": "ui",
+      "description": "UI component located at components/animations/BreathingBackground.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/animations/BreathingBackground.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/animations/BreathingBackground",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/animations/FloatingElement",
+      "name": "Animations / Floatingelement",
+      "type": "ui",
+      "description": "UI component located at components/animations/FloatingElement.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/animations/FloatingElement.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/animations/FloatingElement",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/animations/FloatingOrb",
+      "name": "Animations / Floatingorb",
+      "type": "ui",
+      "description": "UI component located at components/animations/FloatingOrb.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/animations/FloatingOrb.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/animations/FloatingOrb",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/audio-experience/audio-button",
+      "name": "Audio Experience / Audio Button",
+      "type": "ui",
+      "description": "UI component located at components/audio-experience/audio-button.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/audio-experience/audio-button.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/audio-experience/audio-button",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/audio-experience/audio-engine",
+      "name": "Audio Experience / Audio Engine",
+      "type": "ui",
+      "description": "UI component located at components/audio-experience/audio-engine.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/audio-experience/audio-engine.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/audio-experience/audio-engine",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/audio-experience/audio-section",
+      "name": "Audio Experience / Audio Section",
+      "type": "ui",
+      "description": "UI component located at components/audio-experience/audio-section.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/audio-experience/audio-section.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/audio-experience/audio-section",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/audio-experience/audio-toggle",
+      "name": "Audio Experience / Audio Toggle",
+      "type": "ui",
+      "description": "UI component located at components/audio-experience/audio-toggle.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/audio-experience/audio-toggle.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/audio-experience/audio-toggle",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/card-path/card-path-scene",
+      "name": "Card Path / Card Path Scene",
+      "type": "ui",
+      "description": "UI component located at components/card-path/card-path-scene.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/card-path/card-path-scene.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/card-path/card-path-scene",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/card-path/path-card",
+      "name": "Card Path / Path Card",
+      "type": "ui",
+      "description": "UI component located at components/card-path/path-card.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/card-path/path-card.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/card-path/path-card",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/creative-chaos/breathing-background",
+      "name": "Creative Chaos / Breathing Background",
+      "type": "ui",
+      "description": "UI component located at components/creative-chaos/breathing-background.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/creative-chaos/breathing-background.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/creative-chaos/breathing-background",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/creative-chaos/floating-card",
+      "name": "Creative Chaos / Floating Card",
+      "type": "ui",
+      "description": "UI component located at components/creative-chaos/floating-card.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/creative-chaos/floating-card.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/creative-chaos/floating-card",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/creative-chaos/floating-particles",
+      "name": "Creative Chaos / Floating Particles",
+      "type": "ui",
+      "description": "UI component located at components/creative-chaos/floating-particles.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/creative-chaos/floating-particles.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/creative-chaos/floating-particles",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/creative-chaos/organic-title",
+      "name": "Creative Chaos / Organic Title",
+      "type": "ui",
+      "description": "UI component located at components/creative-chaos/organic-title.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/creative-chaos/organic-title.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/creative-chaos/organic-title",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/custom-icons",
+      "name": "Custom Icons",
+      "type": "ui",
+      "description": "UI component located at components/custom-icons.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/custom-icons.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/custom-icons",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/floating-nav",
+      "name": "Floating Nav",
+      "type": "ui",
+      "description": "UI component located at components/floating-nav.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/floating-nav.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/floating-nav",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/laydown-card",
+      "name": "Laydown Card",
+      "type": "ui",
+      "description": "UI component located at components/laydown-card.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/laydown-card.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/laydown-card",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/playground/card-path-demo",
+      "name": "Playground / Card Path Demo",
+      "type": "ui",
+      "description": "UI component located at components/playground/card-path-demo.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/playground/card-path-demo.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/playground/card-path-demo",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/playground/scroll-card-demo",
+      "name": "Playground / Scroll Card Demo",
+      "type": "ui",
+      "description": "UI component located at components/playground/scroll-card-demo.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/playground/scroll-card-demo.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/playground/scroll-card-demo",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/playground/table-card-demo",
+      "name": "Playground / Table Card Demo",
+      "type": "ui",
+      "description": "UI component located at components/playground/table-card-demo.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/playground/table-card-demo.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/playground/table-card-demo",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/project-modal",
+      "name": "Project Modal",
+      "type": "ui",
+      "description": "UI component located at components/project-modal.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/project-modal.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/project-modal",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/theme-provider",
+      "name": "Theme Provider",
+      "type": "ui",
+      "description": "UI component located at components/theme-provider.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/theme-provider.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/theme-provider",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/accordion",
+      "name": "Ui / Accordion",
+      "type": "ui",
+      "description": "UI component located at components/ui/accordion.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/accordion.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/accordion",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/alert-dialog",
+      "name": "Ui / Alert Dialog",
+      "type": "ui",
+      "description": "UI component located at components/ui/alert-dialog.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/alert-dialog.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/alert-dialog",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/alert",
+      "name": "Ui / Alert",
+      "type": "ui",
+      "description": "UI component located at components/ui/alert.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/alert.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/alert",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/aspect-ratio",
+      "name": "Ui / Aspect Ratio",
+      "type": "ui",
+      "description": "UI component located at components/ui/aspect-ratio.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/aspect-ratio.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/aspect-ratio",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/avatar",
+      "name": "Ui / Avatar",
+      "type": "ui",
+      "description": "UI component located at components/ui/avatar.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/avatar.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/avatar",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/badge",
+      "name": "Ui / Badge",
+      "type": "ui",
+      "description": "UI component located at components/ui/badge.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/badge.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/badge",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/breadcrumb",
+      "name": "Ui / Breadcrumb",
+      "type": "ui",
+      "description": "UI component located at components/ui/breadcrumb.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/breadcrumb.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/breadcrumb",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/button",
+      "name": "Ui / Button",
+      "type": "ui",
+      "description": "UI component located at components/ui/button.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/button.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/button",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/calendar",
+      "name": "Ui / Calendar",
+      "type": "ui",
+      "description": "UI component located at components/ui/calendar.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/calendar.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/calendar",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/card",
+      "name": "Ui / Card",
+      "type": "ui",
+      "description": "UI component located at components/ui/card.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/card.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/card",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/carousel",
+      "name": "Ui / Carousel",
+      "type": "ui",
+      "description": "UI component located at components/ui/carousel.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/carousel.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/carousel",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/chart",
+      "name": "Ui / Chart",
+      "type": "ui",
+      "description": "UI component located at components/ui/chart.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/chart.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/chart",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/checkbox",
+      "name": "Ui / Checkbox",
+      "type": "ui",
+      "description": "UI component located at components/ui/checkbox.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/checkbox.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/checkbox",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/collapsible",
+      "name": "Ui / Collapsible",
+      "type": "ui",
+      "description": "UI component located at components/ui/collapsible.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/collapsible.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/collapsible",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/command",
+      "name": "Ui / Command",
+      "type": "ui",
+      "description": "UI component located at components/ui/command.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/command.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/command",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/context-menu",
+      "name": "Ui / Context Menu",
+      "type": "ui",
+      "description": "UI component located at components/ui/context-menu.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/context-menu.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/context-menu",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/dialog",
+      "name": "Ui / Dialog",
+      "type": "ui",
+      "description": "UI component located at components/ui/dialog.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/dialog.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/dialog",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/drawer",
+      "name": "Ui / Drawer",
+      "type": "ui",
+      "description": "UI component located at components/ui/drawer.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/drawer.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/drawer",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/dropdown-menu",
+      "name": "Ui / Dropdown Menu",
+      "type": "ui",
+      "description": "UI component located at components/ui/dropdown-menu.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/dropdown-menu.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/dropdown-menu",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/form",
+      "name": "Ui / Form",
+      "type": "ui",
+      "description": "UI component located at components/ui/form.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/form.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/form",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/hover-card",
+      "name": "Ui / Hover Card",
+      "type": "ui",
+      "description": "UI component located at components/ui/hover-card.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/hover-card.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/hover-card",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/input-otp",
+      "name": "Ui / Input Otp",
+      "type": "ui",
+      "description": "UI component located at components/ui/input-otp.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/input-otp.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/input-otp",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/input",
+      "name": "Ui / Input",
+      "type": "ui",
+      "description": "UI component located at components/ui/input.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/input.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/input",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/label",
+      "name": "Ui / Label",
+      "type": "ui",
+      "description": "UI component located at components/ui/label.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/label.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/label",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/menubar",
+      "name": "Ui / Menubar",
+      "type": "ui",
+      "description": "UI component located at components/ui/menubar.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/menubar.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/menubar",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/navigation-menu",
+      "name": "Ui / Navigation Menu",
+      "type": "ui",
+      "description": "UI component located at components/ui/navigation-menu.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/navigation-menu.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/navigation-menu",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/pagination",
+      "name": "Ui / Pagination",
+      "type": "ui",
+      "description": "UI component located at components/ui/pagination.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/pagination.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/pagination",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/popover",
+      "name": "Ui / Popover",
+      "type": "ui",
+      "description": "UI component located at components/ui/popover.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/popover.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/popover",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/progress",
+      "name": "Ui / Progress",
+      "type": "ui",
+      "description": "UI component located at components/ui/progress.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/progress.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/progress",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/radio-group",
+      "name": "Ui / Radio Group",
+      "type": "ui",
+      "description": "UI component located at components/ui/radio-group.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/radio-group.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/radio-group",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/resizable",
+      "name": "Ui / Resizable",
+      "type": "ui",
+      "description": "UI component located at components/ui/resizable.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/resizable.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/resizable",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/scroll-area",
+      "name": "Ui / Scroll Area",
+      "type": "ui",
+      "description": "UI component located at components/ui/scroll-area.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/scroll-area.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/scroll-area",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/select",
+      "name": "Ui / Select",
+      "type": "ui",
+      "description": "UI component located at components/ui/select.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/select.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/select",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/separator",
+      "name": "Ui / Separator",
+      "type": "ui",
+      "description": "UI component located at components/ui/separator.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/separator.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/separator",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/sheet",
+      "name": "Ui / Sheet",
+      "type": "ui",
+      "description": "UI component located at components/ui/sheet.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/sheet.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/sheet",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/sidebar",
+      "name": "Ui / Sidebar",
+      "type": "ui",
+      "description": "UI component located at components/ui/sidebar.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/sidebar.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/sidebar",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/skeleton",
+      "name": "Ui / Skeleton",
+      "type": "ui",
+      "description": "UI component located at components/ui/skeleton.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/skeleton.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/skeleton",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/slider",
+      "name": "Ui / Slider",
+      "type": "ui",
+      "description": "UI component located at components/ui/slider.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/slider.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/slider",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/sonner",
+      "name": "Ui / Sonner",
+      "type": "ui",
+      "description": "UI component located at components/ui/sonner.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/sonner.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/sonner",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/switch",
+      "name": "Ui / Switch",
+      "type": "ui",
+      "description": "UI component located at components/ui/switch.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/switch.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/switch",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/table",
+      "name": "Ui / Table",
+      "type": "ui",
+      "description": "UI component located at components/ui/table.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/table.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/table",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/tabs",
+      "name": "Ui / Tabs",
+      "type": "ui",
+      "description": "UI component located at components/ui/tabs.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/tabs.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/tabs",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/textarea",
+      "name": "Ui / Textarea",
+      "type": "ui",
+      "description": "UI component located at components/ui/textarea.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/textarea.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/textarea",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/toast",
+      "name": "Ui / Toast",
+      "type": "ui",
+      "description": "UI component located at components/ui/toast.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/toast.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/toast",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/toaster",
+      "name": "Ui / Toaster",
+      "type": "ui",
+      "description": "UI component located at components/ui/toaster.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/toaster.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/toaster",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/toggle-group",
+      "name": "Ui / Toggle Group",
+      "type": "ui",
+      "description": "UI component located at components/ui/toggle-group.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/toggle-group.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/toggle-group",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/toggle",
+      "name": "Ui / Toggle",
+      "type": "ui",
+      "description": "UI component located at components/ui/toggle.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/toggle.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/toggle",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/tooltip",
+      "name": "Ui / Tooltip",
+      "type": "ui",
+      "description": "UI component located at components/ui/tooltip.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/tooltip.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/tooltip",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/use-mobile",
+      "name": "Ui / Use Mobile",
+      "type": "ui",
+      "description": "UI component located at components/ui/use-mobile.tsx.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/use-mobile.tsx"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/use-mobile",
+        "props": {}
+      }
+    }
+  ]
+}
