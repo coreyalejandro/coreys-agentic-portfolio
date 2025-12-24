@@ -18,6 +18,7 @@ After **every** turn or session, update HANDOFF.md with:
 ## Scope of Updates
 
 Update HANDOFF.md for **ALL** work, including:
+
 - ✅ Code changes (any file, any size)
 - ✅ Configuration changes
 - ✅ Documentation updates
@@ -30,6 +31,7 @@ Update HANDOFF.md for **ALL** work, including:
 ## Who Must Follow This
 
 **This protocol applies to ALL agents, regardless of:**
+
 - Agent type (CLI, terminal, IDE, API-based, web-based)
 - Work method (direct edits, scripts, automation, manual)
 - Change scope (major features or minor fixes)
@@ -45,6 +47,7 @@ Update HANDOFF.md for **ALL** work, including:
 ## Why This Matters
 
 HANDOFF.md ensures:
+
 - Continuity across different agents and sessions
 - Clear project state for any agent picking up work
 - Documentation of all changes and decisions
@@ -53,5 +56,3 @@ HANDOFF.md ensures:
 ---
 
 **Remember: If you worked on this project, update HANDOFF.md. No exceptions.**
-
-
