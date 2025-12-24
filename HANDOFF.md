@@ -16,6 +16,11 @@
 
 ## 📋 What Was Just Completed
 
+- **HANDOFF Protocol Enforcement:**
+  - Created `HANDOFF_PROTOCOL.md` with mandatory protocol documentation
+  - Added prominent protocol warnings to `HANDOFF.md` (top banner and Important Context section)
+  - Established non-negotiable requirement: All agents MUST update HANDOFF.md after every turn/session
+  - Protocol applies regardless of agent type (CLI, terminal, IDE, API) or work method
 - **Floating nav improvements:**
   - Fixed Tailwind class warning: Changed `duration-[3000ms]` to canonical `duration-3000` in `components/floating-nav.tsx`
   - Added Components link to nav bar: New link with `Box` icon positioned after Templates link, routes to `/components`
