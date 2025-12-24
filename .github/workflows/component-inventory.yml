@@ -1,0 +1,50 @@
+name: Component Inventory Guardrails
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: component-inventory-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  component-inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Validate component inventory
+        run: pnpm component-inventory:check
+
+      - name: Verify generated artifacts are committed
+        run: |
+          pnpm component-inventory:build
+          pnpm component-inventory:aggregate -- .
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Component inventory artifacts are out of date."
+            git status --porcelain
+            exit 1
+          fi
