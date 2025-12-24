@@ -1,5 +1,16 @@
 # 🚀 Agent Handoff: coreys-agentic-portfolio
 
+> **🚨 CRITICAL PROTOCOL: HANDOFF UPDATE IS NON-NEGOTIABLE**
+> 
+> **Every agent working in this repository MUST update HANDOFF.md after every turn/session, regardless of:**
+> - How they access the codebase (CLI, terminal, IDE, API, etc.)
+> - What type of work they're doing (code changes, documentation, configuration, etc.)
+> - Whether the changes are "major" or "minor"
+> 
+> **This is a mandatory requirement, not a suggestion.** The HANDOFF.md file is the single source of truth for project continuity across all agents and sessions.
+> 
+> **📖 See `HANDOFF_PROTOCOL.md` for complete protocol details.**
+
 **Date:** December 24, 2025
 **Status:** Navigation Updates + Repository Setup
 
@@ -59,6 +70,31 @@
 
 ## 📝 Important Context
 
+### 🚨 HANDOFF Protocol (MANDATORY)
+
+**Every agent MUST update HANDOFF.md after every turn/session. This includes:**
+- Code changes (any file, any size)
+- Configuration changes
+- Documentation updates
+- Repository setup changes
+- Bug fixes
+- Feature additions
+- Any work that modifies the project state
+
+**Update Requirements:**
+1. Update "What Was Just Completed" section with all work done
+2. Update "Current Project State" if anything changed
+3. Update "Quick Reference" (date, last commit, status)
+4. Update any other relevant sections (Known Issues, Next Steps, etc.)
+5. Commit the HANDOFF.md update along with your changes
+
+**This protocol applies regardless of:**
+- Agent type (CLI, terminal, IDE, API-based)
+- Work method (direct edits, scripts, automation)
+- Change scope (major or minor)
+
+**No exceptions. This is non-negotiable.**
+
 ### User Profile
 
 - Neurotype: Autistic, bipolar, OCD
@@ -90,8 +126,9 @@
 
 ## 📚 Key Files to Review
 
-- `HANDOFF.md`
-- `openmemory.md`
+- `HANDOFF.md` - **Current project state and handoff information**
+- `HANDOFF_PROTOCOL.md` - **🚨 MANDATORY protocol for all agents**
+- `openmemory.md` - Project memory and context
 - `docs/ARCHITECTURE.md`
 - `docs/HANDBOOK.md`
 - `app/layout.tsx`
