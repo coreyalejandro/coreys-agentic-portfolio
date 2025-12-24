@@ -1,0 +1,150 @@
+import fs from 'fs';
+import path from 'path';
+import { Validator } from '@cfworker/json-schema';
+
+const ROOT = process.cwd();
+const REGISTRY_PATH = path.join(ROOT, 'component-inventory.json');
+const SCHEMA_PATH = path.join(ROOT, 'COMPONENTS.schema.json');
+const OUTPUT_DIR = path.join(ROOT, 'component-inventory');
+const OUTPUT_MD_PATH = path.join(OUTPUT_DIR, 'COMPONENTS.md');
+
+const args = new Set(process.argv.slice(2));
+const shouldWrite = args.has('--write');
+const strict = args.has('--strict');
+const checkGenerated = args.has('--check-generated');
+
+function readJson(filePath) {
+  const raw = fs.readFileSync(filePath, 'utf-8');
+  return JSON.parse(raw);
+}
+
+function validateSchema(registry) {
+  const schema = readJson(SCHEMA_PATH);
+  const validator = new Validator(schema);
+  const result = validator.validate(registry);
+  if (!result.valid) {
+    console.error('ERROR: component-inventory.json failed schema validation.');
+    for (const error of result.errors || []) {
+      console.error(`- ${error.instanceLocation} ${error.error}`);
+    }
+    process.exit(1);
+  }
+}
+
+function buildComponentsReadme(registry) {
+  const lines = [];
+  lines.push('# Components');
+  lines.push('');
+  lines.push('This file is generated from `component-inventory.json`.');
+  lines.push('Run `pnpm component-inventory:build` after updating the registry.');
+  lines.push('');
+  lines.push('## Repo');
+  lines.push('');
+  lines.push(`- Name: ${registry.repo.name}`);
+  lines.push(`- Root: ${registry.repo.root}`);
+  lines.push(`- Last Updated: ${registry.repo.lastUpdated}`);
+  lines.push('');
+
+  const total = registry.components.length;
+  const byType = new Map();
+  const byStatus = new Map();
+  for (const component of registry.components) {
+    byType.set(component.type, (byType.get(component.type) || 0) + 1);
+    byStatus.set(component.status, (byStatus.get(component.status) || 0) + 1);
+  }
+
+  lines.push('## Summary');
+  lines.push('');
+  lines.push(`- Total components: ${total}`);
+  lines.push(`- By type: ${Array.from(byType.entries()).map(([key, value]) => `${key}=${value}`).join(', ')}`);
+  lines.push(`- By status: ${Array.from(byStatus.entries()).map(([key, value]) => `${key}=${value}`).join(', ')}`);
+  lines.push('');
+
+  lines.push('## Components');
+  lines.push('');
+  for (const component of registry.components) {
+    lines.push(`### ${component.name}`);
+    lines.push('');
+    lines.push(`- ID: ${component.id}`);
+    lines.push(`- Type: ${component.type}`);
+    lines.push(`- Status: ${component.status}`);
+    lines.push(`- Version: ${component.version}`);
+    lines.push(`- Owner: ${component.ownerName}`);
+    if (component.ownerId) {
+      lines.push(`- Owner ID: ${component.ownerId}`);
+    }
+    lines.push(`- Location: ${component.location.join(', ')}`);
+    lines.push(`- Description: ${component.description}`);
+    lines.push('- Interfaces:');
+    lines.push(`  - Inputs: ${component.interfaces.inputs.join(', ') || 'none'}`);
+    lines.push(`  - Outputs: ${component.interfaces.outputs.join(', ') || 'none'}`);
+    lines.push(`- Dependencies: ${component.dependencies.length > 0 ? component.dependencies.join(', ') : 'none'}`);
+    lines.push('');
+  }
+
+  return lines.join('\n').trimEnd() + '\n';
+}
+
+function validateRegistry(registry) {
+  const errors = [];
+  const warnings = [];
+  const ids = new Set();
+
+  for (const component of registry.components) {
+    if (ids.has(component.id)) {
+      errors.push(`ERROR: Duplicate component id ${component.id}`);
+    }
+    ids.add(component.id);
+
+    for (const location of component.location) {
+      const fullPath = path.join(ROOT, location);
+      if (!fs.existsSync(fullPath)) {
+        warnings.push(`WARN: Missing component location ${location}`);
+      }
+    }
+  }
+
+  return { errors, warnings };
+}
+
+if (!fs.existsSync(REGISTRY_PATH)) {
+  console.error('ERROR: component-inventory.json not found.');
+  process.exit(1);
+}
+
+const registry = readJson(REGISTRY_PATH);
+validateSchema(registry);
+
+const { errors, warnings } = validateRegistry(registry);
+for (const warning of warnings) {
+  console.warn(warning);
+}
+if (errors.length > 0) {
+  for (const error of errors) {
+    console.error(error);
+  }
+  process.exit(1);
+}
+
+if (shouldWrite) {
+  fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+  fs.writeFileSync(OUTPUT_MD_PATH, buildComponentsReadme(registry));
+  console.log(`Wrote ${path.relative(ROOT, OUTPUT_MD_PATH).replace(/\\/g, '/')}`);
+}
+
+if (checkGenerated) {
+  if (!fs.existsSync(OUTPUT_MD_PATH)) {
+    console.error('ERROR: component-inventory/COMPONENTS.md is missing. Run `pnpm component-inventory:build`.');
+    process.exit(1);
+  }
+  const expected = buildComponentsReadme(registry);
+  const actual = fs.readFileSync(OUTPUT_MD_PATH, 'utf-8');
+  if (expected !== actual) {
+    console.error('ERROR: component-inventory/COMPONENTS.md is out of date. Run `pnpm component-inventory:build`.');
+    process.exit(1);
+  }
+}
+
+if (strict && warnings.length > 0) {
+  process.exit(1);
+}

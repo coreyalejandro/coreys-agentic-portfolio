@@ -1,0 +1,480 @@
+{
+  "updated": "2025-12-24T22:48:22.635Z",
+  "nodes": [
+    {
+      "id": "coreys-agentic-portfolio/app-shell",
+      "name": "Portfolio App Shell",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/ui-components",
+      "name": "UI Components",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/styles-system",
+      "name": "Styles System",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/data-layer",
+      "name": "Data Layer",
+      "type": "package",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/hooks",
+      "name": "Hooks",
+      "type": "package",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/middleware",
+      "name": "Middleware",
+      "type": "service",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/public-assets",
+      "name": "Public Assets",
+      "type": "doc",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/docs",
+      "name": "Docs",
+      "type": "doc",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/component-inventory-system",
+      "name": "Component Inventory System",
+      "type": "workflow",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/animations/BreathingBackground",
+      "name": "Animations / Breathingbackground",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/animations/FloatingElement",
+      "name": "Animations / Floatingelement",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/animations/FloatingOrb",
+      "name": "Animations / Floatingorb",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/audio-experience/audio-button",
+      "name": "Audio Experience / Audio Button",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/audio-experience/audio-engine",
+      "name": "Audio Experience / Audio Engine",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/audio-experience/audio-section",
+      "name": "Audio Experience / Audio Section",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/audio-experience/audio-toggle",
+      "name": "Audio Experience / Audio Toggle",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/card-path/card-path-scene",
+      "name": "Card Path / Card Path Scene",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/card-path/path-card",
+      "name": "Card Path / Path Card",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/creative-chaos/breathing-background",
+      "name": "Creative Chaos / Breathing Background",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/creative-chaos/floating-card",
+      "name": "Creative Chaos / Floating Card",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/creative-chaos/floating-particles",
+      "name": "Creative Chaos / Floating Particles",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/creative-chaos/organic-title",
+      "name": "Creative Chaos / Organic Title",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/custom-icons",
+      "name": "Custom Icons",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/floating-nav",
+      "name": "Floating Nav",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/laydown-card",
+      "name": "Laydown Card",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/playground/card-path-demo",
+      "name": "Playground / Card Path Demo",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/playground/scroll-card-demo",
+      "name": "Playground / Scroll Card Demo",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/playground/table-card-demo",
+      "name": "Playground / Table Card Demo",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/project-modal",
+      "name": "Project Modal",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/theme-provider",
+      "name": "Theme Provider",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/accordion",
+      "name": "Ui / Accordion",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/alert-dialog",
+      "name": "Ui / Alert Dialog",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/alert",
+      "name": "Ui / Alert",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/aspect-ratio",
+      "name": "Ui / Aspect Ratio",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/avatar",
+      "name": "Ui / Avatar",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/badge",
+      "name": "Ui / Badge",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/breadcrumb",
+      "name": "Ui / Breadcrumb",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/button",
+      "name": "Ui / Button",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/calendar",
+      "name": "Ui / Calendar",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/card",
+      "name": "Ui / Card",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/carousel",
+      "name": "Ui / Carousel",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/chart",
+      "name": "Ui / Chart",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/checkbox",
+      "name": "Ui / Checkbox",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/collapsible",
+      "name": "Ui / Collapsible",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/command",
+      "name": "Ui / Command",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/context-menu",
+      "name": "Ui / Context Menu",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/dialog",
+      "name": "Ui / Dialog",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/drawer",
+      "name": "Ui / Drawer",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/dropdown-menu",
+      "name": "Ui / Dropdown Menu",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/form",
+      "name": "Ui / Form",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/hover-card",
+      "name": "Ui / Hover Card",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/input-otp",
+      "name": "Ui / Input Otp",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/input",
+      "name": "Ui / Input",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/label",
+      "name": "Ui / Label",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/menubar",
+      "name": "Ui / Menubar",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/navigation-menu",
+      "name": "Ui / Navigation Menu",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/pagination",
+      "name": "Ui / Pagination",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/popover",
+      "name": "Ui / Popover",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/progress",
+      "name": "Ui / Progress",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/radio-group",
+      "name": "Ui / Radio Group",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/resizable",
+      "name": "Ui / Resizable",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/scroll-area",
+      "name": "Ui / Scroll Area",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/select",
+      "name": "Ui / Select",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/separator",
+      "name": "Ui / Separator",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/sheet",
+      "name": "Ui / Sheet",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/sidebar",
+      "name": "Ui / Sidebar",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/skeleton",
+      "name": "Ui / Skeleton",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/slider",
+      "name": "Ui / Slider",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/sonner",
+      "name": "Ui / Sonner",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/switch",
+      "name": "Ui / Switch",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/table",
+      "name": "Ui / Table",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/tabs",
+      "name": "Ui / Tabs",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/textarea",
+      "name": "Ui / Textarea",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/toast",
+      "name": "Ui / Toast",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/toaster",
+      "name": "Ui / Toaster",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/toggle-group",
+      "name": "Ui / Toggle Group",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/toggle",
+      "name": "Ui / Toggle",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/tooltip",
+      "name": "Ui / Tooltip",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/use-mobile",
+      "name": "Ui / Use Mobile",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    }
+  ],
+  "edges": []
+}

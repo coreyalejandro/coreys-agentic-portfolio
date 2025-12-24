@@ -17,3 +17,9 @@ This repo already has a `components.json` for UI tooling, so the inventory uses 
 ## Optional Validation
 
 Use any JSON Schema validator with `COMPONENTS.schema.json` if you want strict checks.
+
+## Automation (Recommended)
+
+- `pnpm component-inventory:check` validates schema, locations, and generated output.
+- `pnpm component-inventory:build` regenerates `component-inventory/COMPONENTS.md`.
+- `pnpm component-inventory:aggregate -- .` writes `component-inventory.index.json` and `component-inventory.graph.json`.
