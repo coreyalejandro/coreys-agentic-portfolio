@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from "react"
 import { useColorTheme } from "@/contexts/ColorThemeContext"
+import { cn } from "@/lib/utils"
 
 interface BreathingBackgroundProps {
   colors?: string[]
   intensity?: number
+  className?: string
 }
 
-export function BreathingBackground({ colors, intensity = 1 }: BreathingBackgroundProps) {
+export function BreathingBackground({ colors, intensity = 1, className }: BreathingBackgroundProps) {
   const [time, setTime] = useState(0)
   const { currentPalette } = useColorTheme()
 
@@ -26,7 +28,7 @@ export function BreathingBackground({ colors, intensity = 1 }: BreathingBackgrou
 
   return (
     <div
-      className="absolute inset-0"
+      className={cn("absolute inset-0", className)}
       style={{
         background: `
           radial-gradient(ellipse at ${20 + Math.sin(time) * 25 * intensity}% ${30 + Math.cos(time * 0.7) * 35 * intensity}%, 

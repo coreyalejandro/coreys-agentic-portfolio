@@ -181,7 +181,7 @@ export default function HomePage() {
               >
                 <h1 className="text-8xl md:text-9xl font-black text-white leading-none">
                   <span className="block transform -rotate-3">Neural</span>
-                  <span className="block transform rotate-2 ml-12 bg-gradient-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent">
+                  <span className="block transform rotate-2 ml-12 bg-linear-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent">
                     Depth
                   </span>
                   <span className="block transform -rotate-1 ml-6 text-7xl">Magic</span>
@@ -220,7 +220,7 @@ export default function HomePage() {
                   transform: `translate(${Math.sin(time * 1.2) * 20}px, ${Math.cos(time) * 15}px)`,
                 }}
               >
-                <div className="bg-gradient-to-br from-orange-400 to-red-500 rounded-full w-24 h-24 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+                <div className="bg-linear-to-br from-orange-400 to-red-500 rounded-full w-24 h-24 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
                   <Play className="w-8 h-8 text-white" />
                 </div>
               </div>
@@ -239,7 +239,7 @@ export default function HomePage() {
           {/* Collage-Style Feature Section */}
           <section className="py-32 relative overflow-hidden">
             <div
-              className="absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-100 rounded-3xl"
+              className="absolute inset-0 bg-linear-to-br from-amber-50 to-orange-100 rounded-3xl"
               style={{
                 clipPath: `polygon(0 ${10 + Math.sin(time) * 5}%, 100% 0%, 100% ${90 + Math.cos(time) * 5}%, 0% 100%)`,
               }}
@@ -254,7 +254,7 @@ export default function HomePage() {
                     transform: `translate(${Math.sin(time * 0.6) * 10}px, ${Math.cos(time * 0.4) * 8}px) rotate(${Math.sin(time * 0.3) * 1}deg)`,
                   }}
                 >
-                  <div className="bg-gradient-to-br from-white to-amber-50 rounded-[4rem] p-12 shadow-2xl border border-orange-200/50">
+                  <div className="bg-linear-to-br from-white to-amber-50 rounded-[4rem] p-12 shadow-2xl border border-orange-200/50">
                     <Zap className="w-16 h-16 text-orange-600 mb-6" />
                     <h3 className="text-4xl font-bold mb-4 text-balance">Neural Depth Revolution</h3>
                     <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
@@ -266,7 +266,7 @@ export default function HomePage() {
                 {/* Stacked Small Features */}
                 <div className="col-span-12 md:col-span-5 space-y-6">
                   <div
-                    className="bg-gradient-to-r from-orange-500 to-red-600 rounded-3xl p-6 text-white transform rotate-2"
+                    className="bg-linear-to-r from-orange-500 to-red-600 rounded-3xl p-6 text-white transform rotate-2"
                     style={{
                       transform: `rotate(${2 + Math.sin(time * 0.8) * 2}deg) translate(${Math.cos(time) * 5}px, ${Math.sin(time * 1.1) * 3}px)`,
                     }}
@@ -314,7 +314,7 @@ export default function HomePage() {
                 >
                   <span className="block text-orange-600">Interactive</span>
                   <span className="block transform rotate-1 ml-8">Neural</span>
-                  <span className="block transform -rotate-2 -ml-4 bg-gradient-to-r from-red-600 to-amber-600 bg-clip-text text-transparent">
+                  <span className="block transform -rotate-2 -ml-4 bg-linear-to-r from-red-600 to-amber-600 bg-clip-text text-transparent">
                     Experience
                   </span>
                 </h2>
@@ -329,7 +329,7 @@ export default function HomePage() {
                 >
                   {/* Floating cursor follower */}
                   <div
-                    className="absolute w-8 h-8 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full pointer-events-none z-20 transition-all duration-100"
+                    className="absolute w-8 h-8 bg-linear-to-r from-amber-400 to-orange-500 rounded-full pointer-events-none z-20 transition-all duration-100"
                     style={{
                       left: mousePosition.x * 0.02,
                       top: mousePosition.y * 0.02,
@@ -337,14 +337,14 @@ export default function HomePage() {
                     }}
                   />
 
-                  <div className="bg-gradient-to-br from-white via-amber-50 to-orange-100 rounded-[5rem] p-16 shadow-2xl border border-orange-200/30">
+                  <div className="bg-linear-to-br from-white via-amber-50 to-orange-100 rounded-[5rem] p-16 shadow-2xl border border-orange-200/30">
                     <div
                       className="text-center"
                       style={{
                         transform: `translate(${mousePosition.x * 0.005}px, ${mousePosition.y * 0.005}px)`,
                       }}
                     >
-                      <div className="text-8xl font-black bg-gradient-to-r from-orange-600 via-red-600 to-amber-600 bg-clip-text text-transparent mb-8">
+                      <div className="text-8xl font-black bg-linear-to-r from-orange-600 via-red-600 to-amber-600 bg-clip-text text-transparent mb-8">
                         Neural Magic
                       </div>
                       <p className="text-2xl text-muted-foreground max-w-2xl mx-auto text-pretty">
@@ -399,7 +399,7 @@ export default function HomePage() {
                 <div className="text-sm font-bold text-white/80 tracking-widest uppercase">Revolutionary Design</div>
                 <h1 className="text-7xl md:text-8xl font-black text-white leading-none">
                   <span className="block transform rotate-1">Build</span>
-                  <span className="block transform -rotate-2 ml-8 bg-gradient-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent">
+                  <span className="block transform -rotate-2 ml-8 bg-linear-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent">
                     the
                   </span>
                   <span className="block transform rotate-1 ml-4 text-6xl">Future</span>
@@ -414,7 +414,7 @@ export default function HomePage() {
                 transform: `translate(${-mousePosition.x * 0.02}px, ${mousePosition.y * 0.015}px) rotate(${Math.sin(time * 0.8) * 1.5}deg)`,
               }}
             >
-              <div className="bg-white/15 backdrop-blur-xl rounded-[2rem] p-8 border border-white/20 shadow-2xl">
+              <div className="bg-white/15 backdrop-blur-xl rounded-4xl p-8 border border-white/20 shadow-2xl">
                 <p className="text-lg text-white/95 text-pretty leading-relaxed mb-6">
                   Experience neural depth motion, organic parallax, and joyful interactions that make users fall in love
                   with your interface
@@ -449,7 +449,7 @@ export default function HomePage() {
                     onChange={(e) => setEmail(e.target.value)}
                     className="bg-white/20 border-white/30 text-white placeholder:text-white/60 rounded-xl"
                   />
-                  <Button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 rounded-xl">
+                  <Button className="bg-linear-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 rounded-xl">
                     <ArrowRight className="w-4 h-4" />
                   </Button>
                 </div>
@@ -463,7 +463,7 @@ export default function HomePage() {
                 transform: `translate(${Math.cos(time * 1.3) * 20}px, ${Math.sin(time * 0.8) * 15}px)`,
               }}
             >
-              <div className="bg-gradient-to-br from-orange-400 to-red-500 rounded-full w-20 h-20 flex flex-col items-center justify-center text-white text-center">
+              <div className="bg-linear-to-br from-orange-400 to-red-500 rounded-full w-20 h-20 flex flex-col items-center justify-center text-white text-center">
                 <div className="text-xl font-bold">4.9</div>
                 <div className="text-xs">rating</div>
               </div>
@@ -508,9 +508,9 @@ export default function HomePage() {
                       transform: `translate(${Math.sin(time * 0.6) * 12}px, ${Math.cos(time * 0.4) * 8}px) rotate(${Math.sin(time * 0.3) * 0.5}deg)`,
                     }}
                   >
-                    <div className="bg-gradient-to-br from-white via-amber-50 to-orange-100 rounded-[3rem] p-12 shadow-2xl border border-orange-200/30">
+                    <div className="bg-linear-to-br from-white via-amber-50 to-orange-100 rounded-[3rem] p-12 shadow-2xl border border-orange-200/30">
                       <div className="flex items-start space-x-6">
-                        <div className="bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl p-4">
+                        <div className="bg-linear-to-br from-orange-500 to-red-600 rounded-2xl p-4">
                           <Eye className="w-12 h-12 text-white" />
                         </div>
                         <div className="flex-1">
@@ -542,7 +542,7 @@ export default function HomePage() {
                         transform: `translate(${-Math.cos(time * 0.7) * 8}px, ${Math.sin(time * 0.5) * 6}px)`,
                       }}
                     >
-                      <div className="bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-6 text-white transform rotate-2">
+                      <div className="bg-linear-to-r from-orange-500 to-red-600 rounded-2xl p-6 text-white transform rotate-2">
                         <Waves className="w-8 h-8 mb-3" />
                         <h4 className="text-xl font-bold mb-2">Fluid Motion</h4>
                         <p className="text-sm opacity-90">Every interaction flows like water</p>
@@ -566,7 +566,7 @@ export default function HomePage() {
                       transform: `translate(${Math.sin(time * 0.8) * 15}px, ${Math.cos(time * 0.6) * 10}px) rotate(${Math.sin(time * 0.4) * 2}deg)`,
                     }}
                   >
-                    <div className="bg-gradient-to-br from-amber-400 to-orange-500 rounded-[2rem] p-8 text-white shadow-2xl">
+                    <div className="bg-linear-to-br from-amber-400 to-orange-500 rounded-4xl p-8 text-white shadow-2xl">
                       <Sparkles className="w-12 h-12 mb-4" />
                       <h3 className="text-3xl font-black mb-3">Joyful Interactions</h3>
                       <p className="text-white/90 text-pretty">
@@ -593,13 +593,13 @@ export default function HomePage() {
 
           <section className="relative py-32 overflow-hidden">
             <div
-              className="absolute inset-0 bg-gradient-to-br from-orange-600/20 via-red-600/20 to-amber-600/20"
+              className="absolute inset-0 bg-linear-to-br from-orange-600/20 via-red-600/20 to-amber-600/20"
               style={{ transform: `rotate(${time * 0.5}deg) scale(${1.2 + Math.sin(time) * 0.1})` }}
             />
 
             <div className="relative text-center mb-20">
               <h2
-                className="text-8xl font-black text-transparent bg-gradient-to-r from-orange-700 to-red-700 bg-clip-text"
+                className="text-8xl font-black text-transparent bg-linear-to-r from-orange-700 to-red-700 bg-clip-text"
                 style={{ transform: `rotate(${Math.sin(time * 0.3) * 3}deg)` }}
               >
                 SUPERPOWERS
@@ -646,7 +646,7 @@ export default function HomePage() {
               style={{ transform: `translateY(${Math.sin(time * 0.5) * 20}px)` }}
             >
               <h2
-                className="text-9xl font-black text-transparent bg-gradient-to-r from-orange-600 via-red-600 to-amber-600 bg-clip-text leading-none"
+                className="text-9xl font-black text-transparent bg-linear-to-r from-orange-600 via-red-600 to-amber-600 bg-clip-text leading-none"
                 style={{ transform: `rotate(${Math.sin(time * 0.2) * 2}deg)` }}
               >
                 LET'S CREATE
@@ -671,7 +671,7 @@ export default function HomePage() {
                   <span style={{ transform: `rotate(${Math.sin(time * 0.8) * 3}deg)`, display: "inline-block" }}>
                     <AudioButton
                       description="Start the chaos - Begin your creative journey"
-                      className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-black text-xl px-12 py-6 rounded-full shadow-2xl transform hover:scale-110 transition-all duration-300 inline-flex items-center"
+                      className="bg-linear-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-black text-xl px-12 py-6 rounded-full shadow-2xl transform hover:scale-110 transition-all duration-300 inline-flex items-center"
                     >
                       <Orbit className="w-6 h-6 mr-3" />
                       Start the Chaos
@@ -701,7 +701,7 @@ export default function HomePage() {
         description="Explore innovative projects showcasing neural motion, chaos design, and joyful engineering. Each project breaks conventions to create memorable experiences."
         position={{ x: 0, y: 4, z: -7 }}
       >
-        <section className="relative bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 rounded-3xl mb-16 overflow-visible">
+        <section className="relative bg-linear-to-br from-amber-50 via-orange-50 to-red-50 rounded-3xl mb-16 overflow-visible">
           <div className="relative min-h-screen flex items-center justify-center p-8">
             {/* Living background that breathes */}
             <div
@@ -726,7 +726,7 @@ export default function HomePage() {
                 `,
               }}
             >
-              <h1 className="text-8xl font-black text-transparent bg-gradient-to-r from-orange-600 via-red-600 to-amber-700 bg-clip-text drop-shadow-2xl">
+              <h1 className="text-8xl font-black text-transparent bg-linear-to-r from-orange-600 via-red-600 to-amber-700 bg-clip-text drop-shadow-2xl">
                 CREATIVE
               </h1>
               <div
@@ -768,7 +768,7 @@ export default function HomePage() {
                 <span style={{ transform: `rotate(${Math.sin(time * 0.6) * 3}deg)`, display: "inline-block" }}>
                   <AudioButton
                     description="Enter the chaos - Connect with me for collaboration"
-                    className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-bold px-8 py-4 rounded-full shadow-2xl inline-flex items-center"
+                    className="bg-linear-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-bold px-8 py-4 rounded-full shadow-2xl inline-flex items-center"
                   >
                     <Orbit className="w-5 h-5 mr-2" />
                     Enter the Chaos
@@ -795,7 +795,7 @@ export default function HomePage() {
               style={{ transform: `translateX(-50%) rotate(${Math.sin(scrollY * 0.01) * 2}deg)` }}
             >
               <h2 className="text-7xl font-black text-orange-800 mb-4">PROJECTS</h2>
-              <div className="w-32 h-2 bg-gradient-to-r from-orange-600 to-red-600 mx-auto rounded-full"></div>
+              <div className="w-32 h-2 bg-linear-to-r from-orange-600 to-red-600 mx-auto rounded-full"></div>
             </div>
 
             <div className="relative max-w-7xl mx-auto" style={{ minHeight: "1400px", paddingTop: "200px", paddingBottom: "200px" }}>
@@ -824,7 +824,7 @@ export default function HomePage() {
                     <div className="relative h-full overflow-hidden rounded-lg">
                       {/* Dynamic gradient overlay */}
                       <div
-                        className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-90`}
+                        className={`absolute inset-0 bg-linear-to-br ${project.gradient} opacity-90`}
                         style={{
                           background: `
                             linear-gradient(

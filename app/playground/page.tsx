@@ -208,7 +208,7 @@ export default function PlaygroundPage() {
               </option>
             </select>
 
-            <FloatingCard className="!p-0 !bg-transparent border-0" rotationIntensity={0.2}>
+            <FloatingCard className="p-0! bg-transparent! border-0" rotationIntensity={0.2}>
               <button
                 onClick={saveCurrentProject}
                 className="px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-2xl"

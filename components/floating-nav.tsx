@@ -160,7 +160,7 @@ export default function FloatingNav() {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className="backdrop-blur-xl rounded-full shadow-2xl transition-all duration-[3000ms] relative"
+        className="backdrop-blur-xl rounded-full shadow-2xl transition-all duration-3000 relative"
         style={{
           background: `rgba(30, 30, 30, ${opacity})`,
           borderWidth: "1px",
@@ -178,7 +178,7 @@ export default function FloatingNav() {
             onMouseDown={handleCollapsedMouseDown}
           >
             <Move className="w-4 h-4 text-white/40" />
-            <span className="text-lg font-bold bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
+            <span className="text-lg font-bold bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent">
               CA
             </span>
             <button
