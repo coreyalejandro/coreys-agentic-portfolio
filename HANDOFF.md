@@ -1,25 +1,36 @@
-# 🚀 Agent Handoff: v0-corey-alejandro-main-portfolio-site
+# 🚀 Agent Handoff: coreys-agentic-portfolio
 
-**Date:** Dec 13, 2025
-**Status:** Theme + Homepage/Resume Visual Fixes (Ready to Merge)
+**Date:** December 24, 2025
+**Status:** Navigation Updates + Repository Setup
 
 ## 📋 What Was Just Completed
 
-- **CSS persisted (nav hover highlight):** Updated `components/floating-nav.tsx` hover highlight overlays to avoid explicitly setting `left/top` (removed `inset-0`, replaced with `right-0 bottom-0 w-full h-full`) while preserving the circular hover feedback.
-- **Homepage fix (Superpowers heading):** Fixed hidden “SUPERPOWERS” heading in `app/(home)/sections/CTASection.tsx` by defining missing theme compat vars in `app/globals.css` (notably `--theme-text`).
-- **Resume fixes:**
-  - Restored “breathing” background effect on the resume section by switching to shared `BreathingBackground` in `app/templates/resume/page.tsx`.
-  - Scoped the printable resume container to dark-on-white variables (local CSS custom properties) so headings/sections stay readable and PDF export remains clean.
-- **Git sanity:** Repo now has an initial commit and ignores local artifacts (`.DS_Store`, `.cursor/`, `.playwright-mcp/`). Because `origin/main` already had history, changes were pushed safely to `origin/local-sync` for PR/merge.
+- **Floating nav improvements:**
+  - Fixed Tailwind class warning: Changed `duration-[3000ms]` to canonical `duration-3000` in `components/floating-nav.tsx`
+  - Added Components link to nav bar: New link with `Box` icon positioned after Templates link, routes to `/components`
+  - Reorganized nav items: Swapped Documentation and Design System positions (Documentation now on left, Design System on right)
+- **Repository setup:**
+  - Created new GitHub repository: `coreyalejandro/coreys-agentic-portfolio`
+  - Added remote: `coreys-agentic-portfolio` pointing to the new repository
+  - Pushed all changes to the new remote repository
+- **Previous work (from earlier session):**
+  - CSS persisted (nav hover highlight): Updated `components/floating-nav.tsx` hover highlight overlays to avoid explicitly setting `left/top`
+  - Homepage fix (Superpowers heading): Fixed hidden "SUPERPOWERS" heading by defining missing theme compat vars in `app/globals.css`
+  - Resume fixes: Restored breathing background and scoped printable resume container to dark-on-white variables
 
 ## 🎯 Current Project State
 
 ### What's Working
 
-- **Navigation:** Floating nav works; hover feedback remains visible and consistent.
+- **Navigation:** Floating nav fully functional with:
+  - Left side: Documentation, Resume, Superpowers, Projects
+  - Right side: Templates, Components, Playground, Design System
+  - Hover feedback remains visible and consistent
+  - All Tailwind classes use canonical format (no warnings)
 - **Theme system:** Theme variables are defined in `app/globals.css` and updated by `contexts/ColorThemeContext.tsx` with compat aliases for reliability.
 - **Homepage sections:** Superpowers heading renders (no longer transparent).
 - **Resume section:** Background matches other sections; printable resume remains readable.
+- **Repository:** New remote `coreys-agentic-portfolio` is set up and synced.
 
 ### Project Structure
 
@@ -66,8 +77,8 @@
 ### Git Workflow
 
 - Branch: main
-- Remote: `https://github.com/coreyalejandro/v0-corey-alejandro-main-portfolio-site.git`
-- Note: local changes were pushed to `origin/local-sync` to avoid non-fast-forwarding `origin/main`.
+- Remote: `git@github.com:coreyalejandro/coreys-agentic-portfolio.git` (remote name: `coreys-agentic-portfolio`)
+- Repository: `coreyalejandro/coreys-agentic-portfolio`
 
 ## 🔧 Available Commands
 
@@ -92,14 +103,14 @@
 
 ## 📞 Quick Reference
 
-- **Project:** v0-corey-alejandro-main-portfolio-site
-- **Repository:** coreyalejandro/v0-corey-alejandro-main-portfolio-site
-- **Remote:** `https://github.com/coreyalejandro/v0-corey-alejandro-main-portfolio-site.git`
+- **Project:** coreys-agentic-portfolio
+- **Repository:** coreyalejandro/coreys-agentic-portfolio
+- **Remote:** `git@github.com:coreyalejandro/coreys-agentic-portfolio.git`
 - **Branch:** main
-- **Last Commit:** ba19e42 - "Initial commit"
+- **Last Commit:** 0adb2ec - "Update floating nav: fix duration class, add Components link, swap Documentation and Design System positions"
 
 ---
 
-**Status:** Ready for Review
-**Recommendation:** Merge `local-sync` PR, then smoke test `/`, `/#superpowers`, `/templates/resume`
-**Confidence:** Medium - needs quick visual confirmation after merge
+**Status:** Active Development
+**Recommendation:** Continue with next feature or enhancement
+**Confidence:** High - navigation updates complete and pushed
