@@ -15,6 +15,7 @@ import {
   VolumeX,
   Move,
   Home,
+  Box,
 } from "lucide-react"
 import type React from "react"
 import { useState, useRef, useEffect } from "react"
@@ -124,7 +125,7 @@ export default function FloatingNav() {
   }
 
   const leftNavItems = [
-    { name: "Design System", href: "/design-system", icon: Sparkles },
+    { name: "Documentation", href: "/documentation", icon: BookOpen },
     { name: "Resume", href: "/templates/resume", icon: FileText },
     { name: "Superpowers", href: "/#superpowers", icon: Zap },
     { name: "Projects", href: "/#projects", icon: FolderOpen },
@@ -132,8 +133,9 @@ export default function FloatingNav() {
 
   const rightNavItems = [
     { name: "Templates", href: "/templates", icon: LayoutTemplate },
+    { name: "Components", href: "/components", icon: Box },
     { name: "Playground", href: "/playground", icon: Beaker },
-    { name: "Documentation", href: "/documentation", icon: BookOpen },
+    { name: "Design System", href: "/design-system", icon: Sparkles },
   ]
 
   return (
