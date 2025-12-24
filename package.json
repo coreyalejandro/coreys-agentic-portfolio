@@ -12,7 +12,8 @@
     "docs:check-tracked": "node scripts/docs/check-tracked.mjs",
     "component-inventory:check": "node scripts/component-inventory/control.mjs --strict --check-generated",
     "component-inventory:build": "node scripts/component-inventory/control.mjs --write",
-    "component-inventory:aggregate": "node scripts/component-inventory/aggregate.mjs"
+    "component-inventory:aggregate": "node scripts/component-inventory/aggregate.mjs",
+    "component-inventory:summary": "node scripts/component-inventory/summary.mjs"
   },
   "dependencies": {
     "@cfworker/json-schema": "latest",

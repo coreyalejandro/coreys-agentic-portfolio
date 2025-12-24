@@ -4,7 +4,7 @@
   "repo": {
     "name": "coreys-agentic-portfolio",
     "root": ".",
-    "lastUpdated": "2025-12-24T22:47:44Z"
+    "lastUpdated": "2025-12-24T23:11:47Z"
   },
   "components": [
     {
@@ -279,6 +279,31 @@
       "dependencies": [],
       "preview": {
         "import": "@/components/animations/FloatingOrb",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/animations/index",
+      "name": "Animations / Index",
+      "type": "ui",
+      "description": "UI component located at components/animations/index.ts.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/animations/index.ts"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/animations",
         "props": {}
       }
     },
@@ -1929,6 +1954,31 @@
       "dependencies": [],
       "preview": {
         "import": "@/components/ui/tooltip",
+        "props": {}
+      }
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/use-toast",
+      "name": "Ui / Use Toast",
+      "type": "ui",
+      "description": "UI component located at components/ui/use-toast.ts.",
+      "ownerName": "Core Team",
+      "status": "active",
+      "version": "0.1.0",
+      "location": [
+        "components/ui/use-toast.ts"
+      ],
+      "interfaces": {
+        "inputs": [
+          "props"
+        ],
+        "outputs": [
+          "rendered UI"
+        ]
+      },
+      "dependencies": [],
+      "preview": {
+        "import": "@/components/ui/use-toast",
         "props": {}
       }
     },

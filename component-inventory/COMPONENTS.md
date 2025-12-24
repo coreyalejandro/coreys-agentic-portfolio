@@ -7,13 +7,13 @@ Run `pnpm component-inventory:build` after updating the registry.
 
 - Name: coreys-agentic-portfolio
 - Root: .
-- Last Updated: 2025-12-24T22:47:44Z
+- Last Updated: 2025-12-24T23:11:47Z
 
 ## Summary
 
-- Total components: 79
-- By type: ui=73, package=2, service=1, doc=2, workflow=1
-- By status: active=79
+- Total components: 81
+- By type: ui=75, package=2, service=1, doc=2, workflow=1
+- By status: active=81
 
 ## Components
 
@@ -180,6 +180,20 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Owner: Core Team
 - Location: components/animations/FloatingOrb.tsx
 - Description: UI component located at components/animations/FloatingOrb.tsx.
+- Interfaces:
+  - Inputs: props
+  - Outputs: rendered UI
+- Dependencies: none
+
+### Animations / Index
+
+- ID: coreys-agentic-portfolio/components/animations/index
+- Type: ui
+- Status: active
+- Version: 0.1.0
+- Owner: Core Team
+- Location: components/animations/index.ts
+- Description: UI component located at components/animations/index.ts.
 - Interfaces:
   - Inputs: props
   - Outputs: rendered UI
@@ -1104,6 +1118,20 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Owner: Core Team
 - Location: components/ui/tooltip.tsx
 - Description: UI component located at components/ui/tooltip.tsx.
+- Interfaces:
+  - Inputs: props
+  - Outputs: rendered UI
+- Dependencies: none
+
+### Ui / Use Toast
+
+- ID: coreys-agentic-portfolio/components/ui/use-toast
+- Type: ui
+- Status: active
+- Version: 0.1.0
+- Owner: Core Team
+- Location: components/ui/use-toast.ts
+- Description: UI component located at components/ui/use-toast.ts.
 - Interfaces:
   - Inputs: props
   - Outputs: rendered UI

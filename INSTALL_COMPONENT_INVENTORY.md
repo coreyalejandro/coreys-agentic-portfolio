@@ -23,3 +23,4 @@ Use any JSON Schema validator with `COMPONENTS.schema.json` if you want strict c
 - `pnpm component-inventory:check` validates schema, locations, and generated output.
 - `pnpm component-inventory:build` regenerates `component-inventory/COMPONENTS.md`.
 - `pnpm component-inventory:aggregate -- .` writes `component-inventory.index.json` and `component-inventory.graph.json`.
+- `pnpm component-inventory:summary` prints a diff-style summary for CI comments.

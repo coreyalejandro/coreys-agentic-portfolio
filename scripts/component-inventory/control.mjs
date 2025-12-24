@@ -7,6 +7,7 @@ const REGISTRY_PATH = path.join(ROOT, 'component-inventory.json');
 const SCHEMA_PATH = path.join(ROOT, 'COMPONENTS.schema.json');
 const OUTPUT_DIR = path.join(ROOT, 'component-inventory');
 const OUTPUT_MD_PATH = path.join(OUTPUT_DIR, 'COMPONENTS.md');
+const COMPONENTS_DIR = path.join(ROOT, 'components');
 
 const args = new Set(process.argv.slice(2));
 const shouldWrite = args.has('--write');
@@ -89,6 +90,7 @@ function validateRegistry(registry) {
   const errors = [];
   const warnings = [];
   const ids = new Set();
+  const fileLocations = new Set();
 
   for (const component of registry.components) {
     if (ids.has(component.id)) {
@@ -100,6 +102,44 @@ function validateRegistry(registry) {
       const fullPath = path.join(ROOT, location);
       if (!fs.existsSync(fullPath)) {
         warnings.push(`WARN: Missing component location ${location}`);
+        continue;
+      }
+      const stat = fs.statSync(fullPath);
+      if (stat.isFile()) {
+        fileLocations.add(location.replace(/\\/g, '/'));
+      }
+    }
+  }
+
+  if (fs.existsSync(COMPONENTS_DIR)) {
+    const componentFiles = [];
+    const stack = [COMPONENTS_DIR];
+    while (stack.length > 0) {
+      const current = stack.pop();
+      const entries = fs.readdirSync(current, { withFileTypes: true });
+      for (const entry of entries) {
+        const fullPath = path.join(current, entry.name);
+        if (entry.isDirectory()) {
+          stack.push(fullPath);
+          continue;
+        }
+        if (!entry.isFile()) {
+          continue;
+        }
+        if (entry.name.endsWith('.d.ts')) {
+          continue;
+        }
+        if (!/\.(tsx|ts|jsx|js)$/.test(entry.name)) {
+          continue;
+        }
+        componentFiles.push(fullPath);
+      }
+    }
+
+    for (const fullPath of componentFiles) {
+      const repoPath = path.relative(ROOT, fullPath).replace(/\\/g, '/');
+      if (!fileLocations.has(repoPath)) {
+        warnings.push(`WARN: Unregistered component file ${repoPath}`);
       }
     }
   }

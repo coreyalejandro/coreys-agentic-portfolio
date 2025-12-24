@@ -1,5 +1,5 @@
 {
-  "updated": "2025-12-24T22:48:22.635Z",
+  "updated": "2025-12-24T23:12:20.069Z",
   "nodes": [
     {
       "id": "coreys-agentic-portfolio/app-shell",
@@ -70,6 +70,12 @@
     {
       "id": "coreys-agentic-portfolio/components/animations/FloatingOrb",
       "name": "Animations / Floatingorb",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/animations/index",
+      "name": "Animations / Index",
       "type": "ui",
       "repo": "coreys-agentic-portfolio"
     },
@@ -466,6 +472,12 @@
     {
       "id": "coreys-agentic-portfolio/components/ui/tooltip",
       "name": "Ui / Tooltip",
+      "type": "ui",
+      "repo": "coreys-agentic-portfolio"
+    },
+    {
+      "id": "coreys-agentic-portfolio/components/ui/use-toast",
+      "name": "Ui / Use Toast",
       "type": "ui",
       "repo": "coreys-agentic-portfolio"
     },
