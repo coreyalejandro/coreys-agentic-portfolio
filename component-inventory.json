@@ -4,7 +4,7 @@
   "repo": {
     "name": "coreys-agentic-portfolio",
     "root": ".",
-    "lastUpdated": "2025-12-24T23:11:47Z"
+    "lastUpdated": "2025-12-25T03:34:05.758Z"
   },
   "components": [
     {
@@ -27,7 +27,8 @@
           "rendered pages"
         ]
       },
-      "dependencies": []
+      "dependencies": [],
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/ui-components",
@@ -48,7 +49,8 @@
           "rendered UI"
         ]
       },
-      "dependencies": []
+      "dependencies": [],
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/styles-system",
@@ -71,7 +73,8 @@
           "styled UI"
         ]
       },
-      "dependencies": []
+      "dependencies": [],
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/data-layer",
@@ -93,7 +96,8 @@
           "transformed data"
         ]
       },
-      "dependencies": []
+      "dependencies": [],
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/hooks",
@@ -114,7 +118,8 @@
           "hook results"
         ]
       },
-      "dependencies": []
+      "dependencies": [],
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/middleware",
@@ -135,7 +140,8 @@
           "response"
         ]
       },
-      "dependencies": []
+      "dependencies": [],
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/public-assets",
@@ -156,7 +162,8 @@
           "served assets"
         ]
       },
-      "dependencies": []
+      "dependencies": [],
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/docs",
@@ -177,7 +184,8 @@
           "docs"
         ]
       },
-      "dependencies": []
+      "dependencies": [],
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/component-inventory-system",
@@ -205,7 +213,8 @@
           "component-inventory.graph.json"
         ]
       },
-      "dependencies": []
+      "dependencies": [],
+      "standalone": true
     },
     {
       "id": "coreys-agentic-portfolio/components/animations/BreathingBackground",
@@ -230,7 +239,8 @@
       "preview": {
         "import": "@/components/animations/BreathingBackground",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/animations/FloatingElement",
@@ -255,7 +265,8 @@
       "preview": {
         "import": "@/components/animations/FloatingElement",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/animations/FloatingOrb",
@@ -280,7 +291,8 @@
       "preview": {
         "import": "@/components/animations/FloatingOrb",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/animations/index",
@@ -305,7 +317,8 @@
       "preview": {
         "import": "@/components/animations",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/audio-experience/audio-button",
@@ -330,7 +343,8 @@
       "preview": {
         "import": "@/components/audio-experience/audio-button",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/audio-experience/audio-engine",
@@ -355,7 +369,8 @@
       "preview": {
         "import": "@/components/audio-experience/audio-engine",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/audio-experience/audio-section",
@@ -380,7 +395,8 @@
       "preview": {
         "import": "@/components/audio-experience/audio-section",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/audio-experience/audio-toggle",
@@ -405,7 +421,8 @@
       "preview": {
         "import": "@/components/audio-experience/audio-toggle",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/card-path/card-path-scene",
@@ -430,7 +447,8 @@
       "preview": {
         "import": "@/components/card-path/card-path-scene",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/card-path/path-card",
@@ -455,7 +473,8 @@
       "preview": {
         "import": "@/components/card-path/path-card",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/creative-chaos/breathing-background",
@@ -480,7 +499,8 @@
       "preview": {
         "import": "@/components/creative-chaos/breathing-background",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/creative-chaos/floating-card",
@@ -505,7 +525,8 @@
       "preview": {
         "import": "@/components/creative-chaos/floating-card",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/creative-chaos/floating-particles",
@@ -530,7 +551,8 @@
       "preview": {
         "import": "@/components/creative-chaos/floating-particles",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/creative-chaos/organic-title",
@@ -555,7 +577,8 @@
       "preview": {
         "import": "@/components/creative-chaos/organic-title",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/custom-icons",
@@ -580,7 +603,8 @@
       "preview": {
         "import": "@/components/custom-icons",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/floating-nav",
@@ -605,7 +629,8 @@
       "preview": {
         "import": "@/components/floating-nav",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/laydown-card",
@@ -630,7 +655,8 @@
       "preview": {
         "import": "@/components/laydown-card",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/playground/card-path-demo",
@@ -655,7 +681,8 @@
       "preview": {
         "import": "@/components/playground/card-path-demo",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/playground/scroll-card-demo",
@@ -680,7 +707,8 @@
       "preview": {
         "import": "@/components/playground/scroll-card-demo",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/playground/table-card-demo",
@@ -705,7 +733,8 @@
       "preview": {
         "import": "@/components/playground/table-card-demo",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/project-modal",
@@ -730,7 +759,8 @@
       "preview": {
         "import": "@/components/project-modal",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/theme-provider",
@@ -755,7 +785,8 @@
       "preview": {
         "import": "@/components/theme-provider",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/accordion",
@@ -780,7 +811,8 @@
       "preview": {
         "import": "@/components/ui/accordion",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/alert-dialog",
@@ -805,7 +837,8 @@
       "preview": {
         "import": "@/components/ui/alert-dialog",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/alert",
@@ -830,7 +863,8 @@
       "preview": {
         "import": "@/components/ui/alert",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/aspect-ratio",
@@ -855,7 +889,8 @@
       "preview": {
         "import": "@/components/ui/aspect-ratio",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/avatar",
@@ -880,7 +915,8 @@
       "preview": {
         "import": "@/components/ui/avatar",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/badge",
@@ -905,7 +941,8 @@
       "preview": {
         "import": "@/components/ui/badge",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/breadcrumb",
@@ -930,7 +967,8 @@
       "preview": {
         "import": "@/components/ui/breadcrumb",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/button",
@@ -955,7 +993,8 @@
       "preview": {
         "import": "@/components/ui/button",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/calendar",
@@ -980,7 +1019,8 @@
       "preview": {
         "import": "@/components/ui/calendar",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/card",
@@ -1005,7 +1045,8 @@
       "preview": {
         "import": "@/components/ui/card",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/carousel",
@@ -1030,7 +1071,8 @@
       "preview": {
         "import": "@/components/ui/carousel",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/chart",
@@ -1055,7 +1097,8 @@
       "preview": {
         "import": "@/components/ui/chart",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/checkbox",
@@ -1080,7 +1123,8 @@
       "preview": {
         "import": "@/components/ui/checkbox",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/collapsible",
@@ -1105,7 +1149,8 @@
       "preview": {
         "import": "@/components/ui/collapsible",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/command",
@@ -1130,7 +1175,8 @@
       "preview": {
         "import": "@/components/ui/command",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/context-menu",
@@ -1155,7 +1201,8 @@
       "preview": {
         "import": "@/components/ui/context-menu",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/dialog",
@@ -1180,7 +1227,8 @@
       "preview": {
         "import": "@/components/ui/dialog",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/drawer",
@@ -1205,7 +1253,8 @@
       "preview": {
         "import": "@/components/ui/drawer",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/dropdown-menu",
@@ -1230,7 +1279,8 @@
       "preview": {
         "import": "@/components/ui/dropdown-menu",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/form",
@@ -1255,7 +1305,8 @@
       "preview": {
         "import": "@/components/ui/form",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/hover-card",
@@ -1280,7 +1331,8 @@
       "preview": {
         "import": "@/components/ui/hover-card",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/input-otp",
@@ -1305,7 +1357,8 @@
       "preview": {
         "import": "@/components/ui/input-otp",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/input",
@@ -1330,7 +1383,8 @@
       "preview": {
         "import": "@/components/ui/input",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/label",
@@ -1355,7 +1409,8 @@
       "preview": {
         "import": "@/components/ui/label",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/menubar",
@@ -1380,7 +1435,8 @@
       "preview": {
         "import": "@/components/ui/menubar",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/navigation-menu",
@@ -1405,7 +1461,8 @@
       "preview": {
         "import": "@/components/ui/navigation-menu",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/pagination",
@@ -1430,7 +1487,8 @@
       "preview": {
         "import": "@/components/ui/pagination",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/popover",
@@ -1455,7 +1513,8 @@
       "preview": {
         "import": "@/components/ui/popover",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/progress",
@@ -1480,7 +1539,8 @@
       "preview": {
         "import": "@/components/ui/progress",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/radio-group",
@@ -1505,7 +1565,8 @@
       "preview": {
         "import": "@/components/ui/radio-group",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/resizable",
@@ -1530,7 +1591,8 @@
       "preview": {
         "import": "@/components/ui/resizable",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/scroll-area",
@@ -1555,7 +1617,8 @@
       "preview": {
         "import": "@/components/ui/scroll-area",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/select",
@@ -1580,7 +1643,8 @@
       "preview": {
         "import": "@/components/ui/select",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/separator",
@@ -1605,7 +1669,8 @@
       "preview": {
         "import": "@/components/ui/separator",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/sheet",
@@ -1630,7 +1695,8 @@
       "preview": {
         "import": "@/components/ui/sheet",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/sidebar",
@@ -1655,7 +1721,8 @@
       "preview": {
         "import": "@/components/ui/sidebar",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/skeleton",
@@ -1680,7 +1747,8 @@
       "preview": {
         "import": "@/components/ui/skeleton",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/slider",
@@ -1705,7 +1773,8 @@
       "preview": {
         "import": "@/components/ui/slider",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/sonner",
@@ -1730,7 +1799,8 @@
       "preview": {
         "import": "@/components/ui/sonner",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/switch",
@@ -1755,7 +1825,8 @@
       "preview": {
         "import": "@/components/ui/switch",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/table",
@@ -1780,7 +1851,8 @@
       "preview": {
         "import": "@/components/ui/table",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/tabs",
@@ -1805,7 +1877,8 @@
       "preview": {
         "import": "@/components/ui/tabs",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/textarea",
@@ -1830,7 +1903,8 @@
       "preview": {
         "import": "@/components/ui/textarea",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/toast",
@@ -1855,7 +1929,8 @@
       "preview": {
         "import": "@/components/ui/toast",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/toaster",
@@ -1880,7 +1955,8 @@
       "preview": {
         "import": "@/components/ui/toaster",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/toggle-group",
@@ -1905,7 +1981,8 @@
       "preview": {
         "import": "@/components/ui/toggle-group",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/toggle",
@@ -1930,7 +2007,8 @@
       "preview": {
         "import": "@/components/ui/toggle",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/tooltip",
@@ -1955,7 +2033,8 @@
       "preview": {
         "import": "@/components/ui/tooltip",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/use-toast",
@@ -1980,7 +2059,8 @@
       "preview": {
         "import": "@/components/ui/use-toast",
         "props": {}
-      }
+      },
+      "standalone": false
     },
     {
       "id": "coreys-agentic-portfolio/components/ui/use-mobile",
@@ -2005,7 +2085,8 @@
       "preview": {
         "import": "@/components/ui/use-mobile",
         "props": {}
-      }
+      },
+      "standalone": false
     }
   ]
 }

@@ -7,7 +7,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 
 - Name: coreys-agentic-portfolio
 - Root: .
-- Last Updated: 2025-12-24T23:11:47Z
+- Last Updated: 2025-12-25T03:34:05.758Z
 
 ## Summary
 
@@ -23,6 +23,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: app
 - Description: Primary UI shell and routing for the portfolio app.
@@ -37,6 +38,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components
 - Description: Reusable UI components and composition blocks.
@@ -51,6 +53,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: styles, app/globals.css
 - Description: Global styles, tokens, and Tailwind configuration.
@@ -65,6 +68,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: package
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: lib
 - Description: Shared utilities and data helpers for the app.
@@ -79,6 +83,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: package
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: hooks
 - Description: Shared React hooks and client-side helpers.
@@ -93,6 +98,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: service
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: middleware.ts
 - Description: Request middleware and routing policies.
@@ -107,6 +113,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: doc
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: public
 - Description: Static assets and public files for the site.
@@ -121,6 +128,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: doc
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: docs
 - Description: Project documentation and reference materials.
@@ -135,6 +143,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: workflow
 - Status: active
 - Version: 0.1.0
+- Standalone: true
 - Owner: Core Team
 - Location: component-inventory.json, COMPONENTS.schema.json, component-inventory, scripts/component-inventory
 - Description: Validation, reporting, and aggregation for component-inventory.json.
@@ -149,6 +158,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/animations/BreathingBackground.tsx
 - Description: UI component located at components/animations/BreathingBackground.tsx.
@@ -163,6 +173,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/animations/FloatingElement.tsx
 - Description: UI component located at components/animations/FloatingElement.tsx.
@@ -177,6 +188,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/animations/FloatingOrb.tsx
 - Description: UI component located at components/animations/FloatingOrb.tsx.
@@ -191,6 +203,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/animations/index.ts
 - Description: UI component located at components/animations/index.ts.
@@ -205,6 +218,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/audio-experience/audio-button.tsx
 - Description: UI component located at components/audio-experience/audio-button.tsx.
@@ -219,6 +233,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/audio-experience/audio-engine.tsx
 - Description: UI component located at components/audio-experience/audio-engine.tsx.
@@ -233,6 +248,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/audio-experience/audio-section.tsx
 - Description: UI component located at components/audio-experience/audio-section.tsx.
@@ -247,6 +263,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/audio-experience/audio-toggle.tsx
 - Description: UI component located at components/audio-experience/audio-toggle.tsx.
@@ -261,6 +278,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/card-path/card-path-scene.tsx
 - Description: UI component located at components/card-path/card-path-scene.tsx.
@@ -275,6 +293,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/card-path/path-card.tsx
 - Description: UI component located at components/card-path/path-card.tsx.
@@ -289,6 +308,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/creative-chaos/breathing-background.tsx
 - Description: UI component located at components/creative-chaos/breathing-background.tsx.
@@ -303,6 +323,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/creative-chaos/floating-card.tsx
 - Description: UI component located at components/creative-chaos/floating-card.tsx.
@@ -317,6 +338,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/creative-chaos/floating-particles.tsx
 - Description: UI component located at components/creative-chaos/floating-particles.tsx.
@@ -331,6 +353,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/creative-chaos/organic-title.tsx
 - Description: UI component located at components/creative-chaos/organic-title.tsx.
@@ -345,6 +368,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/custom-icons.tsx
 - Description: UI component located at components/custom-icons.tsx.
@@ -359,6 +383,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/floating-nav.tsx
 - Description: UI component located at components/floating-nav.tsx.
@@ -373,6 +398,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/laydown-card.tsx
 - Description: UI component located at components/laydown-card.tsx.
@@ -387,6 +413,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/playground/card-path-demo.tsx
 - Description: UI component located at components/playground/card-path-demo.tsx.
@@ -401,6 +428,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/playground/scroll-card-demo.tsx
 - Description: UI component located at components/playground/scroll-card-demo.tsx.
@@ -415,6 +443,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/playground/table-card-demo.tsx
 - Description: UI component located at components/playground/table-card-demo.tsx.
@@ -429,6 +458,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/project-modal.tsx
 - Description: UI component located at components/project-modal.tsx.
@@ -443,6 +473,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/theme-provider.tsx
 - Description: UI component located at components/theme-provider.tsx.
@@ -457,6 +488,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/accordion.tsx
 - Description: UI component located at components/ui/accordion.tsx.
@@ -471,6 +503,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/alert-dialog.tsx
 - Description: UI component located at components/ui/alert-dialog.tsx.
@@ -485,6 +518,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/alert.tsx
 - Description: UI component located at components/ui/alert.tsx.
@@ -499,6 +533,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/aspect-ratio.tsx
 - Description: UI component located at components/ui/aspect-ratio.tsx.
@@ -513,6 +548,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/avatar.tsx
 - Description: UI component located at components/ui/avatar.tsx.
@@ -527,6 +563,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/badge.tsx
 - Description: UI component located at components/ui/badge.tsx.
@@ -541,6 +578,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/breadcrumb.tsx
 - Description: UI component located at components/ui/breadcrumb.tsx.
@@ -555,6 +593,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/button.tsx
 - Description: UI component located at components/ui/button.tsx.
@@ -569,6 +608,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/calendar.tsx
 - Description: UI component located at components/ui/calendar.tsx.
@@ -583,6 +623,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/card.tsx
 - Description: UI component located at components/ui/card.tsx.
@@ -597,6 +638,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/carousel.tsx
 - Description: UI component located at components/ui/carousel.tsx.
@@ -611,6 +653,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/chart.tsx
 - Description: UI component located at components/ui/chart.tsx.
@@ -625,6 +668,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/checkbox.tsx
 - Description: UI component located at components/ui/checkbox.tsx.
@@ -639,6 +683,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/collapsible.tsx
 - Description: UI component located at components/ui/collapsible.tsx.
@@ -653,6 +698,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/command.tsx
 - Description: UI component located at components/ui/command.tsx.
@@ -667,6 +713,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/context-menu.tsx
 - Description: UI component located at components/ui/context-menu.tsx.
@@ -681,6 +728,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/dialog.tsx
 - Description: UI component located at components/ui/dialog.tsx.
@@ -695,6 +743,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/drawer.tsx
 - Description: UI component located at components/ui/drawer.tsx.
@@ -709,6 +758,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/dropdown-menu.tsx
 - Description: UI component located at components/ui/dropdown-menu.tsx.
@@ -723,6 +773,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/form.tsx
 - Description: UI component located at components/ui/form.tsx.
@@ -737,6 +788,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/hover-card.tsx
 - Description: UI component located at components/ui/hover-card.tsx.
@@ -751,6 +803,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/input-otp.tsx
 - Description: UI component located at components/ui/input-otp.tsx.
@@ -765,6 +818,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/input.tsx
 - Description: UI component located at components/ui/input.tsx.
@@ -779,6 +833,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/label.tsx
 - Description: UI component located at components/ui/label.tsx.
@@ -793,6 +848,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/menubar.tsx
 - Description: UI component located at components/ui/menubar.tsx.
@@ -807,6 +863,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/navigation-menu.tsx
 - Description: UI component located at components/ui/navigation-menu.tsx.
@@ -821,6 +878,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/pagination.tsx
 - Description: UI component located at components/ui/pagination.tsx.
@@ -835,6 +893,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/popover.tsx
 - Description: UI component located at components/ui/popover.tsx.
@@ -849,6 +908,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/progress.tsx
 - Description: UI component located at components/ui/progress.tsx.
@@ -863,6 +923,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/radio-group.tsx
 - Description: UI component located at components/ui/radio-group.tsx.
@@ -877,6 +938,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/resizable.tsx
 - Description: UI component located at components/ui/resizable.tsx.
@@ -891,6 +953,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/scroll-area.tsx
 - Description: UI component located at components/ui/scroll-area.tsx.
@@ -905,6 +968,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/select.tsx
 - Description: UI component located at components/ui/select.tsx.
@@ -919,6 +983,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/separator.tsx
 - Description: UI component located at components/ui/separator.tsx.
@@ -933,6 +998,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/sheet.tsx
 - Description: UI component located at components/ui/sheet.tsx.
@@ -947,6 +1013,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/sidebar.tsx
 - Description: UI component located at components/ui/sidebar.tsx.
@@ -961,6 +1028,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/skeleton.tsx
 - Description: UI component located at components/ui/skeleton.tsx.
@@ -975,6 +1043,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/slider.tsx
 - Description: UI component located at components/ui/slider.tsx.
@@ -989,6 +1058,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/sonner.tsx
 - Description: UI component located at components/ui/sonner.tsx.
@@ -1003,6 +1073,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/switch.tsx
 - Description: UI component located at components/ui/switch.tsx.
@@ -1017,6 +1088,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/table.tsx
 - Description: UI component located at components/ui/table.tsx.
@@ -1031,6 +1103,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/tabs.tsx
 - Description: UI component located at components/ui/tabs.tsx.
@@ -1045,6 +1118,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/textarea.tsx
 - Description: UI component located at components/ui/textarea.tsx.
@@ -1059,6 +1133,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/toast.tsx
 - Description: UI component located at components/ui/toast.tsx.
@@ -1073,6 +1148,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/toaster.tsx
 - Description: UI component located at components/ui/toaster.tsx.
@@ -1087,6 +1163,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/toggle-group.tsx
 - Description: UI component located at components/ui/toggle-group.tsx.
@@ -1101,6 +1178,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/toggle.tsx
 - Description: UI component located at components/ui/toggle.tsx.
@@ -1115,6 +1193,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/tooltip.tsx
 - Description: UI component located at components/ui/tooltip.tsx.
@@ -1129,6 +1208,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/use-toast.ts
 - Description: UI component located at components/ui/use-toast.ts.
@@ -1143,6 +1223,7 @@ Run `pnpm component-inventory:build` after updating the registry.
 - Type: ui
 - Status: active
 - Version: 0.1.0
+- Standalone: false
 - Owner: Core Team
 - Location: components/ui/use-mobile.tsx
 - Description: UI component located at components/ui/use-mobile.tsx.

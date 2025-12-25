@@ -70,6 +70,7 @@ function buildComponentsReadme(registry) {
     lines.push(`- Type: ${component.type}`);
     lines.push(`- Status: ${component.status}`);
     lines.push(`- Version: ${component.version}`);
+    lines.push(`- Standalone: ${component.standalone ? 'true' : 'false'}`);
     lines.push(`- Owner: ${component.ownerName}`);
     if (component.ownerId) {
       lines.push(`- Owner ID: ${component.ownerId}`);
@@ -107,6 +108,19 @@ function validateRegistry(registry) {
       const stat = fs.statSync(fullPath);
       if (stat.isFile()) {
         fileLocations.add(location.replace(/\\/g, '/'));
+      }
+    }
+
+    if (component.standalone) {
+      const primaryLocation = component.location[0];
+      const primaryPath = path.join(ROOT, primaryLocation);
+      let docsDir = primaryPath;
+      if (fs.existsSync(primaryPath) && fs.statSync(primaryPath).isFile()) {
+        docsDir = path.dirname(primaryPath);
+      }
+      const readmePath = path.join(docsDir, 'README.md');
+      if (!fs.existsSync(readmePath)) {
+        warnings.push(`WARN: Standalone component missing README.md in ${path.relative(ROOT, docsDir).replace(/\\/g, '/')}`);
       }
     }
   }

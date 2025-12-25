@@ -13,6 +13,7 @@ This repo already has a `components.json` for UI tooling, so the inventory uses 
 - Add a component when it becomes real.
 - Keep `dependencies` accurate (use component IDs).
 - Update `lastUpdated` whenever you change the file.
+- Set `standalone: true` only when the component is portable and has a co-located `README.md`.
 
 ## Optional Validation
 
