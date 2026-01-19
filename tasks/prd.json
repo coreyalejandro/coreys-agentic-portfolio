@@ -1,0 +1,148 @@
+{
+  "feature": "Creative Chaos Design System",
+  "description": "Establish Creative Chaos (Maximalist Design) as Corey's signature design system. Refine, document, and publish a 100% modular, standalone, plug-and-play component library.",
+  "repoURL": "https://github.com/coreyalejandro/coreys-agentic-portfolio",
+  "tasks": [
+    {
+      "id": "US-001",
+      "title": "Audit and document existing Creative Chaos components",
+      "description": "Audit all Creative Chaos components to identify what exists, needs refinement, or elimination.\n\n**What to do:**\n- List all components in `components/creative-chaos/` with current status\n- List all components in `components/animations/` with current status\n- Identify duplicate/overlapping components (e.g., BreathingBackground appears twice)\n- Document each component's props, behavior, and dependencies\n- Mark components as: keep (refine), eliminate, or merge\n- Create audit report in `docs/creative-chaos-audit.md`\n\n**Files:**\n- components/creative-chaos/*.tsx\n- components/animations/*.tsx\n- docs/creative-chaos-audit.md (create)\n\n**Acceptance criteria:**\n- Audit report lists all components with status\n- Duplicates identified\n- Each component marked keep/eliminate/merge\n- pnpm build passes",
+      "dependsOn": [],
+      "phase": 1
+    },
+    {
+      "id": "US-014",
+      "title": "Create component review gallery for elimination decisions",
+      "description": "Build a gallery/carousel view to quickly review components and decide keep/eliminate.\n\n**What to do:**\n- Create `/design-system/review` route with gallery/carousel view\n- Display each component in isolation with dark background\n- Show component name, file path, and current status\n- Add \"Keep\" and \"Eliminate\" buttons for each component\n- Persist decisions to localStorage\n- Support arrow key navigation between components\n\n**Files:**\n- app/design-system/review/page.tsx (create)\n- components/design-system/ComponentReviewGallery.tsx (create)\n\n**Acceptance criteria:**\n- Gallery displays all components from audit\n- Keep/Eliminate buttons work\n- Decisions persist in localStorage\n- Arrow keys navigate\n- pnpm build passes\n- Verify in browser",
+      "dependsOn": ["US-001"],
+      "phase": 1
+    },
+    {
+      "id": "US-015",
+      "title": "Eliminate unwanted components",
+      "description": "Remove components marked for elimination in the review gallery.\n\n**What to do:**\n- Read elimination decisions from localStorage or audit\n- Remove component files marked \"eliminate\"\n- Remove from component-inventory.json\n- Update any imports that referenced removed components\n- Ensure no broken imports or build errors\n\n**Files:**\n- components/creative-chaos/*.tsx (remove marked)\n- components/animations/*.tsx (remove marked)\n- component-inventory.json\n\n**Acceptance criteria:**\n- Eliminated component files removed\n- component-inventory.json updated\n- No broken imports\n- pnpm build passes\n- pnpm lint passes",
+      "dependsOn": ["US-014"],
+      "phase": 1
+    },
+    {
+      "id": "US-009",
+      "title": "Define Creative Chaos motion tokens",
+      "description": "Create standardized animation/motion tokens for consistent timing, easing, and motion patterns.\n\n**What to do:**\n- Create `lib/motion-tokens.ts` with exported constants\n- Define: `durations` (fast: 150ms, normal: 300ms, slow: 600ms, dramatic: 1200ms)\n- Define: `easings` (organic, bounce, smooth, dramatic) as cubic-bezier values\n- Define: `intensities` (subtle: 0.3, normal: 1, bold: 1.5, chaotic: 2)\n- Define: `scales` (breathe, pulse, float amplitude values)\n- Make compatible with Framer Motion and CSS animations\n- Add JSDoc documentation\n\n**Files:**\n- lib/motion-tokens.ts (create)\n\n**Acceptance criteria:**\n- All token categories defined with JSDoc\n- Tokens exportable for Framer Motion\n- pnpm build passes",
+      "dependsOn": ["US-015"],
+      "phase": 2
+    },
+    {
+      "id": "US-019",
+      "title": "Add audio/haptic motion token definitions",
+      "description": "Extend motion tokens with audio and haptic feedback patterns for multi-sensory experiences.\n\n**What to do:**\n- Add `audio` section to `lib/motion-tokens.ts`\n- Define: `sounds` (click, whoosh, ambient, success, error) as file path references\n- Define: `volumes` (subtle: 0.2, normal: 0.5, prominent: 0.8)\n- Add `haptic` section with patterns (tap, pulse, rumble) as duration/intensity pairs\n- Include duration/timing sync with visual motion tokens\n- Add JSDoc documentation\n\n**Files:**\n- lib/motion-tokens.ts (update)\n\n**Acceptance criteria:**\n- Audio section with sounds and volumes\n- Haptic section with patterns\n- JSDoc documentation complete\n- pnpm build passes",
+      "dependsOn": ["US-009"],
+      "phase": 2
+    },
+    {
+      "id": "US-002",
+      "title": "Standardize BreathingBackground component",
+      "description": "Consolidate and standardize the BreathingBackground component.\n\n**What to do:**\n- Consolidate duplicate BreathingBackground implementations into one canonical version\n- Move to `components/creative-chaos/breathing-background.tsx`\n- Export from `components/creative-chaos/index.ts`\n- Props: `colors`, `intensity`, `speed`, `className`\n- Use ColorThemeContext for dynamic palette\n- Use motion tokens for timing\n- Add JSDoc documentation\n\n**Files:**\n- components/creative-chaos/breathing-background.tsx\n- components/creative-chaos/index.ts (create/update)\n- components/animations/BreathingBackground.tsx (remove if duplicate)\n\n**Acceptance criteria:**\n- Single canonical BreathingBackground\n- Uses motion tokens\n- JSDoc complete\n- pnpm build passes\n- Verify in browser",
+      "dependsOn": ["US-009"],
+      "phase": 2
+    },
+    {
+      "id": "US-003",
+      "title": "Standardize FloatingCard component",
+      "description": "Consolidate and standardize the FloatingCard component with performance optimizations.\n\n**What to do:**\n- Consolidate with FloatingElement if overlapping\n- Props: `children`, `mouseInteraction`, `rotationIntensity`, `floatAmplitude`, `className`\n- Replace setInterval with requestAnimationFrame for performance\n- Use motion tokens for timing/easing\n- Export from `components/creative-chaos/index.ts`\n- Add JSDoc documentation\n\n**Files:**\n- components/creative-chaos/floating-card.tsx\n- components/creative-chaos/index.ts\n- components/animations/FloatingElement.tsx (remove if merged)\n\n**Acceptance criteria:**\n- Uses requestAnimationFrame (not setInterval)\n- Uses motion tokens\n- JSDoc complete\n- pnpm build passes\n- Verify in browser",
+      "dependsOn": ["US-009"],
+      "phase": 2
+    },
+    {
+      "id": "US-004",
+      "title": "Standardize FloatingParticles component",
+      "description": "Standardize FloatingParticles with accessibility and performance optimizations.\n\n**What to do:**\n- Props: `count`, `colors`, `speed`, `size`, `className`\n- Respect reduced-motion preferences (prefers-reduced-motion)\n- Performance-optimize for 60fps using requestAnimationFrame\n- Use motion tokens for timing\n- Export from `components/creative-chaos/index.ts`\n- Add JSDoc documentation\n\n**Files:**\n- components/creative-chaos/floating-particles.tsx\n- components/creative-chaos/index.ts\n\n**Acceptance criteria:**\n- Respects prefers-reduced-motion\n- 60fps performance\n- Uses motion tokens\n- JSDoc complete\n- pnpm build passes\n- Verify in browser",
+      "dependsOn": ["US-009"],
+      "phase": 2
+    },
+    {
+      "id": "US-005",
+      "title": "Standardize OrganicTitle component",
+      "description": "Standardize OrganicTitle with animation variants and accessibility.\n\n**What to do:**\n- Props: `children`, `as` (h1-h6), `animation`, `className`\n- Multiple animation variants: wave, pulse, shimmer\n- Respect reduced-motion preferences\n- Use motion tokens for timing/easing\n- Export from `components/creative-chaos/index.ts`\n- Add JSDoc documentation\n\n**Files:**\n- components/creative-chaos/organic-title.tsx\n- components/creative-chaos/index.ts\n\n**Acceptance criteria:**\n- All animation variants work\n- Respects prefers-reduced-motion\n- Uses motion tokens\n- JSDoc complete\n- pnpm build passes\n- Verify in browser",
+      "dependsOn": ["US-009"],
+      "phase": 2
+    },
+    {
+      "id": "US-006",
+      "title": "Create GeneralZodMirror component",
+      "description": "Build Superman II-inspired mirrored/prismatic WebGL effect component.\n\n**What to do:**\n- Create mirrored/kaleidoscopic effect around content using WebGL shaders\n- Props: `children`, `intensity`, `mirrorCount`, `animationSpeed`, `className`\n- Smooth entry/exit animations\n- Accessible (can be disabled, respects reduced-motion)\n- Use motion tokens for timing\n- Export from `components/creative-chaos/index.ts`\n- Add JSDoc documentation\n\n**Files:**\n- components/creative-chaos/general-zod-mirror.tsx (create)\n- components/creative-chaos/index.ts\n\n**Acceptance criteria:**\n- WebGL shader creates kaleidoscopic effect\n- Entry/exit animations smooth\n- Respects reduced-motion\n- JSDoc complete\n- pnpm build passes\n- Verify in browser",
+      "dependsOn": ["US-009"],
+      "phase": 3
+    },
+    {
+      "id": "US-007",
+      "title": "Create RabbitHolePOV component",
+      "description": "Build first-person POV tunnel/vortex transition effect for section changes.\n\n**What to do:**\n- Full-screen transition component\n- Props: `trigger`, `duration`, `direction` (down/up), `onComplete`, `className`\n- Create tunnel/vortex visual effect using Three.js or CSS transforms\n- Trigger programmatically or on scroll\n- Smooth 60fps animation\n- Reduced-motion fallback: simple fade\n- Use motion tokens for timing\n- Export from `components/creative-chaos/index.ts`\n- Add JSDoc documentation\n\n**Files:**\n- components/creative-chaos/rabbit-hole-pov.tsx (create)\n- components/creative-chaos/index.ts\n\n**Acceptance criteria:**\n- Tunnel/vortex effect works\n- 60fps performance\n- Reduced-motion fallback works\n- JSDoc complete\n- pnpm build passes\n- Verify in browser",
+      "dependsOn": ["US-009"],
+      "phase": 3
+    },
+    {
+      "id": "US-008",
+      "title": "Create CreativeChaosTimeline component",
+      "description": "Build interactive 3D timeline using Three.js inspired by ChronoFlo.\n\n**What to do:**\n- First-person 3D perspective timeline navigation using Three.js\n- Props: `events[]`, `theme`, `enableSearch`, `enableZoom`, `className`\n- Event interface: `{ id, date, title, description, media?, category? }`\n- Zoom in/out functionality\n- Search/filter events\n- Category filtering with color coding\n- Click event to expand details\n- Creative Chaos styling: breathing colors, floating elements\n- Keyboard navigation support\n- Use motion tokens for timing\n- Export from `components/creative-chaos/index.ts`\n- Add JSDoc documentation\n\n**Files:**\n- components/creative-chaos/creative-chaos-timeline.tsx (create)\n- components/creative-chaos/index.ts\n\n**Acceptance criteria:**\n- Three.js 3D perspective works\n- Zoom, search, filter functional\n- Keyboard navigation works\n- Creative Chaos styling applied\n- JSDoc complete\n- pnpm build passes\n- Verify in browser",
+      "dependsOn": ["US-006", "US-007"],
+      "phase": 3
+    },
+    {
+      "id": "US-010",
+      "title": "Refactor HeroSection as standalone component",
+      "description": "Make HeroSection fully standalone and reusable.\n\n**What to do:**\n- Move to `components/sections/HeroSection.tsx`\n- Props: `title`, `subtitle`, `cta?`, `background?`, `className`\n- No hardcoded content; all content via props or children\n- Use Creative Chaos motion tokens\n- Export from `components/sections/index.ts`\n- Update app/page.tsx to pass props\n- Add JSDoc documentation\n\n**Files:**\n- components/sections/HeroSection.tsx (create)\n- components/sections/index.ts (create)\n- app/(home)/sections/HeroSection.tsx (refactor or remove)\n- app/page.tsx (update imports)\n\n**Acceptance criteria:**\n- No hardcoded content in component\n- Uses motion tokens\n- Exported from sections index\n- JSDoc complete\n- pnpm build passes\n- Verify in browser",
+      "dependsOn": ["US-002", "US-003", "US-004", "US-005"],
+      "phase": 4
+    },
+    {
+      "id": "US-011",
+      "title": "Refactor CTASection as standalone component",
+      "description": "Make CTASection fully standalone and reusable.\n\n**What to do:**\n- Move to `components/sections/CTASection.tsx`\n- Props: `heading`, `description`, `primaryAction`, `secondaryAction?`, `className`\n- No hardcoded content\n- Use Creative Chaos motion tokens\n- Export from `components/sections/index.ts`\n- Update app/page.tsx to pass props\n- Add JSDoc documentation\n\n**Files:**\n- components/sections/CTASection.tsx (create)\n- components/sections/index.ts\n- app/(home)/sections/CTASection.tsx (refactor or remove)\n- app/page.tsx (update imports)\n\n**Acceptance criteria:**\n- No hardcoded content\n- Uses motion tokens\n- Exported from sections index\n- JSDoc complete\n- pnpm build passes\n- Verify in browser",
+      "dependsOn": ["US-010"],
+      "phase": 4
+    },
+    {
+      "id": "US-012",
+      "title": "Refactor PortfolioSection as standalone component",
+      "description": "Make PortfolioSection fully standalone and reusable.\n\n**What to do:**\n- Move to `components/sections/PortfolioSection.tsx`\n- Props: `projects[]`, `layout?`, `className`\n- Project interface: `{ id, title, description, image, tags, link }`\n- No hardcoded projects; all via props\n- Use Creative Chaos motion tokens\n- Export from `components/sections/index.ts`\n- Update app/page.tsx to pass props\n- Add JSDoc documentation\n\n**Files:**\n- components/sections/PortfolioSection.tsx (create)\n- components/sections/index.ts\n- app/(home)/sections/PortfolioSection.tsx (refactor or remove)\n- app/page.tsx (update imports)\n\n**Acceptance criteria:**\n- No hardcoded projects\n- Uses motion tokens\n- Exported from sections index\n- JSDoc complete\n- pnpm build passes\n- Verify in browser",
+      "dependsOn": ["US-011"],
+      "phase": 4
+    },
+    {
+      "id": "US-013",
+      "title": "Create shareable component inventory documentation",
+      "description": "Build design system documentation page with live examples.\n\n**What to do:**\n- Create `/design-system/creative-chaos` route\n- List all Creative Chaos components with:\n  - Live interactive preview\n  - Props table\n  - Usage code example\n  - Design rationale\n- Add navigation between components\n- Support static export for sharing\n\n**Files:**\n- app/design-system/creative-chaos/page.tsx (create)\n- components/design-system/ComponentShowcase.tsx (create)\n- components/design-system/PropsTable.tsx (create)\n- components/design-system/CodeExample.tsx (create)\n\n**Acceptance criteria:**\n- All Creative Chaos components documented\n- Live previews work\n- Props tables accurate\n- Code examples copy-able\n- pnpm build passes\n- Verify in browser",
+      "dependsOn": ["US-010", "US-011", "US-012"],
+      "phase": 5
+    },
+    {
+      "id": "US-016",
+      "title": "Add component download functionality",
+      "description": "Enable visitors to download component source code.\n\n**What to do:**\n- Add \"Download Code\" button on each component in design system\n- Download component file(s) as .tsx with dependencies listed\n- Include minimal README with usage instructions\n- Download as .zip if multiple files required\n- Use client-side zip generation (jszip or similar)\n\n**Files:**\n- components/design-system/DownloadButton.tsx (create)\n- lib/component-download.ts (create)\n- app/design-system/creative-chaos/page.tsx (update)\n\n**Acceptance criteria:**\n- Download button on each component\n- Downloads include dependencies list\n- README included\n- Multi-file downloads as zip\n- pnpm build passes\n- Verify in browser",
+      "dependsOn": ["US-013"],
+      "phase": 5
+    },
+    {
+      "id": "US-017",
+      "title": "Add component playground for live editing",
+      "description": "Build playground for live component prop editing and customized export.\n\n**What to do:**\n- Add \"Open in Playground\" button on each component\n- Playground shows live component preview\n- Editable props panel (sliders, color pickers, text inputs)\n- Editable CSS/className overrides\n- \"Download My Version\" exports customized component code\n- Changes are client-side only (no server saves)\n- Reset button to restore defaults\n\n**Files:**\n- app/playground/component/[id]/page.tsx (create)\n- components/playground/PropEditor.tsx (create)\n- components/playground/LivePreview.tsx (create)\n- components/playground/ExportButton.tsx (create)\n\n**Acceptance criteria:**\n- Open in Playground works for all components\n- Props editable with appropriate controls\n- Live preview updates in real-time\n- Download customized version works\n- Reset restores defaults\n- pnpm build passes\n- Verify in browser",
+      "dependsOn": ["US-016"],
+      "phase": 5
+    },
+    {
+      "id": "US-018",
+      "title": "Update component-inventory.json with Creative Chaos metadata",
+      "description": "Add Creative Chaos taxonomy and standalone status to component inventory.\n\n**What to do:**\n- Set `standalone: true` for all Creative Chaos components\n- Add `designSystem: \"creative-chaos\"` field to relevant components\n- Add `motionTokens` field listing used tokens\n- Update descriptions to reflect finalized purpose\n- Run `pnpm component-inventory:build`\n\n**Files:**\n- component-inventory.json\n- scripts/component-inventory/control.mjs (update if needed)\n\n**Acceptance criteria:**\n- All Creative Chaos components have standalone: true\n- designSystem field added\n- motionTokens field added\n- Descriptions updated\n- pnpm component-inventory:build passes\n- pnpm build passes",
+      "dependsOn": ["US-017"],
+      "phase": 6
+    }
+  ],
+  "phases": {
+    "1": "Audit & Elimination",
+    "2": "Foundation & Standardization",
+    "3": "Signature Components",
+    "4": "Section Refactoring",
+    "5": "Documentation & Sharing",
+    "6": "Final Metadata"
+  }
+}
