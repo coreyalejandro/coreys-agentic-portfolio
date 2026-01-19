@@ -8,7 +8,7 @@ import Link from "next/link"
 import { useAnimation } from "@/hooks/useAnimation"
 import { AudioSection } from "@/components/audio-experience/audio-section"
 import { AudioButton } from "@/components/audio-experience/audio-button"
-import { BreathingBackground } from "@/components/animations/BreathingBackground"
+import { BreathingBackground } from "@/components/creative-chaos"
 
 /**
  * CTASection - "Build the Future" CTA section

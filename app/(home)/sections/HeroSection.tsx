@@ -4,9 +4,7 @@ import Link from "next/link"
 import { useAnimation } from "@/hooks/useAnimation"
 import { AudioSection } from "@/components/audio-experience/audio-section"
 import { AudioButton } from "@/components/audio-experience/audio-button"
-import { BreathingBackground } from "@/components/animations/BreathingBackground"
-import { FloatingOrb } from "@/components/animations/FloatingOrb"
-import { FloatingElement } from "@/components/animations/FloatingElement"
+import { BreathingBackground, ParticleField, FloatingElement } from "@/components/creative-chaos"
 
 /**
  * HeroSection - Neural Depth Magic hero
@@ -32,21 +30,8 @@ export function HeroSection() {
         {/* Breathing, Living Background */}
         <BreathingBackground time={time} variant="hero" className="rounded-3xl" />
 
-        {/* Floating Orbs */}
-        <div className="absolute inset-0">
-          {[...Array(15)].map((_, i) => (
-            <FloatingOrb
-              key={i}
-              time={time}
-              index={i}
-              mousePosition={mousePosition}
-              basePosition={{
-                left: `${10 + ((i * 7) % 80)}%`,
-                top: `${15 + ((i * 11) % 70)}%`,
-              }}
-            />
-          ))}
-        </div>
+        {/* Floating Particles */}
+        <ParticleField time={time} count={15} mouseInteraction={true} />
 
         {/* Main Hero Content */}
         <div className="relative h-screen flex items-center">

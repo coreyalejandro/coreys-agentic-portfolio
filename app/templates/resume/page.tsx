@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, type CSSProperties } from "react"
 import { Download, Mail, Github, Linkedin, MapPin, Phone, Sparkles, Zap, Star } from "lucide-react"
 import { AudioSection } from "@/components/audio-experience/audio-section"
 import { AudioButton } from "@/components/audio-experience/audio-button"
-import { BreathingBackground } from "@/components/animations/BreathingBackground"
+import { BreathingBackground } from "@/components/creative-chaos"
 import Link from "next/link"
 
 export default function ResumeTemplate() {

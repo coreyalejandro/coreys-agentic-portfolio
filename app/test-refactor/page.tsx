@@ -2,7 +2,7 @@
 
 import { AnimationProvider } from '@/contexts'
 import { useAnimation } from '@/hooks'
-import { BreathingBackground, FloatingOrb } from '@/components/animations'
+import { BreathingBackground, ParticleField } from '@/components/creative-chaos'
 
 function TestContent() {
   const { time, mousePosition, scrollY } = useAnimation()
@@ -11,21 +11,8 @@ function TestContent() {
     <div className="relative min-h-screen">
       <BreathingBackground time={time} variant="hero" className="rounded-3xl" />
       
-      {/* Floating Orbs for depth */}
-      <div className="absolute inset-0">
-        {[...Array(15)].map((_, i) => (
-          <FloatingOrb
-            key={i}
-            time={time}
-            index={i}
-            mousePosition={mousePosition}
-            basePosition={{
-              left: `${10 + ((i * 7) % 80)}%`,
-              top: `${15 + ((i * 11) % 70)}%`,
-            }}
-          />
-        ))}
-      </div>
+      {/* Floating Particles for depth */}
+      <ParticleField time={time} count={15} mouseInteraction={true} />
       
       <div className="relative z-10 flex items-center justify-center min-h-screen">
         <div className="text-white text-center bg-black/50 backdrop-blur-md p-12 rounded-3xl">

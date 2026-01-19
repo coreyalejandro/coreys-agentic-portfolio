@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { BreathingBackground } from "@/components/animations/BreathingBackground"
+import { BreathingBackground } from "@/components/creative-chaos"
 import { FloatingCard } from "@/components/creative-chaos/floating-card"
 import { OrganicTitle } from "@/components/creative-chaos/organic-title"
 import { Send, Sparkles, Save, Folder } from "lucide-react"
