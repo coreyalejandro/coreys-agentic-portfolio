@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { BreathingBackground } from "@/components/creative-chaos/breathing-background"
+import { BreathingBackground } from "@/components/animations/BreathingBackground"
 
 export default function DesignSystemPage() {
   const [copiedItem, setCopiedItem] = useState<string | null>(null)

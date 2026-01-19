@@ -131,7 +131,7 @@ export function LaydownCard({ title, description, children, className, image }: 
       name: "BreathingBackground",
       category: "Backgrounds",
       description: "Living, breathing gradient backgrounds that evolve over time",
-      importPath: "@/components/creative-chaos/breathing-background",
+      importPath: "@/components/animations/BreathingBackground",
       code: `"use client"
 
 import { useState, useEffect } from "react"

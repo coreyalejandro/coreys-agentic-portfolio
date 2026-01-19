@@ -331,7 +331,7 @@ function ComponentPreview({ componentId }: { componentId: string }) {
             ORGANIC
           </span>
           <span
-            className="block text-4xl font-light ml-8 bg-gradient-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent"
+            className="block text-4xl font-light ml-8 bg-linear-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent"
             style={{ transform: "rotate(2deg)" }}
           >
             TITLE
