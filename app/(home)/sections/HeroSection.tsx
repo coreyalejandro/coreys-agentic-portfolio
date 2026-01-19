@@ -60,7 +60,7 @@ export function HeroSection() {
             >
               <h1 className="text-8xl md:text-9xl font-black text-white leading-none">
                 <span className="block transform -rotate-3">Neural</span>
-                <span className="block transform rotate-2 ml-12 bg-gradient-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent">
+                <span className="block transform rotate-2 ml-12 bg-linear-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent">
                   Depth
                 </span>
                 <span className="block transform -rotate-1 ml-6 text-7xl">Magic</span>
@@ -100,7 +100,7 @@ export function HeroSection() {
               speed={{ x: 1.2, y: 1.0 }}
               className="bottom-32 left-1/4"
             >
-              <div className="bg-gradient-to-br from-orange-400 to-red-500 rounded-full w-24 h-24 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+              <div className="bg-linear-to-br from-orange-400 to-red-500 rounded-full w-24 h-24 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
                 <Play className="w-8 h-8 text-white" />
               </div>
             </FloatingElement>
@@ -134,7 +134,7 @@ function FeaturesCollage({ time }: { time: number }) {
   return (
     <section className="py-32 relative overflow-hidden">
       <div
-        className="absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-100 rounded-3xl"
+        className="absolute inset-0 bg-linear-to-br from-amber-50 to-orange-100 rounded-3xl"
         style={{
           clipPath: `polygon(0 ${10 + Math.sin(time) * 5}%, 100% 0%, 100% ${90 + Math.cos(time) * 5}%, 0% 100%)`,
         }}
@@ -149,7 +149,7 @@ function FeaturesCollage({ time }: { time: number }) {
               transform: `translate(${Math.sin(time * 0.6) * 10}px, ${Math.cos(time * 0.4) * 8}px) rotate(${Math.sin(time * 0.3) * 1}deg)`,
             }}
           >
-            <div className="bg-gradient-to-br from-white to-amber-50 rounded-[4rem] p-12 shadow-2xl border border-orange-200/50">
+            <div className="bg-linear-to-br from-white to-amber-50 rounded-[4rem] p-12 shadow-2xl border border-orange-200/50">
               <Zap className="w-16 h-16 text-orange-600 mb-6" />
               <h3 className="text-4xl font-bold mb-4 text-balance">Neural Depth Revolution</h3>
               <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
@@ -161,7 +161,7 @@ function FeaturesCollage({ time }: { time: number }) {
           {/* Stacked Small Features */}
           <div className="col-span-12 md:col-span-5 space-y-6">
             <div
-              className="bg-gradient-to-r from-orange-500 to-red-600 rounded-3xl p-6 text-white transform rotate-2"
+              className="bg-linear-to-r from-orange-500 to-red-600 rounded-3xl p-6 text-white transform rotate-2"
               style={{
                 transform: `rotate(${2 + Math.sin(time * 0.8) * 2}deg) translate(${Math.cos(time) * 5}px, ${Math.sin(time * 1.1) * 3}px)`,
               }}
@@ -217,7 +217,7 @@ function InteractiveNeuralSection({
           >
             <span className="block text-orange-600">Interactive</span>
             <span className="block transform rotate-1 ml-8">Neural</span>
-            <span className="block transform -rotate-2 -ml-4 bg-gradient-to-r from-red-600 to-amber-600 bg-clip-text text-transparent">
+            <span className="block transform -rotate-2 -ml-4 bg-linear-to-r from-red-600 to-amber-600 bg-clip-text text-transparent">
               Experience
             </span>
           </h2>
@@ -232,7 +232,7 @@ function InteractiveNeuralSection({
           >
             {/* Floating cursor follower */}
             <div
-              className="absolute w-8 h-8 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full pointer-events-none z-20 transition-all duration-100"
+              className="absolute w-8 h-8 bg-linear-to-r from-amber-400 to-orange-500 rounded-full pointer-events-none z-20 transition-all duration-100"
               style={{
                 left: mousePosition.x * 0.02,
                 top: mousePosition.y * 0.02,
@@ -240,14 +240,14 @@ function InteractiveNeuralSection({
               }}
             />
 
-            <div className="bg-gradient-to-br from-white via-amber-50 to-orange-100 rounded-[5rem] p-16 shadow-2xl border border-orange-200/30">
+            <div className="bg-linear-to-br from-white via-amber-50 to-orange-100 rounded-[5rem] p-16 shadow-2xl border border-orange-200/30">
               <div
                 className="text-center"
                 style={{
                   transform: `translate(${mousePosition.x * 0.005}px, ${mousePosition.y * 0.005}px)`,
                 }}
               >
-                <div className="text-8xl font-black bg-gradient-to-r from-orange-600 via-red-600 to-amber-600 bg-clip-text text-transparent mb-8">
+                <div className="text-8xl font-black bg-linear-to-r from-orange-600 via-red-600 to-amber-600 bg-clip-text text-transparent mb-8">
                   Neural Magic
                 </div>
                 <p className="text-2xl text-muted-foreground max-w-2xl mx-auto text-pretty">

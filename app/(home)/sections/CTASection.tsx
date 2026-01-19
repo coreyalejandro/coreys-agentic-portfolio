@@ -48,7 +48,7 @@ export function CTASection() {
               <div className="text-sm font-bold text-white/80 tracking-widest uppercase">Revolutionary Design</div>
               <h1 className="text-7xl md:text-8xl font-black text-white leading-none">
                 <span className="block transform rotate-1">Build</span>
-                <span className="block transform -rotate-2 ml-8 bg-gradient-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent">
+                <span className="block transform -rotate-2 ml-8 bg-linear-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent">
                   the
                 </span>
                 <span className="block transform rotate-1 ml-4 text-6xl">Future</span>
@@ -63,7 +63,7 @@ export function CTASection() {
               transform: `translate(${-mousePosition.x * 0.02}px, ${mousePosition.y * 0.015}px) rotate(${Math.sin(time * 0.8) * 1.5}deg)`,
             }}
           >
-            <div className="bg-white/15 backdrop-blur-xl rounded-[2rem] p-8 border border-white/20 shadow-2xl">
+            <div className="bg-white/15 backdrop-blur-xl rounded-4xl p-8 border border-white/20 shadow-2xl">
               <p className="text-lg text-white/95 text-pretty leading-relaxed mb-6">
                 Experience neural depth motion, organic parallax, and joyful interactions that make users fall in love
               </p>
@@ -97,7 +97,7 @@ export function CTASection() {
                   onChange={(e) => setEmail(e.target.value)}
                   className="bg-white/20 border-white/30 text-white placeholder:text-white/60 rounded-xl"
                 />
-                <Button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 rounded-xl">
+                <Button className="bg-linear-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 rounded-xl">
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </div>
@@ -111,7 +111,7 @@ export function CTASection() {
               transform: `translate(${Math.cos(time * 1.3) * 20}px, ${Math.sin(time * 0.8) * 15}px)`,
             }}
           >
-            <div className="bg-gradient-to-br from-orange-400 to-red-500 rounded-full w-20 h-20 flex flex-col items-center justify-center text-white text-center">
+            <div className="bg-linear-to-br from-orange-400 to-red-500 rounded-full w-20 h-20 flex flex-col items-center justify-center text-white text-center">
               <div className="text-xl font-bold">4.9</div>
               <div className="text-xs">rating</div>
             </div>
