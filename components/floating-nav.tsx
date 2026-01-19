@@ -5,7 +5,6 @@ import {
   Minimize2,
   Zap,
   SlidersHorizontal,
-  Sparkles,
   FileText,
   FolderOpen,
   LayoutTemplate,
@@ -39,18 +38,18 @@ export default function FloatingNav() {
     if (isDraggable) return
 
     const handleScroll = () => {
-      setIsVisible(window.scrollY < 50)
+      setIsVisible(window.scrollY < 30)
     }
 
     const handleMouseMove = (e: MouseEvent) => {
-      if (e.clientY < 100) {
+      if (e.clientY < 50) {
         setIsVisible(true)
         if (hideTimerRef.current) clearTimeout(hideTimerRef.current)
       } else if (!isHovered) {
         if (hideTimerRef.current) clearTimeout(hideTimerRef.current)
         hideTimerRef.current = setTimeout(() => {
-          if (!isHovered && window.scrollY > 50) setIsVisible(false)
-        }, 1500)
+          if (!isHovered && window.scrollY > 30) setIsVisible(false)
+        }, 600)
       }
     }
 
@@ -58,8 +57,8 @@ export default function FloatingNav() {
     window.addEventListener("mousemove", handleMouseMove)
 
     hideTimerRef.current = setTimeout(() => {
-      if (!isHovered && window.scrollY > 50) setIsVisible(false)
-    }, 1500)
+      if (!isHovered && window.scrollY > 30) setIsVisible(false)
+    }, 600)
 
     return () => {
       window.removeEventListener("scroll", handleScroll)
@@ -135,7 +134,6 @@ export default function FloatingNav() {
     { name: "Templates", href: "/templates", icon: LayoutTemplate },
     { name: "Components", href: "/components", icon: Box },
     { name: "Playground", href: "/playground", icon: Beaker },
-    { name: "Design System", href: "/design-system", icon: Sparkles },
   ]
 
   return (

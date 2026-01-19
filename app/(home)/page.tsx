@@ -6,7 +6,7 @@ import {
   CTASection,
   PortfolioSection,
 } from './sections'
-import ResumeTemplate from '@/app/templates/resume/page'
+import { ResumeSection } from '@/components/resume/ResumeSection'
 
 /**
  * HomePage - Clean orchestrator component
@@ -24,7 +24,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-background">
       <AnimationProvider>
         <HeroSection />
-        <ResumeTemplate />
+        <ResumeSection />
         <CTASection />
         <PortfolioSection />
       </AnimationProvider>
