@@ -27,9 +27,14 @@ export function LaydownCard({ title, description, children, className, image }: 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [scrollDepth, setScrollDepth] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
+  const requestRef = useRef<number>(0)
 
   useEffect(() => {
-    const timer = setInterval(() => setTime((prev) => prev + 0.1), 100)
+    const animate = () => {
+      setTime((prev) => prev + 0.016)
+      requestRef.current = requestAnimationFrame(animate)
+    }
+    requestRef.current = requestAnimationFrame(animate)
 
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
@@ -46,7 +51,7 @@ export function LaydownCard({ title, description, children, className, image }: 
     window.addEventListener("wheel", handleWheel, { passive: false })
 
     return () => {
-      clearInterval(timer)
+      cancelAnimationFrame(requestRef.current)
       window.removeEventListener("mousemove", handleMouseMove)
       window.removeEventListener("wheel", handleWheel)
     }

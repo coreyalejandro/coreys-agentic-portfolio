@@ -8,7 +8,7 @@ import { AudioToggle } from "@/components/audio-experience/audio-toggle"
 import { ProjectModal } from "@/components/project-modal"
 import FloatingNav from "@/components/floating-nav"
 import { Button } from "@/components/ui/button"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
 export default function ComponentsPage() {
   const [time, setTime] = useState(0)
@@ -16,10 +16,16 @@ export default function ComponentsPage() {
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview")
   const [copiedComponent, setCopiedComponent] = useState<string | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [selectedProject, setSelectedProject] = useState<any>(null)
+  const requestRef = useRef<number>(0)
 
   useEffect(() => {
-    const timer = setInterval(() => setTime((prev) => prev + 0.1), 100)
-    return () => clearInterval(timer)
+    const animate = () => {
+      setTime((prev) => prev + 0.016)
+      requestRef.current = requestAnimationFrame(animate)
+    }
+    requestRef.current = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(requestRef.current)
   }, [])
 
   const copyToClipboard = (code: string) => {
@@ -293,7 +299,7 @@ export function OrganicTitle({ lines, className = "", mouseInteraction = true }:
 }
 `,
       preview: (
-        <div className="flex items-center justify-center min-h-[400px] bg-gradient-to-br from-orange-800 to-red-900 rounded-2xl">
+        <div className="flex items-center justify-center min-h-[400px] rounded-2xl">
           <OrganicTitle lines={["Neural", "Depth", "Magic"]} className="text-5xl md:text-7xl font-black text-white" />
         </div>
       ),
@@ -635,7 +641,20 @@ const [selectedProject, setSelectedProject] = useState(null)
             </p>
             <Button
               onClick={() => {
-                alert("Modal would open here. Check the homepage to see it in action!")
+                setSelectedProject({
+                  id: "demo-project",
+                  title: "Neural Depth System",
+                  description: "A revolutionary design system with living interfaces.",
+                  longDescription: "This project explores the intersection of neural networks and organic motion design. Built with React and Three.js, it provides a unique sensory experience through spatial audio and 3D interactions.",
+                  technologies: ["React", "TypeScript", "Three.js", "Web Audio API"],
+                  githubUrl: "https://github.com/coreyalejandro/coreys-agentic-portfolio",
+                  liveUrl: "https://coreys-agentic-portfolio.vercel.app",
+                  images: ["/creative-chaos-design-system-hero.jpg", "/breathing-background-effect.jpg"],
+                  challenge: "Creating a performance-heavy design system that remains accessible.",
+                  solution: "Implemented strict rate-limiting and motion tokens to respect user preferences.",
+                  impact: "Achieved 95+ Lighthouse scores while maintaining high visual fidelity.",
+                  featured: true
+                })
               }}
               className="bg-white/20 hover:bg-white/30 text-white border-white/30"
             >
@@ -890,6 +909,13 @@ export default function Layout() {
           aria-hidden="true"
         />
       )}
+
+      {/* The Actual Working Modal */}
+      <ProjectModal 
+        project={selectedProject}
+        isOpen={!!selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </div>
   )
 }

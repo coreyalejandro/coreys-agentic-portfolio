@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, ReactNode, useState, useEffect } from 'react'
+import { createContext, ReactNode, useState, useEffect, useRef } from 'react'
 
 export interface AnimationContextValue {
   time: number
@@ -18,11 +18,20 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
   const [time, setTime] = useState(0)
   const [scrollY, setScrollY] = useState(0)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const requestRef = useRef<number>(0)
+  const lastTimeRef = useRef<number>(0)
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTime((prev) => prev + 0.1)
-    }, 100)
+    const animate = (timestamp: number) => {
+      if (lastTimeRef.current !== undefined) {
+        // Update time at ~60fps increment (0.016 units per frame = ~1 unit per second)
+        setTime((prev) => prev + 0.016)
+      }
+      lastTimeRef.current = timestamp
+      requestRef.current = requestAnimationFrame(animate)
+    }
+
+    requestRef.current = requestAnimationFrame(animate)
 
     const handleScroll = () => {
       setScrollY(window.scrollY)
@@ -36,7 +45,7 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
     window.addEventListener('mousemove', handleMouseMove)
 
     return () => {
-      clearInterval(timer)
+      cancelAnimationFrame(requestRef.current)
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('mousemove', handleMouseMove)
     }

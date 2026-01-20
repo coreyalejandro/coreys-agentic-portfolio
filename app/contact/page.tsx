@@ -5,13 +5,14 @@ import type React from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Heart, Sparkles, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
 export default function ContactPage() {
   const [time, setTime] = useState(0)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const requestRef = useRef<number>(0)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,13 +22,18 @@ export default function ContactPage() {
   const [submitError, setSubmitError] = useState<string | null>(null)
 
   useEffect(() => {
-    const timer = setInterval(() => setTime((prev) => prev + 0.1), 100)
+    const animate = () => {
+      setTime((prev) => prev + 0.016)
+      requestRef.current = requestAnimationFrame(animate)
+    }
+    requestRef.current = requestAnimationFrame(animate)
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
     }
     window.addEventListener("mousemove", handleMouseMove)
     return () => {
-      clearInterval(timer)
+      cancelAnimationFrame(requestRef.current)
       window.removeEventListener("mousemove", handleMouseMove)
     }
   }, [])

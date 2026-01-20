@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import {
   ArrowRight,
@@ -24,6 +24,7 @@ export default function PortfolioTemplate() {
   const [scrollY, setScrollY] = useState(0)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [time, setTime] = useState(0)
+  const requestRef = useRef<number>(0)
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -31,7 +32,11 @@ export default function PortfolioTemplate() {
       setMousePosition({ x: e.clientX, y: e.clientY })
     }
 
-    const timer = setInterval(() => setTime((prev) => prev + 0.01), 16)
+    const animate = () => {
+      setTime((prev) => prev + 0.016)
+      requestRef.current = requestAnimationFrame(animate)
+    }
+    requestRef.current = requestAnimationFrame(animate)
 
     window.addEventListener("scroll", handleScroll)
     window.addEventListener("mousemove", handleMouseMove)
@@ -39,7 +44,7 @@ export default function PortfolioTemplate() {
     return () => {
       window.removeEventListener("scroll", handleScroll)
       window.removeEventListener("mousemove", handleMouseMove)
-      clearInterval(timer)
+      cancelAnimationFrame(requestRef.current)
     }
   }, [])
 

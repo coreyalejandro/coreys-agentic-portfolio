@@ -45,6 +45,7 @@
 - **Utilities live in `lib/`**: e.g., `lib/sanitize.ts`, `lib/rate-limiter.ts`.
 - **Config/data in `config/`**: e.g., `config/projects.ts` powers portfolio content.
 - **FloatingNav hover overlays**: in `components/floating-nav.tsx`, the circular hover background overlay uses `absolute right-0 bottom-0 w-full h-full` (instead of `inset-0`) to avoid explicitly setting `left/top`.
+- **Smooth Animations**: Prefer `requestAnimationFrame` over `setInterval` for all time-based animations. Standard pattern uses a `time` state updated by `0.016` (approx. 1/60s) per frame to achieve smooth 60fps motion while maintaining consistent speed with older `0.1` per 100ms logic.
 
 ## User Defined Namespaces
 

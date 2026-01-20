@@ -4,7 +4,7 @@ import { AnimationProvider } from "@/contexts/AnimationContext"
 import { HeroSection } from "@/app/(home)/sections/HeroSection"
 import { CTASection } from "@/app/(home)/sections/CTASection"
 import { PortfolioSection } from "@/app/(home)/sections/PortfolioSection"
-import ResumeTemplate from "@/app/templates/resume/page"
+import { ResumeSection as ResumeTemplate } from "@/components/resume/ResumeSection"
 
 /**
  * HomePage - Clean orchestrator component

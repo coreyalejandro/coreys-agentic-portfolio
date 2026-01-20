@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { ArrowRight, Play, Sparkles, Zap, Heart, Star } from "lucide-react"
 import Link from "next/link"
 
@@ -9,6 +9,7 @@ export default function HeroTemplate() {
   const [scrollY, setScrollY] = useState(0)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [time, setTime] = useState(0)
+  const requestRef = useRef<number>(0)
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -19,12 +20,16 @@ export default function HeroTemplate() {
     window.addEventListener("scroll", handleScroll)
     window.addEventListener("mousemove", handleMouseMove)
 
-    const timer = setInterval(() => setTime((prev) => prev + 0.1), 100)
+    const animate = () => {
+      setTime((prev) => prev + 0.016)
+      requestRef.current = requestAnimationFrame(animate)
+    }
+    requestRef.current = requestAnimationFrame(animate)
 
     return () => {
       window.removeEventListener("scroll", handleScroll)
       window.removeEventListener("mousemove", handleMouseMove)
-      clearInterval(timer)
+      cancelAnimationFrame(requestRef.current)
     }
   }, [])
 

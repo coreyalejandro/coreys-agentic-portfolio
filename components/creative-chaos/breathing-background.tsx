@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState, useEffect } from "react"
+import { useMemo, useState, useEffect, useRef } from "react"
 import { cn } from "@/lib/utils"
 import { useColorTheme } from "@/contexts/ColorThemeContext"
 
@@ -21,13 +21,20 @@ export function BreathingBackground({
 }: BreathingBackgroundProps) {
   const { currentPalette } = useColorTheme()
   const [internalTime, setInternalTime] = useState(0)
+  const requestRef = useRef<number>(0)
   
   const time = externalTime ?? internalTime
   
   useEffect(() => {
     if (externalTime !== undefined) return
-    const timer = setInterval(() => setInternalTime((prev) => prev + 0.1), 100)
-    return () => clearInterval(timer)
+    
+    const animate = () => {
+      setInternalTime((prev) => prev + 0.016)
+      requestRef.current = requestAnimationFrame(animate)
+    }
+    
+    requestRef.current = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(requestRef.current)
   }, [externalTime])
 
   const style = useMemo(() => {

@@ -13,6 +13,7 @@ export function ResumeSection() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [time, setTime] = useState(0)
   const resumeRef = useRef<HTMLDivElement>(null)
+  const requestRef = useRef<number>(0)
 
   useEffect(() => {
     setMounted(true)
@@ -24,12 +25,16 @@ export function ResumeSection() {
     window.addEventListener("scroll", handleScroll)
     window.addEventListener("mousemove", handleMouseMove)
 
-    const timer = setInterval(() => setTime((prev) => prev + 0.1), 100)
+    const animate = () => {
+      setTime((prev) => prev + 0.016)
+      requestRef.current = requestAnimationFrame(animate)
+    }
+    requestRef.current = requestAnimationFrame(animate)
 
     return () => {
       window.removeEventListener("scroll", handleScroll)
       window.removeEventListener("mousemove", handleMouseMove)
-      clearInterval(timer)
+      cancelAnimationFrame(requestRef.current)
     }
   }, [])
 
