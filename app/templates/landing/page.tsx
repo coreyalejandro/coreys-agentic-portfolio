@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useState, useEffect, useRef } from "react"
-import { ArrowRight, Star, Heart, Zap, Sparkles, Eye, Waves, Palette } from "lucide-react"
 import Link from "next/link"
 
 export default function LandingTemplate() {
@@ -92,7 +91,6 @@ export default function LandingTemplate() {
               <div className="flex gap-3">
                 <Link href="/contact">
                   <Button className="bg-amber-400 hover:bg-amber-300 text-black font-semibold rounded-full px-6">
-                    <Heart className="w-4 h-4 mr-2" />
                     Start Creating
                   </Button>
                 </Link>
@@ -117,7 +115,7 @@ export default function LandingTemplate() {
                   className="bg-white/20 border-white/30 text-white placeholder:text-white/60 rounded-xl"
                 />
                 <Button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 rounded-xl">
-                  <ArrowRight className="w-4 h-4" />
+                  Go
                 </Button>
               </div>
             </div>
@@ -142,10 +140,8 @@ export default function LandingTemplate() {
               transform: `translate(${-Math.sin(time * 1.1) * 25}px, ${Math.cos(time * 0.9) * 18}px) rotate(${time * 15}deg)`,
             }}
           >
-            <div className="flex items-center space-x-1">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <Star key={i} className="w-6 h-6 fill-amber-300 text-amber-300" />
-              ))}
+            <div className="flex items-center space-x-1 text-amber-300 font-bold text-sm">
+              ★★★★★
             </div>
           </div>
         </div>
@@ -178,9 +174,6 @@ export default function LandingTemplate() {
                 >
                   <div className="bg-gradient-to-br from-white via-amber-50 to-orange-100 rounded-[3rem] p-12 shadow-2xl border border-orange-200/30">
                     <div className="flex items-start space-x-6">
-                      <div className="bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl p-4">
-                        <Eye className="w-12 h-12 text-white" />
-                      </div>
                       <div className="flex-1">
                         <h3 className="text-4xl font-black mb-4 text-balance">Neural Depth Vision</h3>
                         <p className="text-xl text-muted-foreground text-pretty leading-relaxed mb-6">
@@ -211,12 +204,10 @@ export default function LandingTemplate() {
                     }}
                   >
                     <div className="bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-6 text-white transform rotate-2">
-                      <Waves className="w-8 h-8 mb-3" />
                       <h4 className="text-xl font-bold mb-2">Fluid Motion</h4>
                       <p className="text-sm opacity-90">Every interaction flows like water</p>
                     </div>
                     <div className="bg-white rounded-2xl p-6 shadow-lg transform -rotate-1">
-                      <Palette className="w-8 h-8 text-orange-600 mb-3" />
                       <h4 className="text-xl font-bold mb-2">Living Colors</h4>
                       <p className="text-sm text-muted-foreground">Gradients that breathe and evolve</p>
                     </div>
@@ -233,7 +224,6 @@ export default function LandingTemplate() {
                   }}
                 >
                   <div className="bg-gradient-to-br from-amber-400 to-orange-500 rounded-[2rem] p-8 text-white shadow-2xl">
-                    <Sparkles className="w-12 h-12 mb-4" />
                     <h3 className="text-3xl font-black mb-3">Joyful Interactions</h3>
                     <p className="text-white/90 text-pretty">
                       Every click, hover, and scroll brings delight through carefully crafted micro-animations
@@ -248,7 +238,6 @@ export default function LandingTemplate() {
                   }}
                 >
                   <div className="bg-white rounded-2xl p-6 shadow-xl border border-orange-200/50">
-                    <Zap className="w-10 h-10 text-orange-600 mb-4" />
                     <h4 className="text-2xl font-bold mb-3">Lightning Fast</h4>
                     <p className="text-muted-foreground">Optimized for performance without sacrificing beauty</p>
                   </div>
@@ -311,7 +300,6 @@ export default function LandingTemplate() {
                       />
                       <Link href="/contact">
                         <Button className="bg-amber-400 hover:bg-amber-300 text-black font-semibold rounded-xl px-6">
-                          <Heart className="w-4 h-4 mr-2" />
                           Start
                         </Button>
                       </Link>

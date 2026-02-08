@@ -2,9 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export function ScrollCardDemo() {
+type ScrollCardDemoProps = {
+  variant?: "default" | "creative-chaos";
+};
+
+export function ScrollCardDemo({ variant = "default" }: ScrollCardDemoProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isLaidDown, setIsLaidDown] = useState(false);
+  const isCreativeChaos = variant === "creative-chaos";
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -34,7 +39,14 @@ export function ScrollCardDemo() {
   }, []);
 
   return (
-    <div className="bg-gray-50 w-full overflow-y-auto max-h-[800px] border rounded-xl">
+    <div
+      className={
+        isCreativeChaos
+          ? "w-full overflow-y-auto max-h-[800px] rounded-2xl border border-white/10 overflow-hidden"
+          : "bg-gray-50 w-full overflow-y-auto max-h-[800px] border rounded-xl"
+      }
+      data-variant={isCreativeChaos ? "creative-chaos" : undefined}
+    >
       {/* Spacer to force scrolling */}
       <div className="spacer flex items-center justify-center text-2xl text-gray-500 font-mono">
         ↓ Scroll Down to see the card...
@@ -49,11 +61,6 @@ export function ScrollCardDemo() {
         >
           <div className="card-inner">
             <div className="card-front">
-              <img
-                src="https://picsum.photos/300/200"
-                alt="Placeholder"
-                className="card-image"
-              />
               <h2 className="text-2xl font-bold mb-2">Vertical Card</h2>
               <p>Watch me lay down as you scroll!</p>
             </div>
@@ -77,6 +84,12 @@ export function ScrollCardDemo() {
           border-bottom: 1px dashed #ccc;
         }
 
+        [data-variant="creative-chaos"] .spacer {
+          background: linear-gradient(180deg, rgba(146, 64, 14, 0.3), rgba(92, 25, 2, 0.4));
+          border-bottom-color: rgba(234, 88, 12, 0.4);
+          color: rgba(255, 255, 255, 0.8);
+        }
+
         /* --- Scene Setup --- */
         .table-container {
           perspective: 1000px;
@@ -87,6 +100,10 @@ export function ScrollCardDemo() {
           width: 100%;
           background-color: #4caf50;
           overflow: hidden;
+        }
+
+        [data-variant="creative-chaos"] .table-container {
+          background: linear-gradient(135deg, rgba(234, 88, 12, 0.6), rgba(185, 28, 28, 0.7), rgba(217, 119, 6, 0.6));
         }
 
         /* --- Card Base Styling --- */
@@ -138,19 +155,22 @@ export function ScrollCardDemo() {
           color: #333;
         }
 
+        [data-variant="creative-chaos"] .card-front {
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(254, 243, 199, 0.9));
+          color: #1c1917;
+        }
+
         .card-back {
           background-color: #333;
           color: white;
           transform: rotateX(180deg);
         }
 
-        .card-image {
-          width: 100%;
-          height: auto;
-          border-radius: 8px;
-          margin-bottom: 15px;
-          object-fit: cover;
+        [data-variant="creative-chaos"] .card-back {
+          background: linear-gradient(135deg, rgba(146, 64, 14, 0.95), rgba(92, 25, 2, 1));
+          color: white;
         }
+
       `}</style>
     </div>
   );

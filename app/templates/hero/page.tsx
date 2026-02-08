@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button"
 import { useState, useEffect, useRef } from "react"
-import { ArrowRight, Play, Sparkles, Zap, Heart, Star } from "lucide-react"
 import Link from "next/link"
 
 export default function HeroTemplate() {
@@ -109,7 +108,6 @@ export default function HeroTemplate() {
                 <div className="flex gap-4 mt-6">
                   <Link href="/contact">
                     <Button className="bg-amber-500 hover:bg-amber-400 text-black font-semibold rounded-full">
-                      <Heart className="w-4 h-4 mr-2" />
                       Feel the Magic
                     </Button>
                   </Link>
@@ -124,19 +122,11 @@ export default function HeroTemplate() {
                 transform: `translate(${Math.sin(time * 1.2) * 20}px, ${Math.cos(time) * 15}px)`,
               }}
             >
-              <div className="bg-gradient-to-br from-orange-400 to-red-500 rounded-full w-24 h-24 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
-                <Play className="w-8 h-8 text-white" />
+              <div className="bg-gradient-to-br from-orange-400 to-red-500 rounded-full w-24 h-24 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform text-white font-bold text-sm">
+                Play
               </div>
             </div>
 
-            <div
-              className="absolute top-1/2 right-1/4"
-              style={{
-                transform: `translate(${-Math.cos(time * 0.9) * 25}px, ${Math.sin(time * 1.1) * 18}px) rotate(${time * 20}deg)`,
-              }}
-            >
-              <Star className="w-12 h-12 text-amber-300 opacity-80" />
-            </div>
           </div>
         </div>
       </div>
@@ -161,7 +151,6 @@ export default function HeroTemplate() {
                 }}
               >
                 <div className="bg-gradient-to-br from-white to-amber-50 rounded-[4rem] p-12 shadow-2xl border border-orange-200/50">
-                  <Zap className="w-16 h-16 text-orange-600 mb-6" />
                   <h3 className="text-4xl font-bold mb-4 text-balance">Neural Depth Revolution</h3>
                   <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
                     Experience interfaces that breathe, respond, and evolve with your every interaction
@@ -177,7 +166,6 @@ export default function HeroTemplate() {
                     transform: `rotate(${2 + Math.sin(time * 0.8) * 2}deg) translate(${Math.cos(time) * 5}px, ${Math.sin(time * 1.1) * 3}px)`,
                   }}
                 >
-                  <Sparkles className="w-8 h-8 mb-3" />
                   <h4 className="text-xl font-semibold mb-2">Motion Poetry</h4>
                   <p className="text-sm opacity-90">Every scroll tells a story</p>
                 </div>
@@ -188,7 +176,6 @@ export default function HeroTemplate() {
                     transform: `rotate(${-1 + Math.cos(time * 0.7) * 1.5}deg) translate(${-Math.sin(time * 0.9) * 8}px, ${Math.cos(time * 0.6) * 4}px)`,
                   }}
                 >
-                  <ArrowRight className="w-8 h-8 text-orange-600 mb-3" />
                   <h4 className="text-xl font-semibold mb-2">Parallax Dreams</h4>
                   <p className="text-sm text-muted-foreground">Beyond traditional scrolling</p>
                 </div>

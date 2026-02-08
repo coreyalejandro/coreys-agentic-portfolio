@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useState, useEffect, useRef } from "react"
-import { Heart, Sparkles, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
 export default function ContactPage() {
@@ -96,7 +95,6 @@ export default function ContactPage() {
                 transform: `translate(${Math.sin(time * 0.6) * 5}px, ${Math.cos(time * 0.4) * 3}px)`,
               }}
             >
-              <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Magic
             </Button>
           </Link>
@@ -161,9 +159,7 @@ export default function ContactPage() {
                   transform: `rotate(${Math.sin(time * 0.7) * 2}deg)`,
                 }}
               >
-                <Heart className="w-6 h-6 mr-3" />
                 {isSubmitting ? "Sending..." : "Send the Magic"}
-                <Sparkles className="w-6 h-6 ml-3" />
               </Button>
             </form>
           </div>

@@ -19,7 +19,7 @@ import { ResumeSection as ResumeTemplate } from "@/components/resume/ResumeSecti
  */
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <AnimationProvider>
         <HeroSection />
         <ResumeTemplate />

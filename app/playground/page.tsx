@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react"
 import { BreathingBackground } from "@/components/creative-chaos"
 import { FloatingCard } from "@/components/creative-chaos/floating-card"
 import { OrganicTitle } from "@/components/creative-chaos/organic-title"
-import { Send, Sparkles, Save, Folder } from "lucide-react"
 
 type Message = {
   role: "user" | "assistant"
@@ -153,7 +152,6 @@ export default function PlaygroundPage() {
           onClick={newProject}
           className="w-full mb-4 px-4 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-semibold flex items-center gap-2 transition-all"
         >
-          <Sparkles className="w-4 h-4" />
           New Project
         </button>
 
@@ -169,7 +167,6 @@ export default function PlaygroundPage() {
               }`}
             >
               <div className="flex items-center gap-2 mb-1">
-                <Folder className="w-4 h-4 text-amber-400" />
                 <div className="font-semibold text-white text-sm truncate">{project.name}</div>
               </div>
               <div className="text-xs text-white/60">{new Date(project.updatedAt).toLocaleDateString()}</div>
@@ -217,7 +214,6 @@ export default function PlaygroundPage() {
                   boxShadow: "0 0 20px var(--theme-nav-glow)",
                 }}
               >
-                <Save className="w-5 h-5 text-white" />
                 <span className="text-white">Save</span>
               </button>
             </FloatingCard>
@@ -274,7 +270,6 @@ export default function PlaygroundPage() {
               disabled={isLoading || !input.trim()}
               className="px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed text-black font-semibold flex items-center gap-2 transition-all"
             >
-              <Send className="w-4 h-4" />
               Send
             </button>
           </div>

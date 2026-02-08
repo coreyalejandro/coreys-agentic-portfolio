@@ -77,3 +77,27 @@ Task ID: 3
 **Next task:** US-015 (Eliminate unwanted components based on review decisions)
 
 ---
+
+## 2025-01-19 - US-015: Eliminate unwanted components
+Thread: https://ampcode.com/threads/T-019bd0e2-baaa-71bf-8d86-bcfaea777a17
+Task ID: 4
+
+**Completed:**
+- Upgraded animations/BreathingBackground.tsx to support both APIs (time prop OR internal timer, colors prop)
+- Updated imports in app/playground/page.tsx, app/design-system/page.tsx, app/components/page.tsx
+- Removed creative-chaos/breathing-background.tsx (duplicate)
+- floating-particles.tsx already removed/merged in prior work
+- Ran pnpm component-inventory:build to update inventory
+
+**Files modified:**
+- components/animations/BreathingBackground.tsx (upgraded API)
+- app/playground/page.tsx (import update)
+- app/design-system/page.tsx (import update)
+- app/components/page.tsx (import path updates)
+
+**Files removed:**
+- components/creative-chaos/breathing-background.tsx
+
+**Next task:** US-009 (Define Creative Chaos motion tokens)
+
+---

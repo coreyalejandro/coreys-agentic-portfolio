@@ -1,5 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
+import { GeistSans } from "geist/font/sans"
+import { GeistMono } from "geist/font/mono"
 import FloatingNav from "@/components/floating-nav"
 import "./globals.css"
 import { Suspense } from "react"
@@ -19,8 +21,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="font-sans" suppressHydrationWarning>
+    <html lang="en" className="dark">
+      <body
+        className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased min-h-screen bg-(--theme-deep) text-(--theme-text)`}
+        suppressHydrationWarning
+      >
         <ColorThemeProvider>
           <AnimationProvider>
             <AudioEngineProvider>

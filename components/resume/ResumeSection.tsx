@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect, useRef, type CSSProperties } from "react"
-import { Download, Mail, Github, Linkedin, MapPin, Phone, Sparkles, Zap, Star } from "lucide-react"
 import { AudioSection } from "@/components/audio-experience/audio-section"
 import { AudioButton } from "@/components/audio-experience/audio-button"
 import { BreathingBackground } from "@/components/creative-chaos"
@@ -157,7 +156,6 @@ export function ResumeSection() {
                 color: "var(--theme-text)",
               }}
             >
-              <Download className="w-5 h-5" />
               Download PDF
             </AudioButton>
           </div>
@@ -206,83 +204,88 @@ export function ResumeSection() {
                 className="text-xl mb-6 transition-colors duration-3000"
                 style={{ color: "var(--theme-text-secondary)" }}
               >
-                Creative Developer & Design System Architect
+                AI Systems Developer & Accessibility Advocate
               </p>
 
               <div
                 className="flex flex-wrap gap-4 text-sm transition-colors duration-3000"
                 style={{ color: "var(--theme-text-secondary)" }}
               >
+                <a
+                  href="mailto:corey@coreyalejandro.com"
+                  className="flex items-center gap-2 hover:opacity-70 transition-all duration-300"
+                >
+                  <span>corey@coreyalejandro.com</span>
+                </a>
                 <div className="flex items-center gap-2">
-                  <Mail
-                    className="w-4 h-4 transition-colors duration-3000"
-                    style={{ color: "var(--theme-primary)" }}
-                  />
-                  <span>corey@example.com</span>
+                  <span>(210) 336-1722</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Phone
-                    className="w-4 h-4 transition-colors duration-3000"
-                    style={{ color: "var(--theme-primary)" }}
-                  />
-                  <span>+1 (555) 123-4567</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin
-                    className="w-4 h-4 transition-colors duration-3000"
-                    style={{ color: "var(--theme-primary)" }}
-                  />
-                  <span>San Francisco, CA</span>
+                  <span>San Antonio, TX</span>
                 </div>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/coreyalejandro"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 hover:opacity-70 transition-all duration-300"
                 >
-                  <Github className="w-4 h-4" />
                   <span>github.com/coreyalejandro</span>
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://linkedin.com/in/coreyalejandro"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 hover:opacity-70 transition-all duration-300"
                 >
-                  <Linkedin className="w-4 h-4" />
                   <span>linkedin.com/in/coreyalejandro</span>
+                </a>
+                <a
+                  href="https://coreyalejandro.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:opacity-70 transition-all duration-300"
+                >
+                  <span>coreyalejandro.com</span>
                 </a>
               </div>
             </div>
 
-            {/* Professional Summary */}
+            {/* Professional Profile */}
             <section className="mb-8">
               <h3
-                className="text-2xl font-bold mb-4 flex items-center gap-2 transition-colors duration-3000"
+                className="text-2xl font-bold mb-4 transition-colors duration-3000"
                 style={{ color: "var(--theme-primary)" }}
               >
-                <Sparkles className="w-5 h-5" />
-                Professional Summary
+                Professional Profile
               </h3>
               <p
-                className="leading-relaxed transition-colors duration-3000"
+                className="leading-relaxed mb-4 transition-colors duration-3000"
                 style={{ color: "var(--theme-text-secondary)" }}
               >
-                Creative developer and design system architect with a passion for building accessible, joyful web
-                experiences. Specialized in creating innovative interfaces that combine cutting-edge technology with
-                emotional design. Expert in React, TypeScript, and Next.js with a strong focus on accessibility and user
-                experience.
+                A multidisciplinary technology professional with expertise in AI development, inclusive design, and
+                business intelligence. I have a proven track record of constructing customer-centric systems that scale
+                while adhering to accessibility-first principles. Currently, I specialize in AI alignment and evaluation,
+                human-machine shared context existence, bi-directional prompt engineering, and training data curation for
+                advanced AI models. I am also exploring neurodivergent-first theories of change and action to address AI
+                safety and inclusive design challenges that neurotypical developers often overlook.
+              </p>
+              <p
+                className="leading-relaxed font-medium transition-colors duration-3000"
+                style={{ color: "var(--theme-text)" }}
+              >
+                Core Value Proposition: I create AI systems that work for everyone - not just the majority. My 15+
+                years in leveraging emerging technology taught me that the best solutions emerge when we design for the
+                margins, not the middle.
               </p>
             </section>
 
             {/* Skills */}
             <section className="mb-8">
               <h3
-                className="text-2xl font-bold mb-4 flex items-center gap-2 transition-colors duration-3000"
+                className="text-2xl font-bold mb-4 transition-colors duration-3000"
                 style={{ color: "var(--theme-primary)" }}
               >
-                <Zap className="w-5 h-5" />
-                Technical Skills
+                Technical Expertise
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -290,13 +293,14 @@ export function ResumeSection() {
                     className="font-semibold mb-2 transition-colors duration-3000"
                     style={{ color: "var(--theme-text)" }}
                   >
-                    Frontend
+                    AI Development & Evaluation
                   </h4>
                   <p
                     className="text-sm transition-colors duration-3000"
                     style={{ color: "var(--theme-text-secondary)" }}
                   >
-                    React, Next.js, TypeScript, Tailwind CSS, HTML5, CSS3, JavaScript (ES6+)
+                    Prompt Engineering, RLHF, LLM Testing, contextual AI agent frameworks, safety alignment and model
+                    evaluation
                   </p>
                 </div>
                 <div>
@@ -304,13 +308,13 @@ export function ResumeSection() {
                     className="font-semibold mb-2 transition-colors duration-3000"
                     style={{ color: "var(--theme-text)" }}
                   >
-                    Design & Tools
+                    Platform & Development
                   </h4>
                   <p
                     className="text-sm transition-colors duration-3000"
                     style={{ color: "var(--theme-text-secondary)" }}
                   >
-                    Figma, Adobe Creative Suite, Web Audio API, Accessibility (WCAG 2.1 AA), Design Systems
+                    Python, JavaScript, SQL, React, LangChain, OpenAI API, cloud micro-services, RESTful APIs
                   </p>
                 </div>
                 <div>
@@ -318,13 +322,14 @@ export function ResumeSection() {
                     className="font-semibold mb-2 transition-colors duration-3000"
                     style={{ color: "var(--theme-text)" }}
                   >
-                    Backend & DevOps
+                    Data & Analytics
                   </h4>
                   <p
                     className="text-sm transition-colors duration-3000"
                     style={{ color: "var(--theme-text-secondary)" }}
                   >
-                    Node.js, API Development, Vercel, Git, CI/CD, Performance Optimization
+                    Statistical modeling, predictive analytics, A/B testing, business intelligence dashboards, QA
+                    frameworks
                   </p>
                 </div>
                 <div>
@@ -332,13 +337,14 @@ export function ResumeSection() {
                     className="font-semibold mb-2 transition-colors duration-3000"
                     style={{ color: "var(--theme-text)" }}
                   >
-                    Specializations
+                    Specialized Skills
                   </h4>
                   <p
                     className="text-sm transition-colors duration-3000"
                     style={{ color: "var(--theme-text-secondary)" }}
                   >
-                    3D Web Graphics, Spatial Audio, Creative Coding, Motion Design, User Experience
+                    Accessibility Design (WCAG), neurodivergent-first UX, Inclusive AI Development, evaluation
+                    frameworks, technical documentation
                   </p>
                 </div>
               </div>
@@ -347,10 +353,9 @@ export function ResumeSection() {
             {/* Experience */}
             <section className="mb-8">
               <h3
-                className="text-2xl font-bold mb-4 flex items-center gap-2 transition-colors duration-3000"
+                className="text-2xl font-bold mb-4 transition-colors duration-3000"
                 style={{ color: "var(--theme-primary)" }}
               >
-                <Star className="w-5 h-5" />
                 Professional Experience
               </h3>
 
@@ -365,20 +370,20 @@ export function ResumeSection() {
                         className="font-bold text-lg transition-colors duration-3000"
                         style={{ color: "var(--theme-text)" }}
                       >
-                        Senior Creative Developer
+                        Prompt Engineer & Data Annotator
                       </h4>
                       <p
                         className="font-medium transition-colors duration-3000"
                         style={{ color: "var(--theme-primary)" }}
                       >
-                        Creative Chaos Design System
+                        Outlier.ai
                       </p>
                     </div>
                     <span
                       className="text-sm mt-1 md:mt-0 transition-colors duration-3000"
                       style={{ color: "var(--theme-text-secondary)" }}
                     >
-                      2023 - Present
+                      Remote | March 2025 - Present
                     </span>
                   </div>
                   <ul
@@ -386,17 +391,19 @@ export function ResumeSection() {
                     style={{ color: "var(--theme-text-secondary)" }}
                   >
                     <li>
-                      Architected and developed a revolutionary design system with 3D spatial audio accessibility
-                      features
+                      Author PhD-level problem-answer pairs testing AI reasoning capabilities across complex domains
                     </li>
                     <li>
-                      Built component library with 40+ reusable components following Creative Chaos design principles
+                      Conduct systematic RLHF evaluations across accuracy, helpfulness, safety, and contextual
+                      appropriateness
                     </li>
                     <li>
-                      Implemented Web Audio API integration for immersive accessibility experiences beyond traditional
-                      screen readers
+                      Apply neurodivergent perspective to identify accessibility gaps and edge cases in AI responses
                     </li>
-                    <li>Led performance optimization achieving Lighthouse scores of 95+ across all metrics</li>
+                    <li>
+                      Recognized for one-shot prompt engineering - producing complex, evaluation-ready scenarios on
+                      first attempt
+                    </li>
                   </ul>
                 </div>
 
@@ -410,32 +417,38 @@ export function ResumeSection() {
                         className="font-bold text-lg transition-colors duration-3000"
                         style={{ color: "var(--theme-text)" }}
                       >
-                        Frontend Engineer
+                        Data Annotator
                       </h4>
                       <p
                         className="font-medium transition-colors duration-3000"
                         style={{ color: "var(--theme-primary)" }}
                       >
-                        Tech Innovation Co.
+                        Centific
                       </p>
                     </div>
                     <span
                       className="text-sm mt-1 md:mt-0 transition-colors duration-3000"
                       style={{ color: "var(--theme-text-secondary)" }}
                     >
-                      2021 - 2023
+                      Remote | August 2024 - Present
                     </span>
                   </div>
                   <ul
                     className="list-disc list-inside space-y-1 text-sm transition-colors duration-3000"
                     style={{ color: "var(--theme-text-secondary)" }}
                   >
-                    <li>Developed responsive web applications using React and Next.js serving 100K+ monthly users</li>
                     <li>
-                      Collaborated with design team to implement pixel-perfect UI components with focus on accessibility
+                      Support production AI systems serving billions of user interactions with high-quality multilingual
+                      training data
                     </li>
-                    <li>Optimized application performance reducing load time by 40%</li>
-                    <li>Mentored junior developers and conducted code reviews</li>
+                    <li>
+                      Annotate safety-critical training data for enterprise AI across healthcare, ecommerce, and
+                      customer service
+                    </li>
+                    <li>
+                      Contribute neurodivergent-accessible AI design perspective to ensure inclusive model training
+                      data
+                    </li>
                   </ul>
                 </div>
 
@@ -449,20 +462,20 @@ export function ResumeSection() {
                         className="font-bold text-lg transition-colors duration-3000"
                         style={{ color: "var(--theme-text)" }}
                       >
-                        UI/UX Developer
+                        Customer Service Specialist
                       </h4>
                       <p
                         className="font-medium transition-colors duration-3000"
                         style={{ color: "var(--theme-primary)" }}
                       >
-                        Digital Agency
+                        Alorica
                       </p>
                     </div>
                     <span
                       className="text-sm mt-1 md:mt-0 transition-colors duration-3000"
                       style={{ color: "var(--theme-text-secondary)" }}
                     >
-                      2019 - 2021
+                      San Antonio, TX | October 2023 - February 2025
                     </span>
                   </div>
                   <ul
@@ -470,11 +483,93 @@ export function ResumeSection() {
                     style={{ color: "var(--theme-text-secondary)" }}
                   >
                     <li>
-                      Created engaging user interfaces for clients across various industries including e-commerce and
-                      SaaS
+                      Led development of AI-powered training platform with neurodivergent-inclusive team structures
                     </li>
-                    <li>Designed and implemented custom animations and micro-interactions</li>
-                    <li>Ensured WCAG 2.1 AA compliance for all client projects</li>
+                    <li>
+                      Spearheaded integrated platform combining AI-powered onboarding, professional development, and
+                      social networking
+                    </li>
+                    <li>
+                      Advocated for all-neurodivergent team (self-identified) that became highest-performing unit in
+                      division
+                    </li>
+                  </ul>
+                </div>
+
+                <div
+                  className="pl-6 transition-all duration-3000"
+                  style={{ borderLeft: "4px solid var(--theme-primary)" }}
+                >
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                    <div>
+                      <h4
+                        className="font-bold text-lg transition-colors duration-3000"
+                        style={{ color: "var(--theme-text)" }}
+                      >
+                        Education/Community Commander
+                      </h4>
+                      <p
+                        className="font-medium transition-colors duration-3000"
+                        style={{ color: "var(--theme-primary)" }}
+                      >
+                        Snoozetown, LLC (Snooze, An AM Eatery)
+                      </p>
+                    </div>
+                    <span
+                      className="text-sm mt-1 md:mt-0 transition-colors duration-3000"
+                      style={{ color: "var(--theme-text-secondary)" }}
+                    >
+                      Denver, CO | 2018 - February 2025
+                    </span>
+                  </div>
+                  <ul
+                    className="list-disc list-inside space-y-1 text-sm transition-colors duration-3000"
+                    style={{ color: "var(--theme-text-secondary)" }}
+                  >
+                    <li>Built scalable national training infrastructure serving 2,000+ employees across 50+ locations</li>
+                    <li>
+                      Designed training infrastructure with real-time sync, API integrations, and automated deployment
+                    </li>
+                    <li>
+                      Inclusive design for neurodivergent employees improved training effectiveness for all - principle
+                      now guiding AI work
+                    </li>
+                  </ul>
+                </div>
+
+                <div
+                  className="pl-6 transition-all duration-3000"
+                  style={{ borderLeft: "4px solid var(--theme-secondary)" }}
+                >
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                    <div>
+                      <h4
+                        className="font-bold text-lg transition-colors duration-3000"
+                        style={{ color: "var(--theme-text)" }}
+                      >
+                        Director of Online Learning
+                      </h4>
+                      <p
+                        className="font-medium transition-colors duration-3000"
+                        style={{ color: "var(--theme-primary)" }}
+                      >
+                        Our Lady of the Lake University
+                      </p>
+                    </div>
+                    <span
+                      className="text-sm mt-1 md:mt-0 transition-colors duration-3000"
+                      style={{ color: "var(--theme-text-secondary)" }}
+                    >
+                      San Antonio, TX | 2012 - 2015
+                    </span>
+                  </div>
+                  <ul
+                    className="list-disc list-inside space-y-1 text-sm transition-colors duration-3000"
+                    style={{ color: "var(--theme-text-secondary)" }}
+                  >
+                    <li>Scaled educational technology infrastructure; pioneered SMS-based learning platform for underserved populations</li>
+                    <li>Architected infrastructure from 1,000 to 5,000+ concurrent users; led WCAG accessibility compliance</li>
+                    <li>Created first SMS-based learning platform in Texas higher education</li>
                   </ul>
                 </div>
               </div>
@@ -488,38 +583,73 @@ export function ResumeSection() {
               >
                 Education
               </h3>
-              <div
-                className="pl-6 transition-all duration-3000"
-                style={{ borderLeft: "4px solid var(--theme-accent)" }}
-              >
-                <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                  <div>
-                    <h4
-                      className="font-bold text-lg transition-colors duration-3000"
-                      style={{ color: "var(--theme-text)" }}
-                    >
-                      Bachelor of Science in Computer Science
-                    </h4>
-                    <p
-                      className="font-medium transition-colors duration-3000"
-                      style={{ color: "var(--theme-primary)" }}
-                    >
-                      University of Technology
-                    </p>
-                  </div>
-                  <span
-                    className="text-sm mt-1 md:mt-0 transition-colors duration-3000"
+              <div className="space-y-4">
+                <div
+                  className="pl-6 transition-all duration-3000"
+                  style={{ borderLeft: "4px solid var(--theme-accent)" }}
+                >
+                  <h4
+                    className="font-bold text-lg transition-colors duration-3000"
+                    style={{ color: "var(--theme-text)" }}
+                  >
+                    Master of Science, Online Teaching & Learning
+                  </h4>
+                  <p
+                    className="font-medium transition-colors duration-3000"
+                    style={{ color: "var(--theme-primary)" }}
+                  >
+                    California State University, East Bay
+                  </p>
+                </div>
+                <div
+                  className="pl-6 transition-all duration-3000"
+                  style={{ borderLeft: "4px solid var(--theme-accent)" }}
+                >
+                  <h4
+                    className="font-bold text-lg transition-colors duration-3000"
+                    style={{ color: "var(--theme-text)" }}
+                  >
+                    Professional Teaching Credential
+                  </h4>
+                  <p
+                    className="font-medium transition-colors duration-3000"
+                    style={{ color: "var(--theme-primary)" }}
+                  >
+                    University of San Francisco
+                  </p>
+                </div>
+                <div
+                  className="pl-6 transition-all duration-3000"
+                  style={{ borderLeft: "4px solid var(--theme-accent)" }}
+                >
+                  <h4
+                    className="font-bold text-lg transition-colors duration-3000"
+                    style={{ color: "var(--theme-text)" }}
+                  >
+                    Bachelor of Arts, Drama
+                  </h4>
+                  <p
+                    className="font-medium transition-colors duration-3000"
+                    style={{ color: "var(--theme-primary)" }}
+                  >
+                    Stanford University
+                  </p>
+                </div>
+                <div className="pt-2">
+                  <h4
+                    className="font-semibold mb-2 transition-colors duration-3000"
+                    style={{ color: "var(--theme-text)" }}
+                  >
+                    Current Professional Development (2025)
+                  </h4>
+                  <p
+                    className="text-sm transition-colors duration-3000"
                     style={{ color: "var(--theme-text-secondary)" }}
                   >
-                    2015 - 2019
-                  </span>
+                    Advanced AI Evaluation Methodologies · LangChain & Production AI Agent Development · Google UX
+                    Design Professional Certificate · Cloud Architecture for AI Workloads
+                  </p>
                 </div>
-                <p
-                  className="text-sm transition-colors duration-3000"
-                  style={{ color: "var(--theme-text-secondary)" }}
-                >
-                  Focus: Human-Computer Interaction & Web Development
-                </p>
               </div>
             </section>
 
@@ -535,10 +665,12 @@ export function ResumeSection() {
                 className="list-disc list-inside space-y-2 text-sm transition-colors duration-3000"
                 style={{ color: "var(--theme-text-secondary)" }}
               >
-                <li>Developed award-winning portfolio site featured on Awwwards</li>
-                <li>Open source contributor with 50+ GitHub repositories</li>
-                <li>Speaker at Web Accessibility Conference 2024</li>
-                <li>Published articles on creative coding and accessibility</li>
+                <li>Created first SMS-based learning platform in Texas higher education for underserved communities</li>
+                <li>Pioneered all-neurodivergent customer service team model demonstrating measurable performance advantages</li>
+                <li>Developed AI-powered training systems integrating accessibility-first design principles</li>
+                <li>Influenced statewide technology policy through Texas Higher Education Coordinating Board advisory role</li>
+                <li>Built platforms scaling from 1,000 to 5,000+ concurrent users while maintaining performance standards</li>
+                <li>Designed secure, compliant architectures meeting HIPAA and FERPA requirements</li>
               </ul>
             </section>
           </div>
@@ -561,7 +693,6 @@ export function ResumeSection() {
                   border: "1px solid var(--theme-border)",
                 }}
               >
-                <Mail className="w-5 h-5" />
                 Get In Touch
               </AudioButton>
             </Link>

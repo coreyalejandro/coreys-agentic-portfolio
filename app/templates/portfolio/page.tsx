@@ -5,20 +5,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
-import {
-  ArrowRight,
-  ExternalLink,
-  Github,
-  Eye,
-  Heart,
-  Star,
-  Sparkles,
-  Zap,
-  Target,
-  Palette,
-  Layers,
-  Orbit,
-} from "lucide-react"
 
 export default function PortfolioTemplate() {
   const [scrollY, setScrollY] = useState(0)
@@ -151,7 +137,6 @@ export default function PortfolioTemplate() {
               `,
             }}
           >
-            <Sparkles className="w-4 h-4 mr-2" />
             {badge}
           </Badge>
         ))}
@@ -168,7 +153,6 @@ export default function PortfolioTemplate() {
               className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-bold px-8 py-4 rounded-full shadow-2xl"
               style={{ transform: `rotate(${Math.sin(time * 0.6) * 3}deg)` }}
             >
-              <Orbit className="w-5 h-5 mr-2" />
               Enter the Chaos
             </Button>
           </Link>
@@ -178,7 +162,6 @@ export default function PortfolioTemplate() {
               className="border-orange-400 text-orange-700 hover:bg-orange-100 font-semibold px-8 py-4 rounded-full backdrop-blur-sm bg-white/30"
               style={{ transform: `rotate(${Math.cos(time * 0.7) * -3}deg)` }}
             >
-              <Github className="w-5 h-5 mr-2" />
               Source Magic
             </Button>
           </Link>
@@ -237,7 +220,6 @@ export default function PortfolioTemplate() {
                   <CardContent className="relative h-full p-8 flex flex-col justify-between text-white z-10">
                     <div>
                       <div className="flex items-center gap-2 mb-4">
-                        <Layers className="w-5 h-5" />
                         <span className="text-sm font-medium opacity-80">Project #{i + 1}</span>
                       </div>
 
@@ -265,14 +247,8 @@ export default function PortfolioTemplate() {
 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4 text-sm">
-                        <div className="flex items-center gap-1">
-                          <Heart className="w-4 h-4" />
-                          <span>{Math.floor(Math.random() * 100) + 20}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Eye className="w-4 h-4" />
-                          <span>{Math.floor(Math.random() * 500) + 100}</span>
-                        </div>
+                        <span>{Math.floor(Math.random() * 100) + 20}</span>
+                        <span>{Math.floor(Math.random() * 500) + 100}</span>
                       </div>
 
                       <Link href="/">
@@ -281,7 +257,6 @@ export default function PortfolioTemplate() {
                           className="bg-white/20 hover:bg-white/30 text-white border-white/30 backdrop-blur-sm group/btn"
                         >
                           Explore
-                          <ArrowRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
                         </Button>
                       </Link>
                     </div>
@@ -291,7 +266,6 @@ export default function PortfolioTemplate() {
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <Link href="/">
                       <Button className="bg-white text-orange-600 hover:bg-white/90 font-bold">
-                        <ExternalLink className="w-4 h-4 mr-2" />
                         Launch Project
                       </Button>
                     </Link>
@@ -320,11 +294,11 @@ export default function PortfolioTemplate() {
 
         <div className="relative max-w-6xl mx-auto h-96">
           {[
-            { name: "Neural Motion", level: 95, icon: Zap, position: { x: 20, y: 30 } },
-            { name: "Chaos Design", level: 98, icon: Palette, position: { x: 70, y: 20 } },
-            { name: "Joy Engineering", level: 92, icon: Sparkles, position: { x: 60, y: 70 } },
-            { name: "Reality Bending", level: 89, icon: Target, position: { x: 15, y: 80 } },
-            { name: "Soul Coding", level: 94, icon: Star, position: { x: 80, y: 50 } },
+            { name: "Neural Motion", level: 95, position: { x: 20, y: 30 } },
+            { name: "Chaos Design", level: 98, position: { x: 70, y: 20 } },
+            { name: "Joy Engineering", level: 92, position: { x: 60, y: 70 } },
+            { name: "Reality Bending", level: 89, position: { x: 15, y: 80 } },
+            { name: "Soul Coding", level: 94, position: { x: 80, y: 50 } },
           ].map((skill, i) => (
             <div
               key={i}
@@ -340,10 +314,6 @@ export default function PortfolioTemplate() {
               }}
             >
               <Card className="bg-white/10 backdrop-blur-sm border-orange-300/30 p-6 text-center group-hover:scale-125 transition-all duration-500 shadow-2xl">
-                <skill.icon
-                  className="w-12 h-12 mx-auto mb-4 text-orange-600"
-                  style={{ transform: `rotate(${time * 20 + i * 45}deg)` }}
-                />
                 <div className="text-orange-800 font-bold text-lg">{skill.name}</div>
                 <div className="text-3xl font-black text-red-600 mt-2">{skill.level}%</div>
               </Card>
@@ -384,7 +354,6 @@ export default function PortfolioTemplate() {
                 className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-black text-xl px-12 py-6 rounded-full shadow-2xl transform hover:scale-110 transition-all duration-300"
                 style={{ transform: `rotate(${Math.sin(time * 0.8) * 3}deg)` }}
               >
-                <Orbit className="w-6 h-6 mr-3" />
                 Start the Chaos
               </Button>
             </Link>
@@ -394,7 +363,6 @@ export default function PortfolioTemplate() {
                 className="border-2 border-orange-400 text-orange-700 hover:bg-orange-100 font-bold text-xl px-12 py-6 rounded-full backdrop-blur-sm bg-white/30"
                 style={{ transform: `rotate(${Math.cos(time * 0.9) * -3}deg)` }}
               >
-                <Palette className="w-6 h-6 mr-3" />
                 See My Soul
               </Button>
             </Link>

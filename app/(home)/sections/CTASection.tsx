@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Heart, ArrowRight, Star, Eye, Waves, Palette, Zap, Sparkles, Orbit } from "lucide-react"
 import Link from "next/link"
 import { useAnimation } from "@/hooks/useAnimation"
 import { AudioSection } from "@/components/audio-experience/audio-section"
@@ -73,7 +72,6 @@ export function CTASection() {
                     description="Start creating with the Creative Chaos design system"
                     className="bg-amber-400 hover:bg-amber-300 text-black font-semibold rounded-full px-6 py-3 inline-flex items-center"
                   >
-                    <Heart className="w-4 h-4 mr-2" />
                     Start Creating
                   </AudioButton>
                 </Link>
@@ -98,7 +96,7 @@ export function CTASection() {
                   className="bg-white/20 border-white/30 text-white placeholder:text-white/60 rounded-xl"
                 />
                 <Button className="bg-linear-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 rounded-xl">
-                  <ArrowRight className="w-4 h-4" />
+                  Go
                 </Button>
               </div>
             </div>
@@ -123,10 +121,8 @@ export function CTASection() {
               transform: `translate(${-Math.sin(time * 1.1) * 25}px, ${Math.cos(time * 0.9) * 18}px) rotate(${time * 15}deg)`,
             }}
           >
-            <div className="flex items-center space-x-1">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <Star key={i} className="w-6 h-6 fill-amber-300 text-amber-300" />
-              ))}
+            <div className="flex items-center space-x-1 text-amber-300 font-bold text-sm">
+              ★★★★★
             </div>
           </div>
         </div>
@@ -175,15 +171,6 @@ function FeatureCards({ time }: { time: number }) {
                 }}
               >
                 <div className="flex items-start space-x-6">
-                  <div
-                    className="rounded-2xl p-4"
-                    style={{
-                      background: "linear-gradient(135deg, var(--theme-accent), var(--theme-secondary))",
-                      transition: "background 3s ease-in-out",
-                    }}
-                  >
-                    <Eye className="w-12 h-12 text-white" />
-                  </div>
                   <div className="flex-1">
                     <h3
                       className="text-4xl font-black mb-4"
@@ -238,7 +225,6 @@ function FeatureCards({ time }: { time: number }) {
                     transition: "background 3s ease-in-out",
                   }}
                 >
-                  <Waves className="w-8 h-8 mb-3" />
                   <h4 className="text-xl font-bold mb-2">Fluid Motion</h4>
                   <p className="text-sm opacity-90">Every interaction flows</p>
                 </div>
@@ -250,13 +236,6 @@ function FeatureCards({ time }: { time: number }) {
                     transition: "all 3s ease-in-out",
                   }}
                 >
-                  <Palette
-                    className="w-8 h-8 mb-3"
-                    style={{
-                      color: "var(--theme-accent)",
-                      transition: "color 3s ease-in-out",
-                    }}
-                  />
                   <h4 className="text-xl font-bold mb-2">Living Colors</h4>
                   <p className="text-sm text-muted-foreground">Gradients that breathe</p>
                 </div>
@@ -271,11 +250,11 @@ function FeatureCards({ time }: { time: number }) {
 
 function SuperpowersSection({ time }: { time: number }) {
   const skills = [
-    { name: "Neural Motion", level: 95, icon: Zap, position: { x: 20, y: 30 } },
-    { name: "Chaos Design", level: 98, icon: Palette, position: { x: 70, y: 20 } },
-    { name: "Joy Engineering", level: 92, icon: Sparkles, position: { x: 60, y: 70 } },
-    { name: "Reality Bending", level: 89, icon: Orbit, position: { x: 15, y: 80 } },
-    { name: "Soul Coding", level: 94, icon: Star, position: { x: 80, y: 50 } },
+    { name: "Neural Motion", level: 95, position: { x: 20, y: 30 } },
+    { name: "Chaos Design", level: 98, position: { x: 70, y: 20 } },
+    { name: "Joy Engineering", level: 92, position: { x: 60, y: 70 } },
+    { name: "Reality Bending", level: 89, position: { x: 15, y: 80 } },
+    { name: "Soul Coding", level: 94, position: { x: 80, y: 50 } },
   ]
 
   return (
@@ -326,14 +305,6 @@ function SuperpowersSection({ time }: { time: number }) {
                 transition: "all 3s ease-in-out",
               }}
             >
-              <skill.icon
-                className="w-12 h-12 mx-auto mb-4"
-                style={{
-                  transform: `rotate(${time * 20 + i * 45}deg)`,
-                  color: "var(--theme-accent)",
-                  transition: "color 3s ease-in-out",
-                }}
-              />
               <div
                 className="font-bold text-lg"
                 style={{
@@ -393,7 +364,6 @@ function FinalCTA({ time }: { time: number }) {
                 transition: "background 3s ease-in-out",
               }}
             >
-              <Orbit className="w-6 h-6 mr-3" />
               Start the Chaos
             </AudioButton>
           </Link>

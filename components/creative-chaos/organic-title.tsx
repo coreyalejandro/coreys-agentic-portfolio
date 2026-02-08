@@ -84,7 +84,7 @@ export function OrganicTitle({
   className,
   mouseInteraction = true,
   time: externalTime,
-  rotations = [-3, 2, -1],
+  rotations = [-1, 2, -1],
   gradients = [
     "",
     "bg-gradient-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent",

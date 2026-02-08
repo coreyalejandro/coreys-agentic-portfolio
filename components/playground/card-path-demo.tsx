@@ -2,6 +2,10 @@
 
 import { CardPathScene } from "@/components/card-path/card-path-scene";
 
+type CardPathDemoProps = {
+  variant?: "default" | "creative-chaos";
+};
+
 const cards = [
   {
     id: "card-1",
@@ -30,18 +34,52 @@ const cards = [
   },
 ];
 
-export function CardPathDemo() {
+export function CardPathDemo({ variant = "default" }: CardPathDemoProps) {
+  const isCreativeChaos = variant === "creative-chaos";
+
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
+    <div
+      className={
+        isCreativeChaos
+          ? "min-h-screen text-white"
+          : "min-h-screen bg-slate-50 text-slate-900"
+      }
+      style={
+        isCreativeChaos
+          ? {
+              background:
+                "linear-gradient(135deg, rgba(146, 64, 14, 0.5), rgba(92, 25, 2, 0.6), rgba(185, 28, 28, 0.5))",
+            }
+          : undefined
+      }
+    >
       <section className="mx-auto flex min-h-screen max-w-5xl flex-col px-6 pb-32 pt-20">
         <header className="mb-20 space-y-4">
-          <p className="text-xs uppercase tracking-[0.25em] text-slate-400">
+          <p
+            className={
+              isCreativeChaos
+                ? "text-xs uppercase tracking-[0.25em] text-orange-200/90"
+                : "text-xs uppercase tracking-[0.25em] text-slate-400"
+            }
+          >
             Immersive 3D Reading Path
           </p>
-          <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+          <h1
+            className={
+              isCreativeChaos
+                ? "text-balance text-4xl font-semibold tracking-tight sm:text-5xl text-white"
+                : "text-balance text-4xl font-semibold tracking-tight sm:text-5xl"
+            }
+          >
             Cards that become a glowing road into another dimension
           </h1>
-          <p className="max-w-2xl text-sm text-slate-500 sm:text-base">
+          <p
+            className={
+              isCreativeChaos
+                ? "max-w-2xl text-sm text-white/80 sm:text-base"
+                : "max-w-2xl text-sm text-slate-500 sm:text-base"
+            }
+          >
             Scroll down. Each card begins upright like a signpost. Once
             you&apos;ve scrolled through it, the card lays flat and lights up,
             joining the others as part of a glowing footpath into the unknown.

@@ -57,6 +57,11 @@ export function LaydownCard({ title, description, children, className, image }: 
     }
   }, [isHovered])
 
+  // Tunnel travel: card recedes into tunnel (away from user) when hovered; same level, no vertical rise
+  const travelPhase = isHovered ? (time * 0.025) % 1 : 0
+  const travelZ = -travelPhase * 280
+  const warpStreakCount = 24
+
   return (
     <div
       ref={containerRef}
@@ -71,6 +76,61 @@ export function LaydownCard({ title, description, children, className, image }: 
         setScrollDepth(0)
       }}
     >
+      {/* Black hole travel: card recedes into vortex — dark center, accretion ring, spiral-in streaks */}
+      <div
+        className="absolute inset-0 pointer-events-none overflow-hidden rounded-xl"
+        style={{ perspective: "2000px", transformStyle: "preserve-3d" }}
+      >
+        {/* Singularity: dark center (black hole) */}
+        <div
+          className="absolute inset-0 rounded-xl"
+          style={{
+            background: isHovered
+              ? `radial-gradient(ellipse 35% 35% at 50% 50%, rgba(0, 0, 0, ${0.5 + travelPhase * 0.15}) 0%, rgba(30, 0, 0, 0.25) 40%, transparent 70%)`
+              : "radial-gradient(ellipse 45% 45% at 50% 50%, rgba(0, 0, 0, 0.2) 0%, transparent 55%)",
+            transition: "background 0.5s ease-out",
+          }}
+        />
+        {/* Accretion ring: hot matter orbiting the hole */}
+        <div
+          className="absolute inset-0 rounded-xl"
+          style={{
+            background: isHovered
+              ? `radial-gradient(ellipse 55% 55% at 50% 50%, transparent 18%, rgba(234, 88, 12, ${0.06 + travelPhase * 0.03}) 22%, rgba(185, 28, 28, 0.08) 28%, rgba(234, 88, 12, 0.04) 32%, transparent 38%)`
+              : "radial-gradient(ellipse 55% 55% at 50% 50%, transparent 22%, rgba(234, 88, 12, 0.04) 26%, transparent 32%)",
+            transition: "background 0.5s ease-out",
+          }}
+        />
+        {/* Spiral-in streaks: matter/light pulled toward center — no lines, gradients only */}
+        {[...Array(warpStreakCount)].map((_, i) => {
+          const baseAngle = (i / warpStreakCount) * 360
+          const spiralAngle = baseAngle + (isHovered ? travelPhase * 180 : 0)
+          const streakOpacity = isHovered ? 0.06 + (Math.sin(i * 0.7 + time * 1.5) * 0.02 + 0.02) : 0.02
+          return (
+            <div
+              key={i}
+              className="absolute left-1/2 top-1/2 w-full origin-center blur-xl"
+              style={{
+                height: "6%",
+                transform: `translate(-50%, -50%) rotate(${spiralAngle}deg)`,
+                background: `linear-gradient(90deg, transparent 0%, transparent 25%, rgba(234, 88, 12, ${streakOpacity * 0.5}) 45%, rgba(251, 191, 36, ${streakOpacity}) 55%, rgba(185, 28, 28, ${streakOpacity * 0.6}) 70%, transparent 100%)`,
+                transition: "transform 0.4s ease-out, background 0.3s ease-out",
+              }}
+            />
+          )
+        })}
+        {/* Gravitational lensing: soft bent-light halo at the edge */}
+        <div
+          className="absolute inset-0 rounded-xl"
+          style={{
+            background: isHovered
+              ? `radial-gradient(ellipse 95% 95% at 50% 50%, transparent 55%, rgba(234, 88, 12, ${0.02 * (1 - travelPhase)}) 75%, transparent 90%)`
+              : "none",
+            transition: "opacity 0.5s ease-out",
+          }}
+        />
+      </div>
+
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(12)].map((_, i) => {
           const pathProgress = scrollDepth * 5 - i * 0.3
@@ -115,7 +175,7 @@ export function LaydownCard({ title, description, children, className, image }: 
             ? `
                 rotateX(88deg) 
                 translateY(-150px)
-                translateZ(${-200 - scrollDepth * 600}px) 
+                translateZ(${-200 - scrollDepth * 600 + travelZ}px) 
                 scaleY(${2 + scrollDepth * 3}) 
                 scale(0.85)
               `
@@ -140,7 +200,7 @@ export function LaydownCard({ title, description, children, className, image }: 
       >
         {image && (
           <div
-            className="relative h-48 overflow-hidden bg-gradient-to-br from-orange-600 via-red-700 to-amber-800"
+            className="relative h-48 overflow-hidden bg-linear-to-br from-orange-600 via-red-700 to-amber-800"
             style={{
               transform: isHovered
                 ? `translate(${mousePosition.x * 0.01}px, ${mousePosition.y * 0.008}px) scale(1.05)`
@@ -148,9 +208,9 @@ export function LaydownCard({ title, description, children, className, image }: 
             }}
           >
             {image}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
             <div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+              className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent"
               style={{
                 transform: `translateX(${-100 + ((time * 20) % 200)}%)`,
                 transition: "transform 0.1s linear",
@@ -242,7 +302,7 @@ export function LaydownCard({ title, description, children, className, image }: 
         )}
 
         <div
-          className="absolute inset-0 rounded-xl bg-gradient-to-br from-orange-400/20 via-red-500/20 to-amber-500/20 pointer-events-none"
+          className="absolute inset-0 rounded-xl bg-linear-to-br from-orange-400/20 via-red-500/20 to-amber-500/20 pointer-events-none"
           style={{
             opacity: isHovered ? 0.6 : 0.2 + Math.sin(time * 0.5) * 0.1,
             background: `
@@ -270,6 +330,8 @@ export function LaydownCard({ title, description, children, className, image }: 
       <div
         className="absolute inset-0 -z-10 rounded-xl blur-2xl"
         style={{
+          left: 456,
+          top: 357,
           background: `
             radial-gradient(
               ellipse at center,
@@ -278,7 +340,11 @@ export function LaydownCard({ title, description, children, className, image }: 
               transparent 70%
             )
           `,
-          transform: `scale(${1.1 + Math.sin(time * 0.4) * 0.05}) translateY(${10 + Math.sin(time * 0.3) * 5}px)`,
+          transform: `
+            scale(${(1.1 + Math.sin(time * 0.4) * 0.05) * (isHovered ? 1 - travelPhase * 0.06 : 1)})
+            translateY(${10 + Math.sin(time * 0.3) * 5}px)
+          `,
+          transition: "transform 0.4s ease-out",
         }}
       />
 

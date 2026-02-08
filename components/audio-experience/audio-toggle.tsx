@@ -1,6 +1,5 @@
 "use client"
 
-import { Volume2, VolumeX, AlertCircle } from "lucide-react"
 import { useAudioEngine } from "./audio-engine"
 
 export function AudioToggle() {
@@ -21,13 +20,6 @@ export function AudioToggle() {
         title={isActive ? "Disable immersive audio" : "Enable immersive audio experience"}
         disabled={!!error}
       >
-        {error ? (
-          <AlertCircle className="w-5 h-5" />
-        ) : isActive ? (
-          <Volume2 className="w-5 h-5" />
-        ) : (
-          <VolumeX className="w-5 h-5" />
-        )}
         <span className="text-sm font-semibold">{error ? "Audio Error" : isActive ? "Audio On" : "Audio Mode"}</span>
       </button>
 

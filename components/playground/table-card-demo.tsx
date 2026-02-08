@@ -2,11 +2,30 @@
 
 import { useState } from "react";
 
-export function TableCardDemo() {
+type TableCardDemoProps = {
+  variant?: "default" | "creative-chaos";
+};
+
+export function TableCardDemo({ variant = "default" }: TableCardDemoProps) {
   const [isLaidDown, setIsLaidDown] = useState(false);
+  const isCreativeChaos = variant === "creative-chaos";
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full min-h-[600px] bg-gray-100 p-8 rounded-xl">
+    <div
+      className={
+        isCreativeChaos
+          ? "flex flex-col items-center justify-center w-full h-full min-h-[600px] p-8 rounded-2xl"
+          : "flex flex-col items-center justify-center w-full h-full min-h-[600px] bg-gray-100 p-8 rounded-xl"
+      }
+      data-variant={isCreativeChaos ? "creative-chaos" : undefined}
+      style={
+        isCreativeChaos
+          ? {
+              background: "linear-gradient(135deg, rgba(146, 64, 14, 0.4), rgba(92, 25, 2, 0.5), rgba(185, 28, 28, 0.4))",
+            }
+          : undefined
+      }
+    >
       <div className="table-container">
         <div
           className={`card ${isLaidDown ? "is-laid-down" : ""}`}
@@ -15,17 +34,12 @@ export function TableCardDemo() {
         >
           <div className="card-inner">
             <div className="card-front">
-              <img
-                src="https://picsum.photos/300/200"
-                alt="Placeholder"
-                className="card-image"
-              />
-              <h2 className="text-2xl font-bold mb-2">Vertical Card</h2>
-              <p>Click the card or button to lay it down.</p>
+              <h2 className={isCreativeChaos ? "card-front-title-cc" : ""}>Vertical Card</h2>
+              <p className={isCreativeChaos ? "card-front-body-cc" : ""}>Click the card or button to lay it down.</p>
             </div>
             <div className="card-back">
-              <h1 className="text-2xl font-bold">Back Side</h1>
-              <p>Now I'm flat!</p>
+              <h1 className={isCreativeChaos ? "card-back-title-cc" : ""}>Back Side</h1>
+              <p className={isCreativeChaos ? "card-back-body-cc" : ""}>Now I'm flat!</p>
             </div>
           </div>
         </div>
@@ -33,7 +47,11 @@ export function TableCardDemo() {
 
       <button
         onClick={() => setIsLaidDown(!isLaidDown)}
-        className="mt-8 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+        className={
+          isCreativeChaos
+            ? "mt-8 px-6 py-3 bg-linear-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 text-white font-semibold rounded-full shadow-lg transition-all"
+            : "mt-8 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+        }
       >
         Toggle Lay Down Effect
       </button>
@@ -51,6 +69,11 @@ export function TableCardDemo() {
           background-color: #4caf50; /* Green "table" background */
           overflow: hidden; /* Helps contain movement if the card dips below the container */
           border-radius: 12px;
+        }
+
+        [data-variant="creative-chaos"] .table-container {
+          background: linear-gradient(135deg, rgba(234, 88, 12, 0.6), rgba(185, 28, 28, 0.7), rgba(217, 119, 6, 0.6));
+          border-radius: 1rem;
         }
 
         /* --- Card Base Styling --- */
@@ -105,20 +128,57 @@ export function TableCardDemo() {
           color: #333;
         }
 
+        [data-variant="creative-chaos"] .card-front {
+          background: linear-gradient(135deg, rgba(234, 88, 12, 0.95), rgba(185, 28, 28, 0.9) 50%, rgba(217, 119, 6, 0.95));
+          color: white;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-variant="creative-chaos"] .card-front .card-front-title-cc {
+          font-size: 1.5rem;
+          font-weight: 800;
+          letter-spacing: -0.02em;
+          color: white;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+          margin-bottom: 0.5rem;
+        }
+
+        [data-variant="creative-chaos"] .card-front .card-front-body-cc {
+          font-size: 0.875rem;
+          color: rgba(255, 255, 255, 0.9);
+          line-height: 1.5;
+        }
+
         .card-back {
           background-color: #333;
           color: white;
           transform: rotateX(180deg); /* Oriented correctly for when the card flips */
         }
 
-        /* --- Content Styling --- */
-        .card-image {
-          width: 100%;
-          height: auto;
-          border-radius: 8px;
-          margin-bottom: 15px;
-          object-fit: cover;
+        [data-variant="creative-chaos"] .card-back {
+          background: linear-gradient(135deg, rgba(146, 64, 14, 0.95), rgba(92, 25, 2, 1));
+          color: white;
+          border: 1px solid rgba(255, 255, 255, 0.15);
         }
+
+        [data-variant="creative-chaos"] .card-back .card-back-title-cc {
+          font-size: 1.5rem;
+          font-weight: 800;
+          letter-spacing: -0.02em;
+          color: white;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-variant="creative-chaos"] .card-back .card-back-body-cc {
+          font-size: 0.875rem;
+          color: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-variant="creative-chaos"] .card {
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+
       `}</style>
     </div>
   );

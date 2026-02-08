@@ -2,18 +2,16 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { ArrowLeft, Palette, Zap, Layout, Code, Eye, Sparkles } from "lucide-react"
-
 export default function DesignDocumentation() {
   const [activeSection, setActiveSection] = useState("principles")
 
   const sections = [
-    { id: "principles", title: "Core Principles", icon: Sparkles },
-    { id: "colors", title: "Color Philosophy", icon: Palette },
-    { id: "motion", title: "Motion & Animation", icon: Zap },
-    { id: "layouts", title: "Layout Patterns", icon: Layout },
-    { id: "components", title: "Component Rules", icon: Code },
-    { id: "implementation", title: "Implementation Guide", icon: Eye },
+    { id: "principles", title: "Core Principles" },
+    { id: "colors", title: "Color Philosophy" },
+    { id: "motion", title: "Motion & Animation" },
+    { id: "layouts", title: "Layout Patterns" },
+    { id: "components", title: "Component Rules" },
+    { id: "implementation", title: "Implementation Guide" },
   ]
 
   return (
@@ -26,7 +24,6 @@ export default function DesignDocumentation() {
             href="/"
             className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-8 transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" />
             Back to Home
           </Link>
 
@@ -48,23 +45,19 @@ export default function DesignDocumentation() {
           {/* Navigation Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-8 space-y-2">
-              {sections.map((section) => {
-                const Icon = section.icon
-                return (
-                  <button
-                    key={section.id}
-                    onClick={() => setActiveSection(section.id)}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all ${
-                      activeSection === section.id
-                        ? "bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg"
-                        : "text-gray-700 hover:bg-white/50"
-                    }`}
-                  >
-                    <Icon className="w-5 h-5" />
-                    {section.title}
-                  </button>
-                )
-              })}
+              {sections.map((section) => (
+                <button
+                  key={section.id}
+                  onClick={() => setActiveSection(section.id)}
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all ${
+                    activeSection === section.id
+                      ? "bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg"
+                      : "text-gray-700 hover:bg-white/50"
+                  }`}
+                >
+                  {section.title}
+                </button>
+              ))}
             </div>
           </div>
 

@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link"
 import { OrganicTitle } from "@/components/creative-chaos/organic-title"
 import { FloatingCard } from "@/components/creative-chaos/floating-card"
 import { LaydownCard } from "@/components/laydown-card"
@@ -6,17 +7,28 @@ import { AudioSection } from "@/components/audio-experience/audio-section"
 import { AudioButton } from "@/components/audio-experience/audio-button"
 import { AudioToggle } from "@/components/audio-experience/audio-toggle"
 import { ProjectModal } from "@/components/project-modal"
-import FloatingNav from "@/components/floating-nav"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { ScrollCardDemo } from "@/components/playground/scroll-card-demo"
+import { TableCardDemo } from "@/components/playground/table-card-demo"
+import { CardPathDemo } from "@/components/playground/card-path-demo"
 import { useState, useEffect, useRef } from "react"
 
 export default function ComponentsPage() {
   const [time, setTime] = useState(0)
   const [selectedComponent, setSelectedComponent] = useState("LaydownCard")
+  const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null)
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview")
   const [copiedComponent, setCopiedComponent] = useState<string | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [selectedProject, setSelectedProject] = useState<any>(null)
+
+  const templates = [
+    { id: "hero", name: "Hero", description: "Elaborate hero with layered parallax and neural depth motion", href: "/templates/hero", gradient: "from-orange-600 via-red-700 to-amber-800", buttonGradient: "from-orange-600 to-red-700 hover:from-orange-700 hover:to-red-800" },
+    { id: "landing", name: "Landing", description: "Full landing page with advanced parallax sections", href: "/templates/landing", gradient: "from-amber-700 via-orange-800 to-red-900", buttonGradient: "from-amber-600 to-orange-700 hover:from-amber-700 hover:to-orange-800" },
+    { id: "portfolio", name: "Portfolio", description: "Showcase template with innovative motion effects", href: "/templates/portfolio", gradient: "from-red-800 via-amber-900 to-orange-900", buttonGradient: "from-red-600 to-amber-700 hover:from-red-700 hover:to-amber-800" },
+    { id: "resume", name: "Resume", description: "Professional resume with PDF download and breathing backgrounds", href: "/templates/resume", gradient: "from-orange-500 via-red-600 to-amber-700", buttonGradient: "from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700" },
+  ]
   const requestRef = useRef<number>(0)
 
   useEffect(() => {
@@ -81,9 +93,9 @@ export function LaydownCard({ title, description, children, className, image }: 
         }}
       >
         {image && (
-          <div className="relative h-48 overflow-hidden bg-gradient-to-br from-orange-600 via-red-700 to-amber-800">
+          <div className="relative h-48 overflow-hidden bg-linear-to-br from-orange-600 via-red-700 to-amber-800">
             {image}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
           </div>
         )}
 
@@ -95,7 +107,7 @@ export function LaydownCard({ title, description, children, className, image }: 
         {children && <CardContent className="text-white/80">{children}</CardContent>}
 
         <div
-          className="absolute inset-0 rounded-xl bg-gradient-to-br from-orange-400/20 via-red-500/20 to-amber-500/20 pointer-events-none transition-opacity duration-700"
+          className="absolute inset-0 rounded-xl bg-linear-to-br from-orange-400/20 via-red-500/20 to-amber-500/20 pointer-events-none transition-opacity duration-700"
           style={{
             opacity: isHovered ? 0.6 : 0.2,
           }}
@@ -110,17 +122,8 @@ export function LaydownCard({ title, description, children, className, image }: 
             title="Laydown Effect"
             description="Hover to see the card lay down flat with smooth 3D perspective transforms and depth"
             className="w-full max-w-lg"
-            image={
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="text-6xl">🎨</div>
-              </div>
-            }
           >
             <div className="space-y-4">
-              <p className="text-white/90 leading-relaxed">
-                This card demonstrates a 3D laydown animation effect. When you hover over it, the card rotates on the
-                X-axis to create a laying down motion with perspective depth.
-              </p>
               <div className="flex gap-3">
                 <div className="px-4 py-2 bg-white/20 rounded-lg text-sm font-medium">Interactive</div>
                 <div className="px-4 py-2 bg-white/20 rounded-lg text-sm font-medium">3D Transform</div>
@@ -199,13 +202,13 @@ export function BreathingBackground({
       name: "FloatingParticles",
       category: "Effects",
       description: "Organic particle systems that respond to mouse movement",
-      importPath: "@/components/creative-chaos/floating-particles",
+      importPath: "@/components/animations/FloatingOrb",
       code: `<FloatingParticles 
   count={15}
   mouseInteraction={true}
 />`,
       preview: (
-        <div className="relative w-full h-[400px] bg-gradient-to-br from-orange-900 to-red-900 rounded-2xl overflow-hidden">
+        <div className="relative w-full h-[400px] bg-linear-to-br from-orange-900 to-red-900 rounded-2xl overflow-hidden">
           {[...Array(15)].map((_, i) => (
             <div
               key={i}
@@ -270,7 +273,7 @@ export function OrganicTitle({ lines, className = "", mouseInteraction = true }:
   }, [mouseInteraction])
 
   const rotations = [-3, 2, -1]
-  const gradients = ["", "bg-gradient-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent", ""]
+  const gradients = ["", "bg-linear-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent", ""]
 
   return (
     <div
@@ -367,7 +370,7 @@ export function FloatingCard({
 }
 `,
       preview: (
-        <div className="relative flex items-center justify-center min-h-[500px] bg-gradient-to-br from-orange-800 via-red-900 to-amber-900 rounded-2xl overflow-hidden">
+        <div className="relative flex items-center justify-center min-h-[500px] bg-linear-to-br from-orange-800 via-red-900 to-amber-900 rounded-2xl overflow-hidden">
           {/* Background particles for depth */}
           {[...Array(8)].map((_, i) => (
             <div
@@ -390,14 +393,9 @@ export function FloatingCard({
 
           <FloatingCard className="max-w-md shadow-2xl">
             <div className="space-y-4">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-2xl">
-                  ✨
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-white">Floating Card</h3>
-                  <p className="text-sm text-white/60">Interactive Component</p>
-                </div>
+              <div className="mb-4">
+                <h3 className="text-2xl font-bold text-white">Floating Card</h3>
+                <p className="text-sm text-white/60">Interactive Component</p>
               </div>
               <p className="text-white/80 leading-relaxed">
                 This card floats and responds to your mouse movement, creating an organic, living interface that feels
@@ -476,7 +474,7 @@ export function AudioSection({ id, title, description, position, children }: Aud
   )
 }`,
       preview: (
-        <div className="relative w-full min-h-[400px] bg-gradient-to-br from-orange-800 to-red-900 rounded-2xl overflow-hidden p-8">
+        <div className="relative w-full min-h-[400px] bg-linear-to-br from-orange-800 to-red-900 rounded-2xl overflow-hidden p-8">
           <AudioSection
             id="demo-section"
             title="Demo Section"
@@ -531,10 +529,10 @@ export function AudioButton({ children, onClick, className = "", description }: 
   )
 }`,
       preview: (
-        <div className="flex items-center justify-center min-h-[400px] bg-gradient-to-br from-orange-800 to-red-900 rounded-2xl gap-4 flex-wrap">
+        <div className="flex items-center justify-center min-h-[400px] bg-linear-to-br from-orange-800 to-red-900 rounded-2xl gap-4 flex-wrap">
           <AudioButton
             description="Primary action button clicked"
-            className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 text-white font-semibold px-8 py-4 rounded-full shadow-lg"
+            className="bg-linear-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 text-white font-semibold px-8 py-4 rounded-full shadow-lg"
           >
             Click Me
           </AudioButton>
@@ -554,7 +552,6 @@ export function AudioButton({ children, onClick, className = "", description }: 
       importPath: "@/components/audio-experience/audio-toggle",
       code: `"use client"
 
-import { Volume2, VolumeX, AlertCircle } from "lucide-react"
 import { useAudioEngine } from "./audio-engine"
 
 export function AudioToggle() {
@@ -569,18 +566,11 @@ export function AudioToggle() {
     <div className="fixed top-6 right-6 z-50">
       <button
         onClick={handleToggle}
-        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+        className="flex items-center gap-2 px-4 py-2 bg-linear-to-r from-orange-500 to-red-500 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
         aria-label={isActive ? "Disable audio experience" : "Enable audio experience"}
         aria-pressed={isActive}
         disabled={!!error}
       >
-        {error ? (
-          <AlertCircle className="w-5 h-5" />
-        ) : isActive ? (
-          <Volume2 className="w-5 h-5" />
-        ) : (
-          <VolumeX className="w-5 h-5" />
-        )}
         <span className="text-sm font-semibold">
           {error ? "Audio Error" : isActive ? "Audio On" : "Audio Mode"}
         </span>
@@ -589,7 +579,7 @@ export function AudioToggle() {
   )
 }`,
       preview: (
-        <div className="relative w-full min-h-[400px] bg-gradient-to-br from-orange-800 to-red-900 rounded-2xl overflow-hidden flex items-center justify-center">
+        <div className="relative w-full min-h-[400px] bg-linear-to-br from-orange-800 to-red-900 rounded-2xl overflow-hidden flex items-center justify-center">
           <div className="relative">
             <AudioToggle />
             <p className="text-white/80 text-center mt-20">
@@ -632,7 +622,7 @@ const [selectedProject, setSelectedProject] = useState(null)
   impact: "The impact"
 }`,
       preview: (
-        <div className="relative w-full min-h-[500px] bg-gradient-to-br from-orange-800 to-red-900 rounded-2xl overflow-hidden p-8 flex items-center justify-center">
+        <div className="relative w-full min-h-[500px] bg-linear-to-br from-orange-800 to-red-900 rounded-2xl overflow-hidden p-8 flex items-center justify-center">
           <div className="text-white text-center space-y-4">
             <h3 className="text-2xl font-bold">Project Modal</h3>
             <p className="text-white/80 max-w-md">
@@ -682,9 +672,9 @@ export default function Layout() {
   )
 }`,
       preview: (
-        <div className="relative w-full min-h-[400px] bg-gradient-to-br from-orange-800 to-red-900 rounded-2xl overflow-hidden">
+        <div className="relative w-full min-h-[400px] bg-linear-to-br from-orange-800 to-red-900 rounded-2xl overflow-hidden">
           <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10">
-            <div className="bg-gradient-to-r from-orange-800/95 via-red-800/95 to-amber-800/95 backdrop-blur-xl border border-orange-600/40 rounded-full px-4 py-2 shadow-2xl">
+            <div className="bg-linear-to-r from-orange-800/95 via-red-800/95 to-amber-800/95 backdrop-blur-xl border border-orange-600/40 rounded-full px-4 py-2 shadow-2xl">
               <div className="flex items-center space-x-4 text-sm text-white">
                 <span className="font-bold">Creative Chaos</span>
                 <span className="text-orange-200">Templates</span>
@@ -702,9 +692,64 @@ export default function Layout() {
         </div>
       ),
     },
+    {
+      name: "ScrollCardDemo",
+      category: "3D Cards",
+      description: "Scroll-triggered card that lays down as it enters the viewport",
+      importPath: "@/components/playground/scroll-card-demo",
+      code: `"use client"
+
+import { ScrollCardDemo } from "@/components/playground/scroll-card-demo"
+
+// Default or Creative Chaos styling
+<ScrollCardDemo />
+<ScrollCardDemo variant="creative-chaos" />`,
+      preview: (
+        <div className="relative w-full min-h-[700px] bg-linear-to-br from-orange-800 via-red-900 to-amber-900 rounded-2xl overflow-hidden">
+          <ScrollCardDemo variant="creative-chaos" />
+        </div>
+      ),
+    },
+    {
+      name: "TableCardDemo",
+      category: "3D Cards",
+      description: "Click-triggered card that lays down on interaction",
+      importPath: "@/components/playground/table-card-demo",
+      code: `"use client"
+
+import { TableCardDemo } from "@/components/playground/table-card-demo"
+
+// Default or Creative Chaos styling
+<TableCardDemo />
+<TableCardDemo variant="creative-chaos" />`,
+      preview: (
+        <div className="flex items-center justify-center min-h-[600px] bg-linear-to-br from-orange-800 via-red-900 to-amber-900 rounded-2xl overflow-hidden p-8">
+          <TableCardDemo variant="creative-chaos" />
+        </div>
+      ),
+    },
+    {
+      name: "CardPathDemo",
+      category: "3D Cards",
+      description: "Immersive scroll-driven path where cards become a glowing road",
+      importPath: "@/components/playground/card-path-demo",
+      code: `"use client"
+
+import { CardPathDemo } from "@/components/playground/card-path-demo"
+
+// Default or Creative Chaos styling
+<CardPathDemo />
+<CardPathDemo variant="creative-chaos" />`,
+      preview: (
+        <div className="relative w-full min-h-[800px] bg-linear-to-br from-orange-800 via-red-900 to-amber-900 rounded-2xl overflow-hidden">
+          <CardPathDemo variant="creative-chaos" />
+        </div>
+      ),
+    },
   ]
 
   const selectedComponentData = components.find((c) => c.name === selectedComponent) || components[0]
+  const selectedTemplateData = templates.find((t) => t.id === selectedTemplate)
   const categories = Array.from(new Set(components.map((c) => c.category)))
 
   return (
@@ -752,18 +797,19 @@ export default function Layout() {
                         <li key={component.name}>
                           <button
                             onClick={() => {
+                              setSelectedTemplate(null)
                               setSelectedComponent(component.name)
                               setSidebarOpen(false)
                             }}
                             className={`
                               w-full text-left px-3 py-2 rounded-lg transition-all
                               ${
-                                selectedComponent === component.name
+                                !selectedTemplate && selectedComponent === component.name
                                   ? "bg-orange-600 text-white shadow-lg"
                                   : "text-white/70 hover:bg-white/10 hover:text-white"
                               }
                             `}
-                            aria-current={selectedComponent === component.name ? "page" : undefined}
+                            aria-current={!selectedTemplate && selectedComponent === component.name ? "page" : undefined}
                           >
                             <div className="font-medium">{component.name}</div>
                             <div className="text-xs opacity-70 mt-0.5 line-clamp-1">{component.description}</div>
@@ -773,6 +819,34 @@ export default function Layout() {
                   </ul>
                 </div>
               ))}
+
+              <div className="mb-6">
+                <h2 className="text-xs font-bold text-white/40 uppercase tracking-wider mb-2 px-3">Templates</h2>
+                <ul className="space-y-1">
+                  {templates.map((t) => (
+                    <li key={t.id}>
+                      <button
+                        onClick={() => {
+                          setSelectedTemplate(t.id)
+                          setSidebarOpen(false)
+                        }}
+                        className={`
+                          w-full text-left px-3 py-2 rounded-lg transition-all
+                          ${
+                            selectedTemplate === t.id
+                              ? "bg-orange-600 text-white shadow-lg"
+                              : "text-white/70 hover:bg-white/10 hover:text-white"
+                          }
+                        `}
+                        aria-current={selectedTemplate === t.id ? "page" : undefined}
+                      >
+                        <div className="font-medium">{t.name}</div>
+                        <div className="text-xs opacity-70 mt-0.5 line-clamp-1">{t.description}</div>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </nav>
 
             {/* Sidebar Footer */}
@@ -790,114 +864,140 @@ export default function Layout() {
           <div className="w-5 h-5 text-white">☰</div>
         </button>
 
-        <main className="flex-1 overflow-y-auto" role="main">
+        <main className="flex-1 overflow-y-auto pt-14" role="main">
           <div className="container mx-auto px-4 lg:px-8 py-8">
-            {/* Component Header */}
-            <div className="mb-8">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h2 className="text-4xl font-black text-white mb-2">{selectedComponentData.name}</h2>
-                  <p className="text-lg text-white/70">{selectedComponentData.description}</p>
+            {selectedTemplateData ? (
+              <>
+                <div className="mb-8">
+                  <h2 className="text-4xl font-black text-white mb-2">{selectedTemplateData.name} Template</h2>
+                  <p className="text-lg text-white/70">{selectedTemplateData.description}</p>
                 </div>
-                <span className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm text-white/80 border border-white/20">
-                  {selectedComponentData.category}
-                </span>
-              </div>
-            </div>
-
-            <div className="mb-6">
-              <div
-                className="inline-flex bg-black/30 backdrop-blur-sm rounded-lg p-1 border border-white/10"
-                role="tablist"
-                aria-label="Component view options"
-              >
-                <button
-                  onClick={() => setActiveTab("preview")}
-                  className={`
-                    px-6 py-2 rounded-md font-medium transition-all
-                    ${activeTab === "preview" ? "bg-orange-600 text-white shadow-lg" : "text-white/60 hover:text-white"}
-                  `}
-                  role="tab"
-                  aria-selected={activeTab === "preview"}
-                  aria-controls="preview-panel"
-                >
-                  Preview
-                </button>
-                <button
-                  onClick={() => setActiveTab("code")}
-                  className={`
-                    px-6 py-2 rounded-md font-medium transition-all
-                    ${activeTab === "code" ? "bg-orange-600 text-white shadow-lg" : "text-white/60 hover:text-white"}
-                  `}
-                  role="tab"
-                  aria-selected={activeTab === "code"}
-                  aria-controls="code-panel"
-                >
-                  Code
-                </button>
-              </div>
-            </div>
-
-            <div className="bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
-              {activeTab === "preview" && (
-                <div id="preview-panel" role="tabpanel" aria-labelledby="preview-tab" className="p-8">
-                  {selectedComponentData.preview}
+                <Card className="group hover:shadow-xl transition-all duration-300 max-w-2xl border border-white/10 bg-black/40 overflow-hidden">
+                  <div className={`relative overflow-hidden rounded-t-lg h-48 bg-linear-to-br ${selectedTemplateData.gradient}`}>
+                    <div className="absolute inset-0 bg-linear-to-tr from-transparent via-amber-400/20 to-orange-500/30" />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-white">{selectedTemplateData.name} Template</CardTitle>
+                    <CardDescription className="text-white/80">{selectedTemplateData.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Link href={selectedTemplateData.href}>
+                      <Button className={`w-full bg-linear-to-r ${selectedTemplateData.buttonGradient} text-white`}>
+                        View Template
+                        <span className="w-4 h-4 ml-2 inline-block">→</span>
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </>
+            ) : (
+              <>
+                {/* Component Header */}
+                <div className="mb-8">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <h2 className="text-4xl font-black text-white mb-2">{selectedComponentData.name}</h2>
+                      <p className="text-lg text-white/70">{selectedComponentData.description}</p>
+                    </div>
+                    <span className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm text-white/80 border border-white/20">
+                      {selectedComponentData.category}
+                    </span>
+                  </div>
                 </div>
-              )}
 
-              {activeTab === "code" && (
-                <div id="code-panel" role="tabpanel" aria-labelledby="code-tab" className="relative">
-                  <div className="absolute top-4 right-4 z-10">
-                    <Button
-                      onClick={() => copyToClipboard(selectedComponentData.code)}
-                      className="bg-orange-600 hover:bg-orange-500 text-white font-semibold rounded-lg"
-                      aria-label="Copy code to clipboard"
+                <div className="mb-6">
+                  <div
+                    className="inline-flex bg-black/30 backdrop-blur-sm rounded-lg p-1 border border-white/10"
+                    role="tablist"
+                    aria-label="Component view options"
+                  >
+                    <button
+                      onClick={() => setActiveTab("preview")}
+                      className={`
+                        px-6 py-2 rounded-md font-medium transition-all
+                        ${activeTab === "preview" ? "bg-orange-600 text-white shadow-lg" : "text-white/60 hover:text-white"}
+                      `}
+                      role="tab"
+                      aria-selected={activeTab === "preview"}
+                      aria-controls="preview-panel"
                     >
-                      {copiedComponent === selectedComponent ? "Copied!" : "Copy Code"}
-                    </Button>
-                  </div>
-                  <div className="p-8 font-mono text-sm text-gray-100 overflow-x-auto bg-gray-900/95">
-                    <pre className="whitespace-pre-wrap break-words">{selectedComponentData.code}</pre>
+                      Preview
+                    </button>
+                    <button
+                      onClick={() => setActiveTab("code")}
+                      className={`
+                        px-6 py-2 rounded-md font-medium transition-all
+                        ${activeTab === "code" ? "bg-orange-600 text-white shadow-lg" : "text-white/60 hover:text-white"}
+                      `}
+                      role="tab"
+                      aria-selected={activeTab === "code"}
+                      aria-controls="code-panel"
+                    >
+                      Code
+                    </button>
                   </div>
                 </div>
-              )}
-            </div>
 
-            <div className="mt-12 grid md:grid-cols-2 gap-6">
-              <div className="bg-gray-900/95 rounded-lg p-6 border border-white/10">
-                <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
-                  <span className="text-orange-400">📦</span>
-                  Installation
-                </h3>
-                <div className="bg-gray-900/95 rounded-lg p-4 font-mono text-xs text-gray-100 mb-3 overflow-x-auto">
-                  <pre className="whitespace-pre-wrap break-words">{`import { ${selectedComponentData.name} } from "${selectedComponentData.importPath}"`}</pre>
+                {activeTab === "preview" && (
+                  <div id="preview-panel" role="tabpanel" aria-labelledby="preview-tab" className="min-h-[200px]">
+                    {selectedComponentData.preview}
+                  </div>
+                )}
+
+                {activeTab === "code" && (
+                  <div className="bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
+                    <div id="code-panel" role="tabpanel" aria-labelledby="code-tab" className="relative">
+                      <div className="absolute top-4 right-4 z-10">
+                        <Button
+                          onClick={() => copyToClipboard(selectedComponentData.code)}
+                          className="bg-orange-600 hover:bg-orange-500 text-white font-semibold rounded-lg"
+                          aria-label="Copy code to clipboard"
+                        >
+                          {copiedComponent === selectedComponent ? "Copied!" : "Copy Code"}
+                        </Button>
+                      </div>
+                      <div className="p-8 font-mono text-sm text-gray-100 overflow-x-auto bg-gray-900/95">
+                        <pre className="whitespace-pre-wrap wrap-break-word">{selectedComponentData.code}</pre>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <div className="mt-12 grid md:grid-cols-2 gap-6">
+                  <div className="bg-gray-900/95 rounded-lg p-6 border border-white/10">
+                    <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                      Installation
+                    </h3>
+                    <div className="bg-gray-900/95 rounded-lg p-4 font-mono text-xs text-gray-100 mb-3 overflow-x-auto">
+                      <pre className="whitespace-pre-wrap wrap-break-word">{`import { ${selectedComponentData.name} } from "${selectedComponentData.importPath}"`}</pre>
+                    </div>
+                    <p className="text-sm text-white/70">
+                      Import the component and use it with your preferred props and styling.
+                    </p>
+                  </div>
+
+                  <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10">
+                    <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                      Customization
+                    </h3>
+                    <ul className="text-sm text-white/70 space-y-2">
+                      <li className="flex items-start gap-2">
+                        <span className="text-orange-400 mt-0.5">•</span>
+                        <span>Adjust colors to match your brand palette</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-orange-400 mt-0.5">•</span>
+                        <span>Control animation intensity and behavior</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-orange-400 mt-0.5">•</span>
+                        <span>Toggle mouse interaction on or off</span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-                <p className="text-sm text-white/70">
-                  Import the component and use it with your preferred props and styling.
-                </p>
-              </div>
-
-              <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10">
-                <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
-                  <span className="text-orange-400">⚙️</span>
-                  Customization
-                </h3>
-                <ul className="text-sm text-white/70 space-y-2">
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-400 mt-0.5">•</span>
-                    <span>Adjust colors to match your brand palette</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-400 mt-0.5">•</span>
-                    <span>Control animation intensity and behavior</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-400 mt-0.5">•</span>
-                    <span>Toggle mouse interaction on or off</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+              </>
+            )}
           </div>
         </main>
       </div>

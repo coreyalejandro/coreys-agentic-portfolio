@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Sparkles, Orbit, Github, Layers, Heart, Eye, ArrowRight, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { useAnimation } from "@/hooks/useAnimation"
 import { AudioSection } from "@/components/audio-experience/audio-section"
@@ -197,7 +196,6 @@ export function PortfolioSection() {
                 transition: "background-color 3s ease-in-out, border-color 3s ease-in-out, color 3s ease-in-out",
               }}
             >
-              <Sparkles className="w-4 h-4 mr-2" />
               {badge}
             </Badge>
           ))}
@@ -218,7 +216,6 @@ export function PortfolioSection() {
                   transition: "background 3s ease-in-out",
                 }}
               >
-                <Orbit className="w-5 h-5 mr-2" />
                 Enter the Chaos
               </AudioButton>
             </Link>
@@ -233,7 +230,6 @@ export function PortfolioSection() {
                   transition: "all 3s ease-in-out",
                 }}
               >
-                <Github className="w-5 h-5 mr-2" />
                 Source Magic
               </AudioButton>
             </Link>
@@ -304,7 +300,6 @@ export function PortfolioSection() {
                     <CardContent className="relative h-full p-8 flex flex-col justify-between text-white z-10">
                       <div>
                         <div className="flex items-center gap-2 mb-4">
-                          <Layers className="w-5 h-5" />
                           <span className="text-sm font-medium opacity-80">Project #{i + 1}</span>
                         </div>
 
@@ -328,19 +323,12 @@ export function PortfolioSection() {
 
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4 text-sm">
-                          <div className="flex items-center gap-1">
-                            <Heart className="w-4 h-4" />
-                            <span>{projectStats[i]?.likes ?? 20}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <Eye className="w-4 h-4" />
-                            <span>{projectStats[i]?.views ?? 100}</span>
-                          </div>
+                          <span>{projectStats[i]?.likes ?? 20}</span>
+                          <span>{projectStats[i]?.views ?? 100}</span>
                         </div>
 
                         <Button size="sm" className="bg-white/20 hover:bg-white/30 text-white border-white/30">
                           Explore
-                          <ArrowRight className="w-4 h-4 ml-1" />
                         </Button>
                       </div>
                     </CardContent>
@@ -348,7 +336,6 @@ export function PortfolioSection() {
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <Button className="bg-white text-orange-600 hover:bg-white/90 font-bold">
-                        <ExternalLink className="w-4 h-4 mr-2" />
                         View Details
                       </Button>
                     </div>

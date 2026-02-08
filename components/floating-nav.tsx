@@ -1,27 +1,35 @@
 "use client"
 
-import {
-  Maximize2,
-  Minimize2,
-  Zap,
-  SlidersHorizontal,
-  FileText,
-  FolderOpen,
-  LayoutTemplate,
-  Beaker,
-  BookOpen,
-  Volume2,
-  VolumeX,
-  Move,
-  Home,
-  Box,
-} from "lucide-react"
 import type React from "react"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useAudioEngine } from "@/components/audio-experience/audio-engine"
+import { NAV_ITEMS, NAV_GROUPS } from "@/lib/floating-nav-schema"
+import { useVoiceNav } from "@/hooks/useVoiceNav"
+import { cn } from "@/lib/utils"
+
+/** Group order for predictable layout */
+const GROUP_ORDER: (typeof NAV_GROUPS)[number]["id"][] = [
+  "explore",
+  "templates",
+  "tools",
+  "demos",
+  "sections",
+]
+
+function groupNavItems() {
+  const byGroup = new Map<string, (typeof NAV_ITEMS)[number][]>()
+  for (const item of NAV_ITEMS) {
+    const g = item.group ?? "explore"
+    if (!byGroup.has(g)) byGroup.set(g, [])
+    byGroup.get(g)!.push(item)
+  }
+  return GROUP_ORDER.flatMap((g) => byGroup.get(g) ?? [])
+}
 
 export default function FloatingNav() {
+  const router = useRouter()
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [opacity, setOpacity] = useState(0.95)
   const [showOpacityControl, setShowOpacityControl] = useState(false)
@@ -33,6 +41,41 @@ export default function FloatingNav() {
   const navRef = useRef<HTMLDivElement>(null)
   const [isDragging, setIsDragging] = useState(false)
   const { isActive: audioEnabled, toggleAudio } = useAudioEngine()
+
+  const handleVoiceCommand = useCallback(
+    (cmd: import("@/hooks/useVoiceNav").VoiceNavCommand) => {
+      if (!cmd) return
+      if (cmd.type === "navigate") {
+        router.push(cmd.href)
+        return
+      }
+      if (cmd.type === "detach") {
+        setIsDraggable(true)
+        setIsCollapsed(false)
+        return
+      }
+      if (cmd.type === "dock") {
+        setIsDraggable(false)
+        setIsCollapsed(false)
+        setPosition({ x: 0, y: 0 })
+        return
+      }
+      if (cmd.type === "opacity-toggle") {
+        setShowOpacityControl((v) => !v)
+        return
+      }
+      if (cmd.type === "audio-toggle") {
+        toggleAudio()
+      }
+    },
+    [router, toggleAudio]
+  )
+
+  const { isSupported: voiceSupported, isListening, toggleListening } =
+    useVoiceNav({
+      onCommand: handleVoiceCommand,
+      enabled: true,
+    })
 
   useEffect(() => {
     if (isDraggable) return
@@ -53,8 +96,8 @@ export default function FloatingNav() {
       }
     }
 
-    window.addEventListener("scroll", handleScroll)
-    window.addEventListener("mousemove", handleMouseMove)
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    window.addEventListener("mousemove", handleMouseMove, { passive: true })
 
     hideTimerRef.current = setTimeout(() => {
       if (!isHovered && window.scrollY > 30) setIsVisible(false)
@@ -67,237 +110,241 @@ export default function FloatingNav() {
     }
   }, [isDraggable, isHovered])
 
-  const handleMouseDown = (e: React.MouseEvent) => {
+  const runDrag = useCallback((offsetX: number, offsetY: number) => {
+    const onMove = (e: MouseEvent) => {
+      setPosition({
+        x: e.clientX - offsetX,
+        y: e.clientY - offsetY,
+      })
+    }
+    const onUp = () => {
+      setIsDragging(false)
+      window.removeEventListener("mousemove", onMove)
+      window.removeEventListener("mouseup", onUp)
+      document.body.style.removeProperty("user-select")
+      document.body.style.removeProperty("cursor")
+    }
+    document.body.style.userSelect = "none"
+    document.body.style.cursor = "grabbing"
+    window.addEventListener("mousemove", onMove, { passive: true })
+    window.addEventListener("mouseup", onUp, { once: true })
+  }, [])
+
+  const handleDragStart = (e: React.MouseEvent) => {
     if (!isDraggable || isCollapsed) return
-
+    const el = navRef.current
+    if (!el) return
+    const rect = el.getBoundingClientRect()
     setIsDragging(true)
-    const navElement = navRef.current
-    if (navElement) {
-      const rect = navElement.getBoundingClientRect()
-      const startX = e.clientX - rect.left
-      const startY = e.clientY - rect.top
-
-      const handleMouseMove = (moveEvent: MouseEvent) => {
-        setPosition({
-          x: moveEvent.clientX - startX,
-          y: moveEvent.clientY - startY,
-        })
-      }
-
-      const handleMouseUp = () => {
-        setIsDragging(false)
-        window.removeEventListener("mousemove", handleMouseMove)
-        window.removeEventListener("mouseup", handleMouseUp)
-      }
-
-      window.addEventListener("mousemove", handleMouseMove)
-      window.addEventListener("mouseup", handleMouseUp)
-    }
+    runDrag(e.clientX - rect.left, e.clientY - rect.top)
   }
 
-  const handleCollapsedMouseDown = (e: React.MouseEvent) => {
+  const handleCollapsedDragStart = (e: React.MouseEvent) => {
     if (!isDraggable) return
-
+    const el = navRef.current
+    if (!el) return
+    const rect = el.getBoundingClientRect()
     setIsDragging(true)
-    const navElement = navRef.current
-    if (navElement) {
-      const rect = navElement.getBoundingClientRect()
-      const startX = e.clientX - rect.left
-      const startY = e.clientY - rect.top
-
-      const handleMouseMove = (moveEvent: MouseEvent) => {
-        setPosition({
-          x: moveEvent.clientX - startX,
-          y: moveEvent.clientY - startY,
-        })
-      }
-
-      const handleMouseUp = () => {
-        setIsDragging(false)
-        window.removeEventListener("mousemove", handleMouseMove)
-        window.removeEventListener("mouseup", handleMouseUp)
-      }
-
-      window.addEventListener("mousemove", handleMouseMove)
-      window.addEventListener("mouseup", handleMouseUp)
-    }
+    runDrag(e.clientX - rect.left, e.clientY - rect.top)
   }
 
-  const leftNavItems = [
-    { name: "Documentation", href: "/documentation", icon: BookOpen },
-    { name: "Resume", href: "/templates/resume", icon: FileText },
-    { name: "Superpowers", href: "/#superpowers", icon: Zap },
-    { name: "Projects", href: "/#projects", icon: FolderOpen },
-  ]
-
-  const rightNavItems = [
-    { name: "Templates", href: "/templates", icon: LayoutTemplate },
-    { name: "Components", href: "/components", icon: Box },
-    { name: "Playground", href: "/playground", icon: Beaker },
-  ]
+  const groupedItems = groupNavItems()
 
   return (
     <nav
       ref={navRef}
-      className={`fixed z-50 transition-all duration-500 ${
-        isDraggable && !isCollapsed ? "cursor-move" : ""
-      } ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}
+      role="navigation"
+      aria-label="Main navigation"
+      className={cn(
+        "fixed z-50 top-0 left-0 right-0 w-full h-10 max-h-10 transition-[transform,opacity] duration-150 ease-out",
+        isDraggable && "touch-none cursor-grab active:cursor-grabbing",
+        isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+      )}
       style={
         isDraggable
-          ? {
-              left: `${position.x}px`,
-              top: `${position.y}px`,
-              transform: "none",
-            }
-          : {
-              top: "24px",
-              left: "50%",
-              transform: "translateX(-50%)",
-            }
+          ? { left: position.x, top: position.y, right: "auto", width: "fit-content", minWidth: 320, transform: "none" }
+          : undefined
       }
-      onMouseDown={handleMouseDown}
+      onMouseDown={(e) => {
+        if ((e.target as HTMLElement).closest("a, button[type='button']") && !isDraggable) return
+        if (isDraggable) handleDragStart(e)
+      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onKeyDown={(e) => {
+        if (e.key === "Escape" && (isDraggable || showOpacityControl)) {
+          if (showOpacityControl) setShowOpacityControl(false)
+          else if (isDraggable) {
+            setIsDraggable(false)
+            setPosition({ x: 0, y: 0 })
+          }
+          e.preventDefault()
+        }
+      }}
     >
       <div
-        className="backdrop-blur-xl rounded-full shadow-2xl transition-all duration-3000 relative"
+        className="backdrop-blur-md relative w-full h-10 flex items-center justify-center px-3 py-1 rounded-b-md border-b border-x shrink-0"
         style={{
           background: `rgba(30, 30, 30, ${opacity})`,
-          borderWidth: "1px",
-          borderStyle: "solid",
           borderColor: "var(--theme-card-border)",
-          boxShadow: isDraggable
-            ? "0 0 60px var(--theme-nav-glow), 0 10px 40px rgba(0,0,0,0.3)"
-            : "0 0 40px var(--theme-nav-glow)",
-          padding: isCollapsed ? "12px 16px" : "8px 16px",
+          boxShadow: isDraggable ? "0 2px 12px rgba(0,0,0,0.4)" : "0 1px 8px rgba(0,0,0,0.2)",
         }}
       >
         {isCollapsed ? (
           <div
-            className="flex items-center justify-center space-x-2 cursor-move"
-            onMouseDown={handleCollapsedMouseDown}
+            className="flex items-center justify-center gap-2 cursor-grab active:cursor-grabbing h-full"
+            onMouseDown={handleCollapsedDragStart}
+            role="button"
+            tabIndex={0}
+            aria-label="Collapsed bar. Drag to move. Activate to expand."
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault()
+                setIsDraggable(false)
+                setIsCollapsed(false)
+                setPosition({ x: 0, y: 0 })
+              }
+            }}
           >
-            <Move className="w-4 h-4 text-white/40" />
-            <span className="text-lg font-bold bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent">
-              CA
-            </span>
+            <span className="text-sm font-semibold text-white/90">CA</span>
             <button
+              type="button"
               onClick={(e) => {
                 e.stopPropagation()
                 setIsDraggable(false)
                 setIsCollapsed(false)
+                setPosition({ x: 0, y: 0 })
               }}
-              className="p-1.5 rounded-full transition-all duration-300 hover:scale-110"
-              style={{
-                background: "rgba(255, 255, 255, 0.1)",
-              }}
-              title="Dock nav bar"
+              className="px-2 py-0.5 rounded text-[13px] font-medium text-white/90 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-1 focus:ring-white/50 shrink-0"
+              aria-label="Expand and dock"
             >
-              <Minimize2 className="w-3.5 h-3.5 text-white/60" />
+              Expand
             </button>
           </div>
         ) : (
-          <div className="flex items-center justify-center space-x-1">
-            <button
-              onClick={(e) => {
-                e.stopPropagation()
-                if (isDraggable) {
-                  setIsCollapsed(true)
-                } else {
-                  setIsDraggable(true)
-                }
-              }}
-              className="p-1.5 rounded-full transition-all duration-300 hover:scale-110 group mr-1"
-              style={{
-                background: isDraggable ? "rgba(255, 255, 255, 0.15)" : "rgba(255, 255, 255, 0.05)",
-              }}
-              title={isDraggable ? "Collapse nav bar" : "Detach nav bar"}
-            >
-              <Maximize2 className="w-3.5 h-3.5 text-white/60 group-hover:text-white transition-colors" />
-            </button>
-
-            <button
-              onClick={(e) => {
-                e.stopPropagation()
-                setShowOpacityControl(!showOpacityControl)
-              }}
-              className="p-1.5 rounded-full transition-all duration-300 hover:scale-110 group mr-2"
-              style={{
-                background: showOpacityControl ? "rgba(255, 255, 255, 0.15)" : "rgba(255, 255, 255, 0.05)",
-              }}
-              title="Adjust opacity"
-            >
-              <SlidersHorizontal className="w-3.5 h-3.5 text-white/60 group-hover:text-white transition-colors" />
-            </button>
-
-            <div className="flex items-center space-x-1">
-              {leftNavItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="group relative p-2 rounded-full transition-all duration-300 hover:scale-110"
-                  onClick={(e) => isDragging && e.preventDefault()}
-                  title={item.name}
-                >
-                  <div className="group-hover:animate-pulse">
-                    <item.icon className="w-3.5 h-3.5 text-white/60 group-hover:text-white transition-colors" />
-                  </div>
-                  <div className="absolute right-0 bottom-0 w-full h-full rounded-full bg-white/0 group-hover:bg-white/10 transition-all duration-300" />
-                </Link>
-              ))}
-            </div>
-
-            <Link
-              href="/"
-              className="mx-3 px-4 py-2 rounded-full transition-all duration-300 hover:scale-110 group"
-              style={{
-                background: "linear-gradient(135deg, var(--theme-primary), var(--theme-secondary))",
-              }}
-              onClick={(e) => isDragging && e.preventDefault()}
-            >
-              <div className="flex items-center gap-2">
-                <Home className="w-4 h-4 text-white" />
-                <div className="text-sm font-bold text-white flex flex-col items-center leading-tight">
-                  <span>Corey</span>
-                  <span>Alejandro</span>
-                </div>
-              </div>
-            </Link>
-
-            <div className="flex items-center space-x-1">
-              {rightNavItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="group relative p-2 rounded-full transition-all duration-300 hover:scale-110"
-                  onClick={(e) => isDragging && e.preventDefault()}
-                  title={item.name}
-                >
-                  <div className="group-hover:animate-pulse">
-                    <item.icon className="w-3.5 h-3.5 text-white/60 group-hover:text-white transition-colors" />
-                  </div>
-                  <div className="absolute right-0 bottom-0 w-full h-full rounded-full bg-white/0 group-hover:bg-white/10 transition-all duration-300" />
-                </Link>
-              ))}
-
+          <div
+            className="flex items-center justify-center gap-x-3 w-full overflow-x-auto overflow-y-hidden scrollbar-hide flex-nowrap"
+            role="menubar"
+            aria-label="Navigation menu"
+          >
+            {/* Actions */}
+            <div className="flex items-center gap-x-2 shrink-0" role="group" aria-label="Bar controls">
               <button
+                type="button"
                 onClick={(e) => {
                   e.stopPropagation()
-                  toggleAudio()
+                  if (isDraggable) setIsCollapsed(true)
+                  else setIsDraggable(true)
                 }}
-                className="group relative p-2 rounded-full transition-all duration-300 hover:scale-110 ml-1"
-                title={audioEnabled ? "Disable Audio Mode" : "Enable Audio Mode"}
+                className={cn(
+                  "px-2 py-0.5 rounded text-[13px] font-medium text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-white/50 shrink-0",
+                  isDraggable && "bg-white/15"
+                )}
+                aria-label={isDraggable ? "Collapse bar" : "Detach bar to move"}
               >
-                <div className="group-hover:animate-pulse">
-                  {audioEnabled ? (
-                    <Volume2 className="w-3.5 h-3.5 text-green-400 group-hover:text-green-300 transition-colors" />
-                  ) : (
-                    <VolumeX className="w-3.5 h-3.5 text-white/60 group-hover:text-white transition-colors" />
-                  )}
-                </div>
-                <div className="absolute right-0 bottom-0 w-full h-full rounded-full bg-white/0 group-hover:bg-white/10 transition-all duration-300" />
+                {isDraggable ? "Collapse" : "Detach"}
               </button>
+
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setShowOpacityControl(!showOpacityControl)
+                }}
+                className={cn(
+                  "px-2 py-0.5 rounded text-[13px] font-medium text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-white/50 shrink-0",
+                  showOpacityControl && "bg-white/15"
+                )}
+                aria-label={showOpacityControl ? "Hide opacity" : "Show opacity"}
+                aria-expanded={showOpacityControl}
+              >
+                Opacity
+              </button>
+
+              {voiceSupported && (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    toggleListening()
+                  }}
+                  className={cn(
+                    "px-2 py-0.5 rounded text-[13px] font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-white/50 shrink-0",
+                    isListening ? "text-green-400 bg-green-400/20" : "text-white/90 hover:text-white hover:bg-white/10"
+                  )}
+                  aria-label={isListening ? "Stop voice" : "Start voice"}
+                  aria-pressed={isListening}
+                >
+                  {isListening ? "Listening" : "Voice"}
+                </button>
+              )}
             </div>
+
+            <span className="w-px h-4 bg-white/20 shrink-0" aria-hidden />
+
+            {/* Home */}
+            <Link
+              href="/"
+              className="shrink-0 px-2 py-0.5 rounded text-[13px] font-semibold transition-colors focus:outline-none focus:ring-1 focus:ring-white/50"
+              style={{
+                background: "linear-gradient(135deg, var(--theme-primary), var(--theme-secondary))",
+                color: "white",
+              }}
+              onClick={(e) => isDragging && e.preventDefault()}
+              aria-label="Home"
+              role="menuitem"
+            >
+              Home
+            </Link>
+
+            {/* Grouped nav items */}
+            {GROUP_ORDER.map((groupId) => {
+              const items = groupedItems.filter((i) => i.group === groupId)
+              if (items.length === 0) return null
+
+              const meta = NAV_GROUPS.find((g) => g.id === groupId)
+              return (
+                <div
+                  key={groupId}
+                  role="group"
+                  aria-label={meta?.label}
+                  className="flex items-center gap-x-1 shrink-0"
+                >
+                  <span className="w-px h-4 bg-white/20 shrink-0" aria-hidden />
+                  {items.map((item) => (
+                    <Link
+                      key={item.id}
+                      href={item.href}
+                      className="px-2 py-0.5 rounded text-[13px] font-medium text-white/90 hover:text-white hover:bg-white/10 transition-colors focus:outline-none focus:ring-1 focus:ring-white/50 whitespace-nowrap shrink-0"
+                      onClick={(e) => isDragging && e.preventDefault()}
+                      aria-label={item.ariaLabel}
+                      role="menuitem"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              )
+            })}
+
+            <span className="w-px h-4 bg-white/20 shrink-0" aria-hidden />
+
+            {/* Audio */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                toggleAudio()
+              }}
+              className={cn(
+                "px-2 py-0.5 rounded text-[13px] font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-white/50 shrink-0",
+                audioEnabled ? "text-green-400" : "text-white/90 hover:text-white hover:bg-white/10"
+              )}
+              aria-label={audioEnabled ? "Audio on" : "Audio off"}
+              aria-pressed={audioEnabled}
+            >
+              {audioEnabled ? "Audio on" : "Audio off"}
+            </button>
           </div>
         )}
 
@@ -311,10 +358,15 @@ export default function FloatingNav() {
               borderColor: "var(--theme-card-border)",
             }}
             onClick={(e) => e.stopPropagation()}
+            role="group"
+            aria-label="Opacity slider"
           >
             <div className="flex items-center space-x-3">
-              <span className="text-xs text-white/60 whitespace-nowrap">Opacity</span>
+              <label htmlFor="nav-opacity" className="text-xs text-white/60 whitespace-nowrap">
+                Opacity
+              </label>
               <input
+                id="nav-opacity"
                 type="range"
                 min="0.3"
                 max="1"
@@ -325,8 +377,14 @@ export default function FloatingNav() {
                 style={{
                   background: `linear-gradient(to right, var(--theme-accent) 0%, var(--theme-accent) ${opacity * 100}%, rgba(255,255,255,0.2) ${opacity * 100}%, rgba(255,255,255,0.2) 100%)`,
                 }}
+                aria-valuemin={30}
+                aria-valuemax={100}
+                aria-valuenow={Math.round(opacity * 100)}
+                aria-valuetext={`${Math.round(opacity * 100)} percent`}
               />
-              <span className="text-xs text-white/80 font-mono w-10">{Math.round(opacity * 100)}%</span>
+              <span className="text-xs text-white/80 font-mono w-10" aria-hidden>
+                {Math.round(opacity * 100)}%
+              </span>
             </div>
           </div>
         )}

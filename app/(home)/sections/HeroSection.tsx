@@ -1,5 +1,4 @@
 "use client"
-import { Heart, Play, Star, Zap, Sparkles, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { useAnimation } from "@/hooks/useAnimation"
 import { AudioSection } from "@/components/audio-experience/audio-section"
@@ -26,7 +25,31 @@ export function HeroSection() {
       description="Experience the Creative Chaos design philosophy. Living gradients, organic motion, and joyful interactions that breathe with every scroll."
       position={{ x: 0, y: 0, z: -5 }}
     >
-      <section className="relative min-h-screen rounded-3xl mb-16">
+      <section className="relative min-h-screen rounded-3xl mb-16 overflow-hidden">
+        {/* Orbiting "Creative Chaos" headline - orbits section, drops behind and emerges */}
+        <div
+          className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
+          aria-hidden
+        >
+          <div
+            className="absolute text-7xl md:text-8xl font-black text-white/30 select-none whitespace-nowrap transition-opacity duration-300"
+            style={{
+              transform: `
+                rotate(${time * 15}deg)
+                translateX(min(42vw, 380px))
+                rotate(${-time * 15}deg)
+              `,
+              opacity: (() => {
+                const angle = ((time * 15) % 360) * (Math.PI / 180)
+                const y = Math.sin(angle)
+                return y > 0 ? 0.4 : Math.max(0.02, 0.4 + y * 0.45)
+              })(),
+            }}
+          >
+            Creative Chaos
+          </div>
+        </div>
+
         {/* Breathing, Living Background */}
         <BreathingBackground time={time} variant="hero" className="rounded-3xl" />
 
@@ -34,7 +57,7 @@ export function HeroSection() {
         <ParticleField time={time} count={15} mouseInteraction={true} />
 
         {/* Main Hero Content */}
-        <div className="relative h-screen flex items-center">
+        <div className="relative z-10 h-screen flex items-center">
           <div className="container mx-auto px-4">
             {/* Main Title - Positioned Organically */}
             <div
@@ -69,7 +92,6 @@ export function HeroSection() {
                       description="Feel the magic - Contact me to start creating"
                       className="bg-amber-500 hover:bg-amber-400 text-black font-semibold rounded-full px-6 py-3 inline-flex items-center"
                     >
-                      <Heart className="w-4 h-4 mr-2" />
                       Feel the Magic
                     </AudioButton>
                   </Link>
@@ -85,39 +107,39 @@ export function HeroSection() {
               speed={{ x: 1.2, y: 1.0 }}
               className="bottom-32 left-1/4"
             >
-              <div className="bg-linear-to-br from-orange-400 to-red-500 rounded-full w-24 h-24 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
-                <Play className="w-8 h-8 text-white" />
+              <div className="bg-linear-to-br from-orange-400 to-red-500 rounded-full w-24 h-24 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform text-white font-bold text-2xl">
+                ▶
               </div>
             </FloatingElement>
 
-            <FloatingElement
-              time={time}
-              index={1}
-              amplitude={{ x: 25, y: 18 }}
-              speed={{ x: 0.9, y: 1.1 }}
-              className="top-1/2 right-1/4"
-            >
-              <Star className="w-12 h-12 text-amber-300 opacity-80" style={{ transform: `rotate(${time * 20}deg)` }} />
-            </FloatingElement>
           </div>
         </div>
 
         {/* Collage-Style Feature Section */}
-        <FeaturesCollage time={time} />
+        <div className="relative z-10">
+          <FeaturesCollage time={time} />
+        </div>
 
         {/* Interactive Neural Experience Section */}
-        <InteractiveNeuralSection time={time} mousePosition={mousePosition} />
+        <div className="relative z-10">
+          <InteractiveNeuralSection time={time} mousePosition={mousePosition} />
+        </div>
       </section>
     </AudioSection>
   )
 }
 
 /**
- * FeaturesCollage - Collage-style features subsection
+ * FeaturesCollage - Full-viewport custom section
+ * Combines background + three feature blocks. Section fills the entire viewport (1021×778 design reference).
  */
 function FeaturesCollage({ time }: { time: number }) {
   return (
-    <section className="py-32 relative overflow-hidden">
+    <section
+      className="relative overflow-hidden rounded-3xl"
+      style={{ width: "100vw", minHeight: "100vh" }}
+    >
+      {/* Background */}
       <div
         className="absolute inset-0 bg-linear-to-br from-amber-50 to-orange-100 rounded-3xl"
         style={{
@@ -125,46 +147,46 @@ function FeaturesCollage({ time }: { time: number }) {
         }}
       />
 
-      <div className="relative container mx-auto px-4">
-        <div className="grid grid-cols-12 gap-8 items-center">
-          {/* Large Feature */}
-          <div
-            className="col-span-12 md:col-span-7"
-            style={{
-              transform: `translate(${Math.sin(time * 0.6) * 10}px, ${Math.cos(time * 0.4) * 8}px) rotate(${Math.sin(time * 0.3) * 1}deg)`,
-            }}
-          >
-            <div className="bg-linear-to-br from-white to-amber-50 rounded-[4rem] p-12 shadow-2xl border border-orange-200/50">
-              <Zap className="w-16 h-16 text-orange-600 mb-6" />
-              <h3 className="text-4xl font-bold mb-4 text-balance">Neural Depth Revolution</h3>
-              <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
-                Experience interfaces that breathe, respond, and evolve with your every interaction
-              </p>
-            </div>
-          </div>
-
-          {/* Stacked Small Features */}
-          <div className="col-span-12 md:col-span-5 space-y-6">
+      {/* Content: three blocks */}
+      <div className="relative h-full min-h-screen w-full flex items-center justify-center">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-12 gap-8 items-center">
+            {/* Large Feature */}
             <div
-              className="bg-linear-to-r from-orange-500 to-red-600 rounded-3xl p-6 text-white transform rotate-2"
+              className="col-span-12 md:col-span-7"
               style={{
-                transform: `rotate(${2 + Math.sin(time * 0.8) * 2}deg) translate(${Math.cos(time) * 5}px, ${Math.sin(time * 1.1) * 3}px)`,
+                transform: `translate(${Math.sin(time * 0.6) * 10}px, ${Math.cos(time * 0.4) * 8}px) rotate(${Math.sin(time * 0.3) * 1}deg)`,
               }}
             >
-              <Sparkles className="w-8 h-8 mb-3" />
-              <h4 className="text-xl font-semibold mb-2">Motion Poetry</h4>
-              <p className="text-sm opacity-90">Every scroll tells a story</p>
+              <div className="bg-linear-to-br from-white to-amber-50 rounded-[4rem] p-12 shadow-2xl border border-orange-200/50">
+                <h3 className="text-4xl font-bold mb-4 text-balance">Neural Depth Revolution</h3>
+                <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
+                  Experience interfaces that breathe, respond, and evolve with your every interaction
+                </p>
+              </div>
             </div>
 
-            <div
-              className="bg-white rounded-3xl p-6 shadow-lg transform -rotate-1"
-              style={{
-                transform: `rotate(${-1 + Math.cos(time * 0.7) * 1.5}deg) translate(${-Math.sin(time * 0.9) * 8}px, ${Math.cos(time * 0.6) * 4}px)`,
-              }}
-            >
-              <ArrowRight className="w-8 h-8 text-orange-600 mb-3" />
-              <h4 className="text-xl font-semibold mb-2">Parallax Dreams</h4>
-              <p className="text-sm text-muted-foreground">Beyond traditional scrolling</p>
+            {/* Stacked Small Features */}
+            <div className="col-span-12 md:col-span-5 space-y-6">
+              <div
+                className="bg-linear-to-r from-orange-500 to-red-600 rounded-3xl p-6 text-white transform rotate-2"
+                style={{
+                  transform: `rotate(${2 + Math.sin(time * 0.8) * 2}deg) translate(${Math.cos(time) * 5}px, ${Math.sin(time * 1.1) * 3}px)`,
+                }}
+              >
+                <h4 className="text-xl font-semibold mb-2">Motion Poetry</h4>
+                <p className="text-sm opacity-90">Every scroll tells a story</p>
+              </div>
+
+              <div
+                className="bg-white rounded-3xl p-6 shadow-lg transform -rotate-1"
+                style={{
+                  transform: `rotate(${-1 + Math.cos(time * 0.7) * 1.5}deg) translate(${-Math.sin(time * 0.9) * 8}px, ${Math.cos(time * 0.6) * 4}px)`,
+                }}
+              >
+                <h4 className="text-xl font-semibold mb-2">Parallax Dreams</h4>
+                <p className="text-sm text-muted-foreground">Beyond traditional scrolling</p>
+              </div>
             </div>
           </div>
         </div>

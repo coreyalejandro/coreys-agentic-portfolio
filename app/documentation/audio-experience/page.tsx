@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Volume2, Code, Sparkles, Heart } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
@@ -8,7 +7,6 @@ export default function AudioExperiencePage() {
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 py-20">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-16">
-          <Volume2 className="w-16 h-16 text-orange-600 mx-auto mb-4" />
           <h1 className="text-6xl font-black text-transparent bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text mb-4">
             Audio Experience
           </h1>
@@ -20,8 +18,7 @@ export default function AudioExperiencePage() {
         <div className="space-y-8">
           <Card className="border-orange-200 shadow-lg">
             <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-2xl">
-                <Heart className="w-6 h-6 text-orange-600" />
+              <CardTitle className="text-2xl">
                 Why This Matters
               </CardTitle>
             </CardHeader>
@@ -40,8 +37,7 @@ export default function AudioExperiencePage() {
 
           <Card className="border-orange-200 shadow-lg">
             <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-2xl">
-                <Sparkles className="w-6 h-6 text-orange-600" />
+              <CardTitle className="text-2xl">
                 Key Features
               </CardTitle>
             </CardHeader>
@@ -81,8 +77,7 @@ export default function AudioExperiencePage() {
 
           <Card className="border-orange-200 shadow-lg">
             <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-2xl">
-                <Code className="w-6 h-6 text-orange-600" />
+              <CardTitle className="text-2xl">
                 How to Use
               </CardTitle>
             </CardHeader>

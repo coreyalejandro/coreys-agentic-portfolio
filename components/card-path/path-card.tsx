@@ -1,54 +1,30 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import {
-  motion,
-  useInView,
-  useMotionTemplate,
-  useSpring,
-  useTransform,
-} from "framer-motion";
+import { motion, useMotionTemplate, useSpring } from "framer-motion";
 
 type PathCardProps = {
   index: number;
   total: number;
   title: string;
   body: string;
+  cameraZ: number;
+  itemZ: number;
 };
 
-export function PathCard({ index, total, title, body }: PathCardProps) {
-  const ref = useRef<HTMLDivElement | null>(null);
+// Activated when we've "passed" this card in Z space (scroll = moving into depth)
+const ACTIVATE_THRESHOLD = 0.55; // fraction of distance to this card we must pass to count as "read"
 
-  // In-view detection
-  const inView = useInView(ref, {
-    amount: 0.7,
-    margin: "0px 0px -10% 0px",
-  });
+export function PathCard({ index, total, title, body, cameraZ, itemZ }: PathCardProps) {
+  const cardZ = -index * itemZ;
+  const activated = cameraZ >= index * itemZ * ACTIVATE_THRESHOLD;
 
-  // We only want the transition once: when the user has "read" the card.
-  const [activated, setActivated] = useState(false);
-
-  useEffect(() => {
-    if (inView) {
-      setActivated(true);
-    }
-  }, [inView]);
-
-  // 1. Upright → laying down (tilt toward the user then flatten)
-  const tilt = useSpring(activated ? 6 : 72, {
+  // Upright (signpost) → laying down on the path when we've passed it
+  const tilt = useSpring(activated ? 72 : 6, {
     stiffness: 130,
     damping: 18,
     mass: 0.7,
   });
 
-  // 2. Vertical offset: cards start floating, then drop to ground plane
-  const lift = useSpring(activated ? 0 : 80, {
-    stiffness: 140,
-    damping: 20,
-    mass: 0.8,
-  });
-
-  // 3. Glow intensity for already-read cards
   const glow = useSpring(activated ? 1 : 0, {
     stiffness: 120,
     damping: 22,
@@ -60,26 +36,16 @@ export function PathCard({ index, total, title, body }: PathCardProps) {
     0 0 60px rgba(59, 130, 246, ${glow})
   `;
 
-  // Slight depth + stagger to imply a forward path
-  const depth = -index * 80; // push each card a bit "forward"
-  const forwardOffset = index * 24; // gentle slope away from the user
-
   const isLast = index === total - 1;
-  
-  // Use useTransform for transforming the MotionValue to a computed value
-  // Original prompt code had: y: lift.to(...) which is not standard in newer framer-motion
-  // We use useTransform(lift, (v) => ...) instead
-  const y = useTransform(lift, (v) => forwardOffset + v * -1);
 
   return (
     <motion.div
-      ref={ref}
       className="card-path-item"
       style={{
         rotateX: tilt,
-        y, // transformed value
-        z: depth,
+        z: cardZ,
         boxShadow: glowShadow,
+        transformOrigin: "center bottom",
       }}
       transition={{ type: "spring" }}
     >

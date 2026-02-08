@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { X, Github, ExternalLink, Star, GitFork, Eye } from "lucide-react"
 import { rateLimiter, RATE_LIMITS } from "@/lib/rate-limiter"
 import { validateGitHubUrl } from "@/lib/sanitize"
 
@@ -147,13 +146,14 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
         {/* Close button */}
         <button
           onClick={onClose}
-          className="fixed top-8 right-8 z-10 p-3 rounded-full shadow-lg transition-all hover:scale-110 duration-[3000ms]"
+          className="fixed top-8 right-8 z-10 px-4 py-2 rounded-full shadow-lg transition-all hover:scale-110 duration-[3000ms] font-semibold"
           style={{
             backgroundColor: "var(--theme-card)",
             color: "var(--theme-text)",
           }}
+          aria-label="Close modal"
         >
-          <X className="w-6 h-6" />
+          Close
         </button>
 
         {/* Hero section with image carousel */}
@@ -242,7 +242,6 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                     border: "2px solid var(--theme-border)",
                   }}
                 >
-                  <Github className="w-5 h-5" />
                   View Code
                 </a>
               )}
@@ -257,7 +256,6 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                     color: "var(--theme-card)",
                   }}
                 >
-                  <ExternalLink className="w-5 h-5" />
                   Live Demo
                 </a>
               )}
@@ -267,17 +265,14 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             {githubStats && (
               <div className="flex flex-wrap gap-6 pt-4 transition-colors duration-[3000ms]">
                 <div className="flex items-center gap-2" style={{ color: "var(--theme-text)" }}>
-                  <Star className="w-5 h-5" style={{ color: "var(--theme-accent)" }} />
                   <span className="font-semibold">{githubStats.stars}</span>
                   <span className="text-sm">stars</span>
                 </div>
                 <div className="flex items-center gap-2" style={{ color: "var(--theme-text)" }}>
-                  <GitFork className="w-5 h-5" style={{ color: "var(--theme-accent)" }} />
                   <span className="font-semibold">{githubStats.forks}</span>
                   <span className="text-sm">forks</span>
                 </div>
                 <div className="flex items-center gap-2" style={{ color: "var(--theme-text)" }}>
-                  <Eye className="w-5 h-5" style={{ color: "var(--theme-accent)" }} />
                   <span className="font-semibold">{githubStats.watchers}</span>
                   <span className="text-sm">watchers</span>
                 </div>
