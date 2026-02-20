@@ -1,25 +1,29 @@
 "use client"
 
+import Link from "next/link"
 import { useState, useEffect } from "react"
 import { useAnimation } from "@/hooks/useAnimation"
+import { AudioSection } from "@/components/audio-experience/audio-section"
+import { AudioButton } from "@/components/audio-experience/audio-button"
+import { BreathingBackground, ParticleField, FloatingElement } from "@/components/creative-chaos"
 import { cn } from "@/lib/utils"
 import { Sparkles } from "lucide-react"
 
 /**
  * TheCoreyExperience - Hero section with orbiting title
  * 
- * Style notes:
- * - Jittery/erratic motion using Math.sin(time * X) with different frequencies
- * - Glassmorphism cards: bg-white/10 backdrop-blur-md rounded-[4rem] border border-white/20
- * - Slight rotations on elements (transform rotate-X)
- * - Warm amber/orange theme
- * - Organic, breathing feel
+ * DUPLICATED from HeroSection - ONLY words changed, styling preserved exactly
+ * Changes:
+ * - "Neural" → "Corey"
+ * - "Depth" → "Alejandro"  
+ * - "Magic" → "Experience"
+ * - Added "The" orbiting (same styling as "Alejandro"/"Depth")
+ * - Replaced description card with AccomplishmentCard
  */
 
 interface Accomplishment {
   title: string
   description: string
-  icon?: React.ReactNode
 }
 
 const ACCOMPLISHMENTS: Accomplishment[] = [
@@ -41,96 +45,38 @@ const ACCOMPLISHMENTS: Accomplishment[] = [
   },
 ]
 
-// --- Orbiter Component ---
-// Can orbit text, images, or pure motion around any center point
-
-interface OrbiterProps {
-  children: React.ReactNode
-  radius: number // Orbit radius in px
-  speed: number // Rotation speed
-  time: number
-  startAngle?: number
-  className?: string
-  jitterAmount?: number // How much erratic movement
-}
-
-function Orbiter({ 
-  children, 
-  radius, 
-  speed, 
-  time, 
-  startAngle = 0,
-  className,
-  jitterAmount = 2
-}: OrbiterProps) {
-  // Base orbit rotation
-  const angle = startAngle + time * speed
-  
-  // Jittery/erratic motion layered on top
-  const jitterX = Math.sin(time * 3.7) * jitterAmount + Math.cos(time * 2.3) * (jitterAmount * 0.5)
-  const jitterY = Math.cos(time * 4.1) * jitterAmount + Math.sin(time * 1.9) * (jitterAmount * 0.5)
-  const jitterRotation = Math.sin(time * 5.5) * (jitterAmount * 0.8)
-  
-  const x = Math.cos(angle) * radius + jitterX
-  const y = Math.sin(angle) * radius + jitterY
-
-  return (
-    <div
-      className={cn("absolute", className)}
-      style={{
-        transform: `
-          translate(${x}px, ${y}px) 
-          rotate(${jitterRotation}deg)
-        `,
-        transition: "none", // No smooth transition for erratic feel
-        willChange: "transform",
-      }}
-    >
-      {children}
-    </div>
-  )
-}
-
-// --- Accomplishment Card ---
-// Transparent card with cycling headlines
-
-function AccomplishmentCard({ time }: { time: number }) {
+// DUPLICATED Floating Description Card - scaled 2x bigger
+function AccomplishmentCard({ time, mousePosition }: { time: number; mousePosition: { x: number; y: number } }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   
-  // Cycle through accomplishments every 4 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % ACCOMPLISHMENTS.length)
-    }, 4000)
+    }, 5000)
     return () => clearInterval(interval)
   }, [])
   
   const current = ACCOMPLISHMENTS[currentIndex]
-  
-  // Erratic card movement
-  const cardX = Math.sin(time * 0.8) * 8 + Math.cos(time * 1.3) * 5
-  const cardY = Math.cos(time * 0.6) * 6 + Math.sin(time * 1.1) * 4
-  const cardRotation = Math.sin(time * 0.4) * 1.5
 
   return (
     <div
-      className="absolute right-8 top-1/3 w-[380px]"
+      className="absolute right-12 top-1/3 max-w-2xl"
       style={{
-        transform: `translate(${cardX}px, ${cardY}px) rotate(${cardRotation}deg)`,
+        transform: `translate(${-mousePosition.x * 0.01}px, ${mousePosition.y * 0.02}px) rotate(${-Math.sin(time * 0.7) * 1}deg)`,
       }}
     >
-      {/* Card with your glassmorphism style */}
-      <div className="bg-white/10 backdrop-blur-md rounded-[3rem] p-8 border border-white/20 shadow-2xl">
+      {/* EXACT same card styling as HeroSection but scaled bigger */}
+      <div className="bg-white/10 backdrop-blur-md rounded-[4rem] p-12 border border-white/20">
         {/* Header */}
-        <div className="flex items-center gap-2 mb-6">
-          <Sparkles className="w-4 h-4 text-amber-400" />
-          <span className="text-xs uppercase tracking-[0.2em] text-white/60 font-medium">
+        <div className="flex items-center gap-3 mb-8">
+          <Sparkles className="w-6 h-6 text-amber-400" />
+          <span className="text-base uppercase tracking-[0.25em] text-white/60 font-medium">
             Now Playing
           </span>
         </div>
         
         {/* Cycling Accomplishment */}
-        <div className="relative h-32">
+        <div className="relative min-h-[200px]">
           {ACCOMPLISHMENTS.map((acc, i) => (
             <div
               key={i}
@@ -141,10 +87,10 @@ function AccomplishmentCard({ time }: { time: number }) {
                   : "opacity-0 translate-y-4"
               )}
             >
-              <h3 className="text-xl font-bold text-white mb-2 leading-tight">
+              <h3 className="text-3xl font-bold text-white mb-4 leading-tight">
                 {acc.title}
               </h3>
-              <p className="text-sm text-white/60 leading-relaxed">
+              <p className="text-xl text-white/70 leading-relaxed">
                 {acc.description}
               </p>
             </div>
@@ -152,164 +98,120 @@ function AccomplishmentCard({ time }: { time: number }) {
         </div>
         
         {/* Progress dots */}
-        <div className="flex gap-2 mt-4">
+        <div className="flex gap-3 mt-8">
           {ACCOMPLISHMENTS.map((_, i) => (
             <div
               key={i}
               className={cn(
-                "h-1 rounded-full transition-all duration-300",
-                i === currentIndex 
-                  ? "w-8 bg-amber-500" 
-                  : "w-2 bg-white/20"
+                "h-2 rounded-full transition-all duration-500",
+                i === currentIndex ? "w-12 bg-amber-500" : "w-3 bg-white/20"
               )}
             />
           ))}
         </div>
       </div>
-      
-      {/* Decorative orbiting element around card */}
-      <Orbiter
-        radius={200}
-        speed={0.3}
-        time={time}
-        startAngle={Math.PI / 4}
-        jitterAmount={1}
-        className="pointer-events-none"
-      >
-        <div className="w-3 h-3 rounded-full bg-amber-500/50 blur-sm" />
-      </Orbiter>
     </div>
   )
 }
 
-// --- Main Component ---
-
 export function TheCoreyExperience() {
   const { time, mousePosition } = useAnimation()
-  
-  // Erratic movement for main title
-  const titleX = Math.sin(time * 0.5) * 10 + Math.cos(time * 0.9) * 6
-  const titleY = Math.cos(time * 0.4) * 8 + Math.sin(time * 1.2) * 5
-  const titleRotation = Math.sin(time * 0.3) * 2
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      {/* Background with breathing effect */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          background: `
-            radial-gradient(ellipse 80% 50% at ${30 + Math.sin(time * 0.2) * 10}% ${50 + Math.cos(time * 0.15) * 10}%, rgba(251, 191, 36, 0.15) 0%, transparent 50%),
-            radial-gradient(ellipse 60% 40% at ${70 + Math.cos(time * 0.25) * 10}% ${30 + Math.sin(time * 0.2) * 10}%, rgba(244, 63, 94, 0.1) 0%, transparent 50%),
-            rgba(15, 23, 42, 1)
-          `,
-        }}
-      />
-      
-      {/* Main content container */}
-      <div className="relative z-10 h-screen flex items-center">
-        <div className="container mx-auto px-4">
-          
-          {/* Title composition */}
-          <div className="relative max-w-4xl">
+    <AudioSection
+      id="hero"
+      title="The Corey Alejandro Experience"
+      description="Creator of PROACTIVE AI, Builder of MADMall, Architect of OC Global, Maker of MobileU."
+      position={{ x: 0, y: 0, z: -5 }}
+    >
+      <section className="relative min-h-screen rounded-3xl mb-16 overflow-hidden">
+        {/* EXACT same orbiting headline as HeroSection */}
+        <div
+          className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
+          aria-hidden
+        >
+          <div
+            className="absolute text-7xl md:text-8xl font-black text-white/30 select-none whitespace-nowrap transition-opacity duration-300"
+            style={{
+              transform: `
+                rotate(${time * 15}deg)
+                translateX(min(42vw, 380px))
+                rotate(${-time * 15}deg)
+              `,
+              opacity: (() => {
+                const angle = ((time * 15) % 360) * (Math.PI / 180)
+                const y = Math.sin(angle)
+                return y > 0 ? 0.4 : Math.max(0.02, 0.4 + y * 0.45)
+              })(),
+            }}
+          >
+            The Experience
+          </div>
+        </div>
+
+        {/* EXACT same background */}
+        <BreathingBackground time={time} variant="hero" className="rounded-3xl" />
+
+        {/* EXACT same particles */}
+        <ParticleField time={time} count={15} mouseInteraction={true} />
+
+        {/* Main Hero Content */}
+        <div className="relative z-10 h-screen flex items-center">
+          <div className="container mx-auto px-4">
             
-            {/* "The" - Orbiting independently */}
-            <Orbiter
-              radius={280}
-              speed={0.4}
-              time={time}
-              startAngle={-Math.PI / 2}
-              jitterAmount={3}
-              className="left-0 top-0"
+            {/* Main Title - EXACT same positioning and styling */}
+            <div
+              className="absolute left-8 top-1/4"
+              style={{
+                transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.015}px) rotate(${Math.sin(time) * 2}deg)`,
+              }}
             >
-              <span 
-                className="text-5xl md:text-6xl font-black text-white/40"
+              {/* "The" - Orbiting independently with SAME styling as "Alejandro" */}
+              <div
+                className="absolute -left-32 -top-16"
                 style={{
-                  transform: `rotate(${Math.sin(time * 2) * 5}deg)`,
+                  transform: `
+                    translate(${Math.cos(time * 0.4) * 60}px, ${Math.sin(time * 0.3) * 40}px)
+                    rotate(${Math.sin(time * 0.5) * 15}deg)
+                  `,
                 }}
               >
-                The
-              </span>
-            </Orbiter>
-            
-            {/* "Corey Alejandro" - Grouped with erratic movement */}
-            <div
-              className="relative"
-              style={{
-                transform: `
-                  translate(${titleX}px, ${titleY}px) 
-                  rotate(${titleRotation}deg)
-                `,
-              }}
-            >
-              <h1 className="text-8xl md:text-9xl font-black leading-[0.85]">
-                <span className="block text-white transform -rotate-2">
-                  Corey
+                <span className="block text-7xl md:text-8xl font-black bg-linear-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent">
+                  The
                 </span>
-                <span 
-                  className="block text-transparent bg-clip-text bg-linear-to-r from-amber-300 via-orange-300 to-rose-300 ml-8 transform rotate-1"
-                >
+              </div>
+
+              <h1 className="text-8xl md:text-9xl font-black text-white leading-none">
+                {/* EXACT same styling: transform -rotate-3 */}
+                <span className="block transform -rotate-3">Corey</span>
+                {/* EXACT same styling as "Depth": rotate-2 ml-12 bg-linear-to-r from-amber-200 to-orange-200 */}
+                <span className="block transform rotate-2 ml-12 bg-linear-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent">
                   Alejandro
                 </span>
+                {/* EXACT same styling as "Magic": -rotate-1 ml-6 text-7xl */}
+                <span className="block transform -rotate-1 ml-6 text-7xl">Experience</span>
               </h1>
             </div>
-            
-            {/* "Experience" - Unbound with micro-movement */}
-            <div
-              className="mt-4 ml-16"
-              style={{
-                transform: `
-                  translateX(${Math.sin(time * 1.5) * 15 + Math.cos(time * 2.5) * 8}px)
-                  translateY(${Math.cos(time * 1.8) * 10}px)
-                  rotate(${Math.sin(time * 0.7) * 3}deg)
-                `,
-              }}
-            >
-              <span className="text-6xl md:text-7xl font-black text-white/80">
-                Experience
-              </span>
-            </div>
-            
-            {/* Decorative orbiting elements */}
-            <Orbiter
-              radius={350}
-              speed={-0.25}
+
+            {/* Accomplishment Card - scaled 2x bigger, same position as description card */}
+            <AccomplishmentCard time={time} mousePosition={mousePosition} />
+
+            {/* EXACT same scattered element */}
+            <FloatingElement
               time={time}
-              startAngle={0}
-              jitterAmount={2}
+              index={0}
+              amplitude={{ x: 20, y: 15 }}
+              speed={{ x: 1.2, y: 1.0 }}
+              className="bottom-32 left-1/4"
             >
-              <div className="w-4 h-4 rounded-full bg-amber-500/60 blur-sm" />
-            </Orbiter>
-            
-            <Orbiter
-              radius={320}
-              speed={0.35}
-              time={time}
-              startAngle={Math.PI}
-              jitterAmount={2.5}
-            >
-              <div className="w-2 h-2 rounded-full bg-rose-500/60 blur-sm" />
-            </Orbiter>
+              <div className="bg-linear-to-br from-orange-400 to-red-500 rounded-full w-24 h-24 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform text-white font-bold text-2xl">
+                ▶
+              </div>
+            </FloatingElement>
+
           </div>
-          
-          {/* Accomplishment card on right */}
-          <AccomplishmentCard time={time} />
-          
         </div>
-      </div>
-      
-      {/* Mouse-responsive floating elements */}
-      <div
-        className="absolute bottom-1/4 left-1/4 pointer-events-none"
-        style={{
-          transform: `
-            translate(${mousePosition.x * 0.03}px, ${mousePosition.y * 0.03}px)
-            translateY(${Math.sin(time * 0.8) * 20}px)
-          `,
-        }}
-      >
-        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-500/30 to-orange-500/30 blur-md" />
-      </div>
-    </section>
+      </section>
+    </AudioSection>
   )
 }
