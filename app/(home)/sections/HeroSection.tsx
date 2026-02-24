@@ -141,7 +141,7 @@ function FeaturesCollage({ time }: { time: number }) {
     >
       {/* Background */}
       <div
-        className="absolute inset-0 bg-linear-to-br from-amber-50 to-orange-100 rounded-3xl"
+        className="absolute right-0 bottom-0 w-full h-full bg-linear-to-br from-amber-50 to-orange-100 rounded-3xl"
         style={{
           clipPath: `polygon(0 ${10 + Math.sin(time) * 5}%, 100% 0%, 100% ${90 + Math.cos(time) * 5}%, 0% 100%)`,
         }}
@@ -210,6 +210,8 @@ function InteractiveNeuralSection({
       <div
         className="absolute inset-0 rounded-3xl"
         style={{
+          left: "-1px",
+          top: "-1px",
           background: `linear-gradient(${45 + Math.sin(time) * 10}deg, rgba(251, 191, 36, 0.1) 0%, rgba(239, 68, 68, 0.1) 50%, rgba(194, 65, 12, 0.1) 100%)`,
         }}
       />

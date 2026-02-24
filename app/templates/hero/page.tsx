@@ -76,7 +76,7 @@ export default function HeroTemplate() {
           ))}
         </div>
 
-        <div className="relative h-screen flex items-center">
+        <div className="relative h-[555px] flex items-center">
           <div className="container mx-auto px-4">
             {/* Main Title - Positioned Organically */}
             <div
@@ -135,7 +135,7 @@ export default function HeroTemplate() {
         {/* Collage-Style Feature Section */}
         <section className="py-32 relative overflow-hidden">
           <div
-            className="absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-100 rounded-3xl"
+            className="absolute right-0 bottom-0 w-full h-full bg-gradient-to-br from-amber-50 to-orange-100 rounded-3xl"
             style={{
               clipPath: `polygon(0 ${10 + Math.sin(time) * 5}%, 100% 0%, 100% ${90 + Math.cos(time) * 5}%, 0% 100%)`,
             }}
@@ -188,6 +188,8 @@ export default function HeroTemplate() {
           <div
             className="absolute inset-0 rounded-3xl"
             style={{
+              left: "-1px",
+              top: "-1px",
               background: `
                 linear-gradient(${45 + Math.sin(time) * 10}deg, 
                   rgba(251, 191, 36, 0.1) 0%, 

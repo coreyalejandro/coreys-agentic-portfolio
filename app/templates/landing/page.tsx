@@ -39,7 +39,7 @@ export default function LandingTemplate() {
       <div className="relative min-h-screen">
         {/* Living, breathing background */}
         <div
-          className="absolute inset-0"
+          className="absolute right-0 bottom-0 w-full h-full"
           style={{
             background: `
               conic-gradient(from ${time * 20}deg at ${30 + Math.sin(time) * 10}% ${40 + Math.cos(time * 0.7) * 15}%, 
@@ -56,99 +56,97 @@ export default function LandingTemplate() {
           }}
         />
 
-        <div className="relative h-screen">
-          {/* Main Title - Positioned like a magazine cover */}
-          <div
-            className="absolute left-4 top-16 md:left-12 md:top-24"
-            style={{
-              transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.01}px) rotate(${Math.sin(time * 0.6) * 2}deg)`,
-            }}
-          >
-            <div className="space-y-2">
-              <div className="text-sm font-bold text-white/80 tracking-widest uppercase">Revolutionary Design</div>
-              <h1 className="text-7xl md:text-8xl font-black text-white leading-none">
-                <span className="block transform rotate-1">Build</span>
-                <span className="block transform -rotate-2 ml-8 bg-gradient-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent">
-                  the
-                </span>
-                <span className="block transform rotate-1 ml-4 text-6xl">Future</span>
-              </h1>
-            </div>
+        {/* Main Title - Positioned like a magazine cover */}
+        <div
+          className="absolute left-4 top-16 md:left-12 md:top-24"
+          style={{
+            transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.01}px) rotate(${Math.sin(time * 0.6) * 2}deg)`,
+          }}
+        >
+          <div className="space-y-2">
+            <div className="text-sm font-bold text-white/80 tracking-widest uppercase">Revolutionary Design</div>
+            <h1 className="text-7xl md:text-8xl font-black text-white leading-none">
+              <span className="block transform rotate-1">Build</span>
+              <span className="block transform -rotate-2 ml-8 bg-gradient-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent">
+                the
+              </span>
+              <span className="block transform rotate-1 ml-4 text-6xl">Future</span>
+            </h1>
           </div>
+        </div>
 
-          {/* Floating description box */}
-          <div
-            className="absolute right-8 top-1/3 max-w-sm md:right-16"
-            style={{
-              transform: `translate(${-mousePosition.x * 0.02}px, ${mousePosition.y * 0.015}px) rotate(${Math.sin(time * 0.8) * 1.5}deg)`,
-            }}
-          >
-            <div className="bg-white/15 backdrop-blur-xl rounded-[2rem] p-8 border border-white/20 shadow-2xl">
-              <p className="text-lg text-white/95 text-pretty leading-relaxed mb-6">
-                Experience neural depth motion, organic parallax, and joyful interactions that make users fall in love
-                with your interface
-              </p>
-              <div className="flex gap-3">
-                <Link href="/contact">
-                  <Button className="bg-amber-400 hover:bg-amber-300 text-black font-semibold rounded-full px-6">
-                    Start Creating
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Email signup - positioned organically */}
-          <div
-            className="absolute bottom-32 left-8 md:left-16"
-            style={{
-              transform: `translate(${Math.sin(time * 0.9) * 15}px, ${Math.cos(time * 0.7) * 10}px) rotate(${Math.sin(time * 0.4) * 1}deg)`,
-            }}
-          >
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 max-w-md">
-              <div className="text-white/90 mb-4 font-medium">Join the revolution</div>
-              <div className="flex gap-3">
-                <Input
-                  placeholder="your@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="bg-white/20 border-white/30 text-white placeholder:text-white/60 rounded-xl"
-                />
-                <Button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 rounded-xl">
-                  Go
+        {/* Floating description box */}
+        <div
+          className="absolute right-8 top-1/3 max-w-sm md:right-16"
+          style={{
+            transform: `translate(${-mousePosition.x * 0.02}px, ${mousePosition.y * 0.015}px) rotate(${Math.sin(time * 0.8) * 1.5}deg)`,
+          }}
+        >
+          <div className="bg-white/15 backdrop-blur-xl rounded-[2rem] p-8 border border-white/20 shadow-2xl">
+            <p className="text-lg text-white/95 text-pretty leading-relaxed mb-6">
+              Experience neural depth motion, organic parallax, and joyful interactions that make users fall in love
+              with your interface
+            </p>
+            <div className="flex gap-3">
+              <Link href="/contact">
+                <Button className="bg-amber-400 hover:bg-amber-300 text-black font-semibold rounded-full px-6">
+                  Start Creating
                 </Button>
-              </div>
+              </Link>
             </div>
           </div>
+        </div>
 
-          {/* Floating stats */}
-          <div
-            className="absolute top-1/2 left-1/3"
-            style={{
-              transform: `translate(${Math.cos(time * 1.3) * 20}px, ${Math.sin(time * 0.8) * 15}px)`,
-            }}
-          >
-            <div className="bg-gradient-to-br from-orange-400 to-red-500 rounded-full w-20 h-20 flex flex-col items-center justify-center text-white text-center">
-              <div className="text-xl font-bold">4.9</div>
-              <div className="text-xs">rating</div>
+        {/* Email signup - positioned organically */}
+        <div
+          className="absolute bottom-32 left-8 md:left-16"
+          style={{
+            transform: `translate(${Math.sin(time * 0.9) * 15}px, ${Math.cos(time * 0.7) * 10}px) rotate(${Math.sin(time * 0.4) * 1}deg)`,
+          }}
+        >
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 max-w-md">
+            <div className="text-white/90 mb-4 font-medium">Join the revolution</div>
+            <div className="flex gap-3">
+              <Input
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="bg-white/20 border-white/30 text-white placeholder:text-white/60 rounded-xl"
+              />
+              <Button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 rounded-xl">
+                Go
+              </Button>
             </div>
           </div>
+        </div>
 
-          <div
-            className="absolute bottom-1/4 right-1/3"
-            style={{
-              transform: `translate(${-Math.sin(time * 1.1) * 25}px, ${Math.cos(time * 0.9) * 18}px) rotate(${time * 15}deg)`,
-            }}
-          >
-            <div className="flex items-center space-x-1 text-amber-300 font-bold text-sm">
-              ★★★★★
-            </div>
+        {/* Floating stats */}
+        <div
+          className="absolute top-1/2 left-1/3"
+          style={{
+            transform: `translate(${Math.cos(time * 1.3) * 20}px, ${Math.sin(time * 0.8) * 15}px)`,
+          }}
+        >
+          <div className="bg-gradient-to-br from-orange-400 to-red-500 rounded-full w-20 h-20 flex flex-col items-center justify-center text-white text-center">
+            <div className="text-xl font-bold">4.9</div>
+            <div className="text-xs">rating</div>
+          </div>
+        </div>
+
+        <div
+          className="absolute bottom-1/4 right-1/3"
+          style={{
+            transform: `translate(${-Math.sin(time * 1.1) * 25}px, ${Math.cos(time * 0.9) * 18}px) rotate(${time * 15}deg)`,
+          }}
+        >
+          <div className="flex items-center space-x-1 text-amber-300 font-bold text-sm">
+            ★★★★★
           </div>
         </div>
       </div>
 
       <div className="relative">
-        <section className="py-32 relative overflow-hidden">
+        <section className="py-32 relative overflow-hidden min-h-[911px]">
           <div
             className="absolute inset-0"
             style={{

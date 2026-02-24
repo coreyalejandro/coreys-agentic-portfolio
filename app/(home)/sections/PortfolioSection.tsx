@@ -1,22 +1,22 @@
-"use client"
+      "use client"
 
-import { useEffect, useMemo, useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import { useAnimation } from "@/hooks/useAnimation"
-import { AudioSection } from "@/components/audio-experience/audio-section"
-import { AudioButton } from "@/components/audio-experience/audio-button"
-import { ProjectModal } from "@/components/project-modal"
-import { projects as projectsData } from "@/config/projects"
-import type { HomepageProject } from "@/types"
+      import { useEffect, useMemo, useState } from "react"
+      import { Card, CardContent } from "@/components/ui/card"
+      import { Badge } from "@/components/ui/badge"
+      import { Button } from "@/components/ui/button"
+      import Link from "next/link"
+      import { useAnimation } from "@/hooks/useAnimation"
+      import { AudioSection } from "@/components/audio-experience/audio-section"
+      import { AudioButton } from "@/components/audio-experience/audio-button"
+      import { ProjectModal } from "@/components/project-modal"
+      import { projects as projectsData } from "@/config/projects"
+      import type { HomepageProject } from "@/types"
 
-function stableHashInt(input: string): number {
-  // Deterministic, cross-runtime safe hash (FNV-1a 32-bit)
-  let hash = 0x811c9dc5
-  for (let i = 0; i < input.length; i++) {
-    hash ^= input.charCodeAt(i)
+      function stableHashInt(input: string): number {
+        // Deterministic, cross-runtime safe hash (FNV-1a 32-bit)
+        let hash = 0x811c9dc5
+                                                      for (let i = 0; i < input.length; i++) {
+                                                        hash ^= input.charCodeAt(i)
     hash = Math.imul(hash, 0x01000193)
   }
   return hash >>> 0
