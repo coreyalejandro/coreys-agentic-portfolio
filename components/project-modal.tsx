@@ -135,7 +135,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
       {/* Modal container with 3D perspective */}
       <div
         ref={modalRef}
-        className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl transition-colors duration-[3000ms]"
+        className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl transition-colors duration-3000"
         style={{
           transform: `perspective(2000px) rotateX(${scrollProgress * 5}deg)`,
           transition: "transform 0.3s ease-out, background-color 3s ease-in-out",
@@ -146,7 +146,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
         {/* Close button */}
         <button
           onClick={onClose}
-          className="fixed top-8 right-8 z-10 px-4 py-2 rounded-full shadow-lg transition-all hover:scale-110 duration-[3000ms] font-semibold"
+          className="fixed top-8 right-8 z-10 px-4 py-2 rounded-full shadow-lg transition-all hover:scale-110 duration-3000 font-semibold"
           style={{
             backgroundColor: "var(--theme-card)",
             color: "var(--theme-text)",
@@ -165,7 +165,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             {project.images.map((image, index) => (
               <div
                 key={index}
-                className="min-w-full h-full transition-colors duration-[3000ms]"
+                className="min-w-full h-full transition-colors duration-3000"
                 style={{
                   background: `linear-gradient(135deg, var(--theme-primary), var(--theme-secondary))`,
                 }}
@@ -197,7 +197,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           {/* Floating project badge */}
           {project.featured && (
             <div
-              className="absolute top-6 left-6 px-4 py-2 font-bold rounded-full shadow-lg animate-pulse transition-colors duration-[3000ms]"
+              className="absolute top-6 left-6 px-4 py-2 font-bold rounded-full shadow-lg animate-pulse transition-colors duration-3000"
               style={{
                 backgroundColor: "var(--theme-accent)",
                 color: "var(--theme-bg)",
@@ -213,7 +213,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           {/* Header with title and links */}
           <div className="space-y-6">
             <h2
-              className="text-5xl md:text-6xl font-bold transition-colors duration-[3000ms]"
+              className="text-5xl md:text-6xl font-bold transition-colors duration-3000"
               style={{
                 color: "var(--theme-primary)",
               }}
@@ -222,7 +222,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             </h2>
 
             <p
-              className="text-xl leading-relaxed transition-colors duration-[3000ms]"
+              className="text-xl leading-relaxed transition-colors duration-3000"
               style={{ color: "var(--theme-text)" }}
             >
               {project.longDescription || project.description}
@@ -235,7 +235,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-6 py-3 rounded-full transition-all hover:scale-105 duration-[3000ms]"
+                  className="flex items-center gap-2 px-6 py-3 rounded-full transition-all hover:scale-105 duration-3000"
                   style={{
                     backgroundColor: "var(--theme-bg)",
                     color: "var(--theme-text)",
@@ -250,7 +250,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-6 py-3 rounded-full transition-all hover:scale-105 duration-[3000ms]"
+                  className="flex items-center gap-2 px-6 py-3 rounded-full transition-all hover:scale-105 duration-3000"
                   style={{
                     background: `linear-gradient(135deg, var(--theme-primary), var(--theme-secondary))`,
                     color: "var(--theme-card)",
@@ -263,7 +263,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
             {/* GitHub stats */}
             {githubStats && (
-              <div className="flex flex-wrap gap-6 pt-4 transition-colors duration-[3000ms]">
+              <div className="flex flex-wrap gap-6 pt-4 transition-colors duration-3000">
                 <div className="flex items-center gap-2" style={{ color: "var(--theme-text)" }}>
                   <span className="font-semibold">{githubStats.stars}</span>
                   <span className="text-sm">stars</span>
@@ -278,7 +278,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                 </div>
                 {githubStats.language && (
                   <div
-                    className="px-4 py-1 rounded-full text-sm font-semibold transition-colors duration-[3000ms]"
+                    className="px-4 py-1 rounded-full text-sm font-semibold transition-colors duration-3000"
                     style={{
                       backgroundColor: "var(--theme-accent)",
                       color: "var(--theme-bg)",
@@ -294,7 +294,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           {/* Technologies */}
           <div className="space-y-4">
             <h3
-              className="text-2xl font-bold transition-colors duration-[3000ms]"
+              className="text-2xl font-bold transition-colors duration-3000"
               style={{ color: "var(--theme-text)" }}
             >
               Technologies Used
@@ -303,7 +303,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               {project.technologies.map((tech, index) => (
                 <div
                   key={index}
-                  className="px-5 py-2 rounded-full font-medium hover:scale-105 transition-all duration-[3000ms]"
+                  className="px-5 py-2 rounded-full font-medium hover:scale-105 transition-all duration-3000"
                   style={{
                     backgroundColor: "var(--theme-accent)",
                     color: "var(--theme-bg)",
@@ -320,7 +320,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           {/* Challenge section */}
           {project.challenge && (
             <div
-              className="p-8 rounded-2xl shadow-lg space-y-4 transition-colors duration-[3000ms]"
+              className="p-8 rounded-2xl shadow-lg space-y-4 transition-colors duration-3000"
               style={{
                 backgroundColor: "rgba(255, 255, 255, 0.05)",
                 backdropFilter: "blur(10px)",
@@ -328,19 +328,19 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               }}
             >
               <h3
-                className="text-2xl font-bold transition-colors duration-[3000ms]"
+                className="text-2xl font-bold transition-colors duration-3000"
                 style={{ color: "var(--theme-primary)" }}
               >
                 The Challenge
               </h3>
-              <p className="leading-relaxed text-gray-200 transition-colors duration-[3000ms]">{project.challenge}</p>
+              <p className="leading-relaxed text-gray-200 transition-colors duration-3000">{project.challenge}</p>
             </div>
           )}
 
           {/* Solution section */}
           {project.solution && (
             <div
-              className="p-8 rounded-2xl shadow-lg space-y-4 transition-colors duration-[3000ms]"
+              className="p-8 rounded-2xl shadow-lg space-y-4 transition-colors duration-3000"
               style={{
                 backgroundColor: "rgba(255, 255, 255, 0.05)",
                 backdropFilter: "blur(10px)",
@@ -348,19 +348,19 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               }}
             >
               <h3
-                className="text-2xl font-bold transition-colors duration-[3000ms]"
+                className="text-2xl font-bold transition-colors duration-3000"
                 style={{ color: "var(--theme-secondary)" }}
               >
                 The Solution
               </h3>
-              <p className="leading-relaxed text-gray-200 transition-colors duration-[3000ms]">{project.solution}</p>
+              <p className="leading-relaxed text-gray-200 transition-colors duration-3000">{project.solution}</p>
             </div>
           )}
 
           {/* Impact section */}
           {project.impact && (
             <div
-              className="p-8 rounded-2xl shadow-lg space-y-4 transition-colors duration-[3000ms]"
+              className="p-8 rounded-2xl shadow-lg space-y-4 transition-colors duration-3000"
               style={{
                 backgroundColor: "rgba(255, 255, 255, 0.05)",
                 backdropFilter: "blur(10px)",
@@ -368,12 +368,12 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               }}
             >
               <h3
-                className="text-2xl font-bold transition-colors duration-[3000ms]"
+                className="text-2xl font-bold transition-colors duration-3000"
                 style={{ color: "var(--theme-accent)" }}
               >
                 The Impact
               </h3>
-              <p className="leading-relaxed text-gray-200 transition-colors duration-[3000ms]">{project.impact}</p>
+              <p className="leading-relaxed text-gray-200 transition-colors duration-3000">{project.impact}</p>
             </div>
           )}
         </div>

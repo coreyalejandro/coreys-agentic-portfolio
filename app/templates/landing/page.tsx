@@ -37,10 +37,25 @@ export default function LandingTemplate() {
   return (
     <div className="min-h-screen bg-background overflow-hidden">
       <div className="relative min-h-screen">
+        {/* Home link - positioned first per design */}
+        <Link
+          href="/"
+          className="shrink-0 px-2 py-0.5 rounded text-[13px] font-semibold transition-colors focus:outline-none focus:ring-1 focus:ring-white/50"
+          style={{
+            background: "linear-gradient(135deg, var(--theme-primary), var(--theme-secondary))",
+            color: "white",
+          }}
+          aria-label="Home"
+          role="menuitem"
+        >
+          Home
+        </Link>
         {/* Living, breathing background */}
         <div
           className="absolute right-0 bottom-0 w-full h-full"
           style={{
+            left: "-46px",
+            top: "-21px",
             background: `
               conic-gradient(from ${time * 20}deg at ${30 + Math.sin(time) * 10}% ${40 + Math.cos(time * 0.7) * 15}%, 
                 rgba(251, 191, 36, 0.9) 0deg,

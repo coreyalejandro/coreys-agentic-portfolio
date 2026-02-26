@@ -98,6 +98,7 @@ export const NAV_ITEMS: Omit<NavItem, "icon">[] = [
   { id: "resume", name: "Resume", ariaLabel: "Open resume template", href: "/templates/resume", voicePhrases: ["resume"], group: "templates" },
   { id: "portfolio", name: "Portfolio", ariaLabel: "Open portfolio template", href: "/templates/portfolio", voicePhrases: ["portfolio"], group: "templates" },
   { id: "hero", name: "Hero", ariaLabel: "Open hero template", href: "/templates/hero", voicePhrases: ["hero"], group: "templates" },
+  { id: "hero-experience", name: "Hero Experience", ariaLabel: "Open hero experience", href: "/hero-experience", voicePhrases: ["hero experience", "corey experience"], group: "templates" },
   { id: "landing", name: "Landing", ariaLabel: "Open landing template", href: "/templates/landing", voicePhrases: ["landing"], group: "templates" },
   { id: "playground", name: "Playground", ariaLabel: "Open playground", href: "/playground", voicePhrases: ["playground"], group: "tools" },
   { id: "contact", name: "Contact", ariaLabel: "Open contact", href: "/contact", voicePhrases: ["contact"], group: "tools" },
