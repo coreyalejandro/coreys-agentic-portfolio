@@ -3,6 +3,7 @@
 ## Overview
 
 - **App**: Next.js App Router portfolio/design-system playground with demos + docs.
+- **Platform identity**: SentinelOS — AI Safety Operating Layer, governed by `ai-safety-identity-strategy.md` (canonical identity/architecture/messaging spec).
 - **UI stack**: React + TypeScript, Tailwind CSS v4 (`app/globals.css` uses `@import "tailwindcss";`), shadcn/ui-style primitives in `components/ui/`.
 - **Key experiences**: “Creative Chaos” visual system, animation + color theme contexts, and an audio experience layer.
 

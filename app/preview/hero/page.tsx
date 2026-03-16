@@ -1,16 +1,16 @@
 "use client"
 
-import { TheCoreyExperience } from "@/components/hero/TheCoreyExperience"
+import { TheCoreyAlejandroExperience } from "@/components/hero/TheCoreyAlejandroExperience"
 
 /**
- * Preview page for TheCoreyExperience hero section
+ * Preview page for TheCoreyAlejandroExperience hero section
  * This is isolated - it doesn't affect your main portfolio
  */
 
 export default function HeroPreviewPage() {
   return (
-    <main className="min-h-screen bg-slate-950">
-      <TheCoreyExperience />
+    <main className="min-h-screen">
+      <TheCoreyAlejandroExperience />
       
       {/* Simple footer for preview */}
       <div className="fixed bottom-4 left-4 text-xs text-white/30 font-mono">

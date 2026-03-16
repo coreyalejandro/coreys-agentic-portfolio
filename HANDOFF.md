@@ -12,24 +12,17 @@
 >
 > **📖 See `HANDOFF_PROTOCOL.md` for complete protocol details.**
 
-**Date:** February 26, 2026
-**Status:** Active Development - Homepage Routing Verified
+**Date:** March 16, 2026
+**Status:** Active Development - SentinelOS Identity Strategy Integration In Progress
 
 ## 📋 What Was Just Completed
 
-- **Smooth Motion Refactor:**
-  - Migrated all manual time-based animations from `setInterval` (10fps) to `requestAnimationFrame` (60fps).
-  - Updated `contexts/AnimationContext.tsx` to provide high-fidelity `time` state to all components.
-  - Updated `app/components/page.tsx` main state and component preview documentation.
-  - Updated functional components including `BreathingBackground.tsx`, `ResumeSection.tsx`, `LaydownCard.tsx`.
-  - Updated page templates: `ContactPage`, `LandingTemplate`, `HeroTemplate`, `PortfolioTemplate`.
-  - Standardized the use of `requestAnimationFrame` with a `0.016` (1/60s) increment to maintain animation speed while drastically increasing smoothness.
-- **Documentation & Memory Update:**
-  - Added "Smooth Animations" pattern to `openmemory.md`.
-  - Updated OpenMemory facts with implementation details.
- - **Homepage Routing Verification:**
-   - Verified that `app/page.tsx` is the root route and loads as the homepage at `/`.
-   - Confirmed middleware does not alter the default root routing behavior.
+- **Portfolio README Rewrite:**
+  - Replaced the generic v0/v0.app README with a portfolio-focused `README.md` describing Corey’s Agentic Portfolio, prompt architecture, AI safety, instructional design, and neurodivergent-first focus.
+  - Added a **Featured Projects** section highlighting Zero-Shot Prompt Composer, Constitutional GitLab Agent, Zero-Shot OS (UPOS7VS Core), MADMall, HUI, and Clarity AI.
+  - Ensured README now clearly positions the repo as the primary portfolio/product lab rather than an AWS Agentic AI scaffold.
+- **Handoff Continuity:**
+  - Updated `HANDOFF.md` date and status to reflect the README change and keep continuity protocol in effect.
 
 ## 🎯 Current Project State
 
@@ -51,9 +44,14 @@
 
 ## 🎯 Recommended Next Steps
 
-1. Continue with next feature or enhancement
-2. All navigation updates are complete and pushed
-3. HANDOFF protocol is now established and documented
+1. Finish SentinelOS UX integration:
+   - Refine homepage and SentinelOS pages to keep navigation and semantics accessible.
+   - Add any missing module/incident visual polish once core flows feel stable.
+2. Expand evidence artifacts:
+   - Populate `docs/evidence/` with example governance rules, evaluation rubrics, intervention logs, and traces.
+   - Link them from SentinelOS docs and UI.
+3. Perform a content and UX audit to ensure terminology and messaging match the SentinelOS strategy across README, docs, and the visible site.
+4. Keep HANDOFF protocol in effect for all subsequent changes.
 
 ## 📊 Remaining Enhancements to Implement
 
@@ -66,6 +64,8 @@
 - [x] Add Playground to Main Navigation
 - [x] Auto-hide Playground Header
 - [ ] Integrate Card Path into main portfolio flow
+- [ ] Integrate Card Path into main portfolio flow
+- [ ] Complete SentinelOS identity source-of-truth integration (final UX polish, evidence artifacts)
 
 ## 📝 Important Context
 
@@ -96,6 +96,18 @@
 - Change scope (major or minor)
 
 **No exceptions. This is non-negotiable.**
+
+### SentinelOS Identity Strategy
+
+- Canonical identity, architecture, and messaging are defined in `ai-safety-identity-strategy.md`.
+- SentinelOS is positioned as an **AI Safety Operating Layer** composed of:
+  - **PROACTIVE Gov** — constitutional governance and claim verification
+  - **HUI Guard** — human-centered AI intervention and harm reduction
+  - **Eval Workbench** — AI behavior testing and scoring
+  - **Red Team Lab** — adversarial testing and failure classification
+  - **Trace Console** — evidence chain and decision traceability
+- Any material changes to platform identity, module list, or incident lifecycle should be made in `ai-safety-identity-strategy.md` first, then propagated into README, docs, and UI.
+- Alignment guardrails and review criteria are captured in `docs/SentinelOS_ALIGNMENT_CHECKLIST.md` and should be used for future changes that touch SentinelOS.
 
 ### User Profile
 

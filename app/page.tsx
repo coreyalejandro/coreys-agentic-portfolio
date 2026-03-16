@@ -2,6 +2,7 @@
 
 import { AnimationProvider } from "@/contexts/AnimationContext"
 import { HeroSection } from "@/app/(home)/sections/HeroSection"
+import { SuperpowerServicesSection } from "@/app/(home)/sections/SuperpowerServicesSection"
 import { CTASection } from "@/app/(home)/sections/CTASection"
 import { PortfolioSection } from "@/app/(home)/sections/PortfolioSection"
 import { ResumeSection as ResumeTemplate } from "@/components/resume/ResumeSection"
@@ -22,6 +23,7 @@ export default function HomePage() {
     <div className="min-h-screen">
       <AnimationProvider>
         <HeroSection />
+        <SuperpowerServicesSection />
         <ResumeTemplate />
         <CTASection />
         <PortfolioSection />

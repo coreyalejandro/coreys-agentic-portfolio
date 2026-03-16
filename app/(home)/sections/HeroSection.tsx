@@ -1,19 +1,13 @@
-"use client"
-import Link from "next/link"
+ "use client"
 import { useAnimation } from "@/hooks/useAnimation"
 import { AudioSection } from "@/components/audio-experience/audio-section"
-import { AudioButton } from "@/components/audio-experience/audio-button"
 import { BreathingBackground, ParticleField, FloatingElement } from "@/components/creative-chaos"
+import Link from "next/link"
 
 /**
- * HeroSection - Neural Depth Magic hero
+ * HeroSection - SentinelOS overview hero
  *
- * Extracted from app/page.tsx
- * Features:
- * - Breathing background gradient
- * - Floating orbs that respond to mouse
- * - Organic title positioning
- * - Collage-style features section
+ * Reframes the creative hero as a SentinelOS inspection console entry point.
  */
 export function HeroSection() {
   const { time, mousePosition } = useAnimation()
@@ -21,12 +15,12 @@ export function HeroSection() {
   return (
     <AudioSection
       id="hero"
-      title="Hero Section - Neural Depth Magic"
-      description="Experience the Creative Chaos design philosophy. Living gradients, organic motion, and joyful interactions that breathe with every scroll."
+      title="SentinelOS governs AI systems"
+      description="SentinelOS is an AI Safety Operating Layer. This portfolio is its inspection console."
       position={{ x: 0, y: 0, z: -5 }}
     >
       <section className="relative min-h-screen rounded-3xl mb-16 overflow-hidden">
-        {/* Orbiting "Creative Chaos" headline - orbits section, drops behind and emerges */}
+        {/* Orbiting headline */}
         <div
           className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
           aria-hidden
@@ -46,7 +40,7 @@ export function HeroSection() {
               })(),
             }}
           >
-            Creative Chaos
+            SentinelOS
           </div>
         </div>
 
@@ -56,22 +50,22 @@ export function HeroSection() {
         {/* Floating Particles */}
         <ParticleField time={time} count={15} mouseInteraction={true} />
 
-        {/* Main Hero Content */}
+            {/* Main Hero Content */}
         <div className="relative z-10 h-screen flex items-center">
           <div className="container mx-auto px-4">
-            {/* Main Title - Positioned Organically */}
+            {/* Main Title - SentinelOS framing */}
             <div
               className="absolute left-8 top-1/4"
               style={{
                 transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.015}px) rotate(${Math.sin(time) * 2}deg)`,
               }}
             >
-              <h1 className="text-8xl md:text-9xl font-black text-white leading-none">
-                <span className="block transform -rotate-3">Neural</span>
-                <span className="block transform rotate-2 ml-12 bg-linear-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent">
-                  Depth
+              <h1 className="text-6xl md:text-8xl font-black text-white leading-none">
+                <span className="block transform -rotate-3">SentinelOS</span>
+                <span className="block transform rotate-2 ml-6 bg-linear-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent">
+                  governs
                 </span>
-                <span className="block transform -rotate-1 ml-6 text-7xl">Magic</span>
+                <span className="block transform -rotate-1 ml-4 text-5xl md:text-6xl">AI systems</span>
               </h1>
             </div>
 
@@ -83,17 +77,23 @@ export function HeroSection() {
               }}
             >
               <div className="bg-white/10 backdrop-blur-md rounded-[4rem] p-8 border border-white/20">
-                <p className="text-xl text-white/90 text-pretty leading-relaxed">
-                  Where creativity meets technology in a dance of organic motion and neural intelligence
+                <p className="text-sm md:text-base text-white/90 text-pretty leading-relaxed">
+                  SentinelOS is an AI Safety Operating Layer. This portfolio is its inspection console: a place to see
+                  how PROACTIVE Gov, HUI Guard, Eval Workbench, Red Team Lab, and Trace Console work together to govern
+                  AI systems.
                 </p>
-                <div className="flex gap-4 mt-6">
-                  <Link href="/contact">
-                    <AudioButton
-                      description="Feel the magic - Contact me to start creating"
-                      className="bg-amber-500 hover:bg-amber-400 text-black font-semibold rounded-full px-6 py-3 inline-flex items-center"
-                    >
-                      Feel the Magic
-                    </AudioButton>
+                <div className="flex flex-wrap gap-3 mt-6">
+                  <Link
+                    href="/sentinel"
+                    className="rounded-full bg-amber-500 hover:bg-amber-400 text-black font-semibold px-5 py-2.5 text-sm transition-colors"
+                  >
+                    View SentinelOS overview
+                  </Link>
+                  <Link
+                    href="/sentinel/incident-simulation"
+                    className="rounded-full border border-white/40 text-white/90 px-5 py-2.5 text-sm hover:bg-white/10 transition-colors"
+                  >
+                    Walk an incident
                   </Link>
                 </div>
               </div>
@@ -148,7 +148,7 @@ function FeaturesCollage({ time }: { time: number }) {
       />
 
       {/* Content: three blocks */}
-      <div className="relative h-full min-h-screen w-full flex items-center justify-center">
+      <div className="relative h-full min-h-[971px] w-full flex items-center justify-center">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-12 gap-8 items-center">
             {/* Large Feature */}

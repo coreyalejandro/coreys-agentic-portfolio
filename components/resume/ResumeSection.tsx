@@ -95,7 +95,7 @@ export function ResumeSection() {
         <BreathingBackground time={time} variant="hero" className="rounded-3xl" />
 
         {/* Floating particles */}
-        <div className="absolute inset-0">
+        <div className="absolute right-0 bottom-0 w-full h-full">
           {[...Array(10)].map((_, i) => (
             <div
               key={i}
