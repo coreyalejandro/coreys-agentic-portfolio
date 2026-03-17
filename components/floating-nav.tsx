@@ -10,13 +10,11 @@ import { useVoiceNav } from "@/hooks/useVoiceNav"
 import { cn } from "@/lib/utils"
 import { ChevronLeft, ChevronRight, MoveHorizontal } from "lucide-react"
 
-/** Group order for predictable layout */
+/** Group order: identity sections first, then explore, then tools */
 const GROUP_ORDER: (typeof NAV_GROUPS)[number]["id"][] = [
-  "explore",
-  "templates",
-  "tools",
-  "demos",
   "sections",
+  "explore",
+  "tools",
 ]
 
 function groupNavItems() {
@@ -267,7 +265,7 @@ export default function FloatingNav() {
               }
             }}
           >
-            <span className="text-sm font-semibold text-white/90">CA</span>
+            <span className="text-sm font-semibold text-white/90">SSD</span>
             <button
               type="button"
               onClick={(e) => {

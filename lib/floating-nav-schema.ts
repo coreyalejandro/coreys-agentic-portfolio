@@ -1,10 +1,13 @@
 /**
  * Floating Nav Information Architecture Schema
  *
+ * Aligned to Safety Systems Design identity flow:
+ * Identity → Domains → Platform → Products → Doctrine → Evidence
+ *
  * Design principles:
- * - Intuitive: Labels match user mental models (Explore, Templates, Tools)
+ * - Intuitive: Labels match Safety Systems Design mental model
  * - Self-explanatory: Voice phrases mirror visible labels
- * - Predictable: Fixed left-to-right order: Actions → Home → Explore → Templates → Tools → Demos → Sections
+ * - Predictable: Fixed left-to-right order: Actions → Home → Sections → Explore → Tools
  * - Accessible: ARIA labels, roles, and keyboard support align with schema
  * - Easy to manipulate: Grouped for scanability, touch targets ≥ 44px
  */
@@ -27,11 +30,9 @@ export interface NavItem {
 export type NavGroup =
   | "actions"
   | "primary"
-  | "explore"
-  | "templates"
-  | "tools"
-  | "demos"
   | "sections"
+  | "explore"
+  | "tools"
 
 export interface NavGroupMeta {
   id: NavGroup
@@ -52,7 +53,13 @@ export const NAV_GROUPS: NavGroupMeta[] = [
     id: "primary",
     label: "Home",
     voicePhrase: "home",
-    description: "Main landing page",
+    description: "Safety Systems Design — main landing",
+  },
+  {
+    id: "sections",
+    label: "Identity",
+    voicePhrase: "identity sections",
+    description: "Domains, platform, products, doctrine, evidence",
   },
   {
     id: "explore",
@@ -61,50 +68,33 @@ export const NAV_GROUPS: NavGroupMeta[] = [
     description: "Documentation, style guide, components",
   },
   {
-    id: "templates",
-    label: "Templates",
-    voicePhrase: "templates",
-    description: "Resume, portfolio, hero, landing templates",
-  },
-  {
     id: "tools",
     label: "Tools",
     voicePhrase: "tools",
     description: "Playground and contact",
   },
-  {
-    id: "demos",
-    label: "Demos",
-    voicePhrase: "demos",
-    description: "Test refactor and experimental demos",
-  },
-  {
-    id: "sections",
-    label: "Page sections",
-    voicePhrase: "sections",
-    description: "Superpowers and projects anchors",
-  },
 ]
 
 /**
- * Navigation items in predictable IA order.
+ * Navigation items in Safety Systems Design IA order.
  * Icons are injected by the component via NAV_ITEM_ICONS map.
  */
 export const NAV_ITEMS: Omit<NavItem, "icon">[] = [
-  { id: "doc", name: "Documentation", ariaLabel: "Open documentation", href: "/documentation", voicePhrases: ["documentation", "docs"], group: "explore" },
+  // Identity sections — homepage flow anchors
+  { id: "domains", name: "Domains", ariaLabel: "Scroll to safety domains", href: "/#domains", voicePhrases: ["domains", "safety domains"], group: "sections" },
+  { id: "platform", name: "Platform", ariaLabel: "Scroll to SentinelOS platform", href: "/#platform", voicePhrases: ["platform", "sentinel", "sentinelos"], group: "sections" },
+  { id: "products", name: "Products", ariaLabel: "Scroll to featured products", href: "/#products", voicePhrases: ["products", "featured products"], group: "sections" },
+  { id: "doctrine", name: "Doctrine", ariaLabel: "Scroll to doctrine", href: "/#doctrine", voicePhrases: ["doctrine", "four point doctrine"], group: "sections" },
+  { id: "evidence", name: "Evidence", ariaLabel: "Scroll to evidence", href: "/#evidence", voicePhrases: ["evidence", "verification"], group: "sections" },
+
+  // Explore — deeper pages
+  { id: "doc", name: "Docs", ariaLabel: "Open documentation", href: "/documentation", voicePhrases: ["documentation", "docs"], group: "explore" },
   { id: "style", name: "Style Guide", ariaLabel: "Open style guide", href: "/style-guide", voicePhrases: ["style guide", "style"], group: "explore" },
   { id: "components", name: "Components", ariaLabel: "Open components", href: "/components", voicePhrases: ["components"], group: "explore" },
-  { id: "templates", name: "Templates", ariaLabel: "Open templates", href: "/components", voicePhrases: ["templates"], group: "templates" },
-  { id: "resume", name: "Resume", ariaLabel: "Open resume template", href: "/templates/resume", voicePhrases: ["resume"], group: "templates" },
-  { id: "portfolio", name: "Portfolio", ariaLabel: "Open portfolio template", href: "/templates/portfolio", voicePhrases: ["portfolio"], group: "templates" },
-  { id: "hero", name: "Hero", ariaLabel: "Open hero template", href: "/templates/hero", voicePhrases: ["hero"], group: "templates" },
-  { id: "hero-experience", name: "Hero Experience", ariaLabel: "Open hero experience", href: "/hero-experience", voicePhrases: ["hero experience", "corey experience"], group: "templates" },
-  { id: "landing", name: "Landing", ariaLabel: "Open landing template", href: "/templates/landing", voicePhrases: ["landing"], group: "templates" },
+
+  // Tools
   { id: "playground", name: "Playground", ariaLabel: "Open playground", href: "/playground", voicePhrases: ["playground"], group: "tools" },
   { id: "contact", name: "Contact", ariaLabel: "Open contact", href: "/contact", voicePhrases: ["contact"], group: "tools" },
-  { id: "test-refactor", name: "Test Refactor", ariaLabel: "Open test refactor", href: "/test-refactor", voicePhrases: ["test refactor", "test"], group: "demos" },
-  { id: "superpowers", name: "Superpowers", ariaLabel: "Scroll to superpowers section", href: "/#superpowers", voicePhrases: ["superpowers"], group: "sections" },
-  { id: "projects", name: "Projects", ariaLabel: "Scroll to projects section", href: "/#projects", voicePhrases: ["projects"], group: "sections" },
 ]
 
 /** Voice commands for bar controls (no href) */
