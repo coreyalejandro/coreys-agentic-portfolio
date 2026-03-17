@@ -2,31 +2,32 @@
 
 import { AnimationProvider } from "@/contexts/AnimationContext"
 import { HeroSection } from "@/app/(home)/sections/HeroSection"
-import { SuperpowerServicesSection } from "@/app/(home)/sections/SuperpowerServicesSection"
-import { CTASection } from "@/app/(home)/sections/CTASection"
-import { PortfolioSection } from "@/app/(home)/sections/PortfolioSection"
-import { ResumeSection as ResumeTemplate } from "@/components/resume/ResumeSection"
+import { SafetyDomainsSection } from "@/app/(home)/sections/SafetyDomainsSection"
+import { PlatformSection } from "@/app/(home)/sections/PlatformSection"
+import { FeaturedProductsSection } from "@/app/(home)/sections/FeaturedProductsSection"
+import { DoctrineSection } from "@/app/(home)/sections/DoctrineSection"
+import { EvidenceSection } from "@/app/(home)/sections/EvidenceSection"
 
 /**
- * HomePage - Clean orchestrator component
+ * HomePage — Safety Systems Design identity
  *
- * This file went from 42KB (1000+ lines) to ~1KB (50 lines)
+ * Flow per contract: Identity → Domains → Platform → Products → Doctrine → Evidence
+ * Creative Chaos design system throughout.
  *
- * All logic has been extracted into:
- * - Sections (./(home)/sections/)
- * - Hooks (../hooks/)
- * - Context (../contexts/AnimationContext)
- * - Components (../components/)
+ * Previous flow: Hero → Superpowers → Resume → CTA → Portfolio
+ * New flow: Hero (identity) → Domains (4 safety domains) → Platform (SentinelOS) →
+ *           Products (real domain products) → Doctrine (4-point) → Evidence (verification)
  */
 export default function HomePage() {
   return (
     <div className="min-h-screen">
       <AnimationProvider>
         <HeroSection />
-        <SuperpowerServicesSection />
-        <ResumeTemplate />
-        <CTASection />
-        <PortfolioSection />
+        <SafetyDomainsSection />
+        <PlatformSection />
+        <FeaturedProductsSection />
+        <DoctrineSection />
+        <EvidenceSection />
       </AnimationProvider>
     </div>
   )
