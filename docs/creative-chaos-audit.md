@@ -143,7 +143,7 @@
 
 1. **Create `components/creative-chaos/index.ts`** - Barrel export
 2. **Create `lib/motion-tokens.ts`** - Centralized timing/easing values
-3. **Move canonical versions to creative-chaos/**:
+3. **Move ical versions to creative-chaos/**:
    - `animations/BreathingBackground.tsx` → `creative-chaos/breathing-background.tsx`
    - `animations/FloatingElement.tsx` → `creative-chaos/floating-element.tsx`
 4. **Delete duplicates**:

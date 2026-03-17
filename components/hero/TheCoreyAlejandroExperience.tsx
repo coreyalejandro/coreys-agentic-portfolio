@@ -3,8 +3,96 @@
 import { Button } from "@/components/ui/button"
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
+import { cn } from "@/lib/utils"
+import { Sparkles } from "lucide-react"
 
-export default function HeroTemplate() {
+interface Accomplishment {
+  title: string
+  description: string
+}
+
+const ACCOMPLISHMENTS: Accomplishment[] = [
+  {
+    title: "Creator of PROACTIVE AI",
+    description: "A safety-first training and fine-tuning framework: Intention Is All We Need",
+  },
+  {
+    title: "Builder of MADMall",
+    description: "An agentic, orchestrated luxury virtual mall and wellness & research center catering to Black women with Graves disease",
+  },
+  {
+    title: "Architect of OC Global",
+    description: "A mobile-first, R&D-driven accelerated online college",
+  },
+  {
+    title: "Maker of MobileU",
+    description: "A machine-learning and SMS-based course development and delivery platform",
+  },
+]
+
+function AccomplishmentCard({ time, mousePosition }: { time: number; mousePosition: { x: number; y: number } }) {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % ACCOMPLISHMENTS.length)
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <div
+      className="absolute right-12 top-1/3 max-w-md"
+      style={{
+        transform: `translate(${-mousePosition.x * 0.01}px, ${mousePosition.y * 0.02}px) rotate(${-Math.sin(time * 0.7) * 1}deg)`,
+      }}
+    >
+      <div className="bg-white/10 backdrop-blur-md rounded-[4rem] p-8 border border-white/20">
+        <div className="flex items-center gap-3 mb-8">
+          <Sparkles className="w-6 h-6 text-amber-400" />
+          <span className="text-base uppercase tracking-[0.25em] text-white/60 font-medium">
+            Now Playing
+          </span>
+        </div>
+
+        <div className="relative min-h-[200px]">
+          {ACCOMPLISHMENTS.map((acc, i) => (
+            <div
+              key={i}
+              className={cn(
+                "absolute inset-0 transition-all duration-700",
+                i === currentIndex
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              )}
+            >
+              <h3 className="text-3xl font-bold text-white mb-4 leading-tight">
+                {acc.title}
+              </h3>
+              <p className="text-xl text-white/70 leading-relaxed">
+                {acc.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex gap-2 mt-6">
+          {ACCOMPLISHMENTS.map((_, i) => (
+            <div
+              key={i}
+              className={cn(
+                "h-1.5 rounded-full transition-all duration-500",
+                i === currentIndex ? "w-8 bg-amber-500" : "w-2 bg-white/20"
+              )}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export function TheCoreyAlejandroExperience() {
   const [scrollY, setScrollY] = useState(0)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [time, setTime] = useState(0)
@@ -53,13 +141,13 @@ export default function HeroTemplate() {
           className="absolute inset-0 rounded-3xl"
           style={{
             background: `
-              radial-gradient(ellipse at ${20 + Math.sin(time) * 10}% ${30 + Math.cos(time * 0.7) * 15}%, 
-                rgba(251, 191, 36, 0.8) 0%, 
-                rgba(239, 68, 68, 0.6) 30%, 
-                rgba(194, 65, 12, 0.9) 70%, 
+              radial-gradient(ellipse at ${20 + Math.sin(time) * 10}% ${30 + Math.cos(time * 0.7) * 15}%,
+                rgba(251, 191, 36, 0.8) 0%,
+                rgba(239, 68, 68, 0.6) 30%,
+                rgba(194, 65, 12, 0.9) 70%,
                 rgba(120, 53, 15, 1) 100%),
-              radial-gradient(ellipse at ${80 + Math.cos(time * 1.2) * 8}% ${70 + Math.sin(time * 0.9) * 12}%, 
-                rgba(251, 146, 60, 0.7) 0%, 
+              radial-gradient(ellipse at ${80 + Math.cos(time * 1.2) * 8}% ${70 + Math.sin(time * 0.9) * 12}%,
+                rgba(251, 146, 60, 0.7) 0%,
                 transparent 50%)
             `,
             transform: `scale(${1 + Math.sin(time * 0.5) * 0.05}) rotate(${Math.sin(time * 0.3) * 2}deg)`,
@@ -78,7 +166,7 @@ export default function HeroTemplate() {
                   translate(
                     ${Math.sin(time + i) * 54 + mousePosition.x * 0.018}px,
                     ${Math.cos(time * 0.8 + i) * 36 + mousePosition.y * 0.014}px
-                  ) 
+                  )
                   rotate(${time * 18 + i * 45}deg)
                   scale(${0.5 + Math.sin(time + i) * 0.5})
                 `,
@@ -87,6 +175,30 @@ export default function HeroTemplate() {
               <div className={`w-${3 + (i % 4)} h-${3 + (i % 4)} rounded-full bg-white/20 backdrop-blur-sm`} />
             </div>
           ))}
+        </div>
+
+        {/* "The Experience" orbiting text - full 360 around title block */}
+        <div
+          className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
+          aria-hidden
+        >
+          <div
+            className="absolute text-7xl md:text-8xl font-black text-white/30 select-none whitespace-nowrap transition-opacity duration-300"
+            style={{
+              transform: `
+                rotate(${time * 15}deg)
+                translateX(min(42vw, 380px))
+                rotate(${-time * 15}deg)
+              `,
+              opacity: (() => {
+                const angle = ((time * 15) % 360) * (Math.PI / 180)
+                const y = Math.sin(angle)
+                return y > 0 ? 0.4 : Math.max(0.02, 0.4 + y * 0.45)
+              })(),
+            }}
+          >
+            The
+          </div>
         </div>
 
         <div className="relative h-[555px] flex items-center">
@@ -99,34 +211,16 @@ export default function HeroTemplate() {
               }}
             >
               <h1 className="text-8xl md:text-9xl font-black text-white leading-none">
-                <span className="block transform -rotate-3">Neural</span>
+                <span className="block transform -rotate-3">Corey</span>
                 <span className="block transform rotate-2 ml-12 bg-linear-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent">
-                  Depth
+                  Alejandro
                 </span>
-                <span className="block transform -rotate-1 ml-6 text-7xl">Magic</span>
+                <span className="block transform -rotate-1 ml-6 text-7xl">Experience</span>
               </h1>
             </div>
 
-            {/* Floating Description */}
-            <div
-              className="absolute right-12 top-1/3 max-w-md"
-              style={{
-                transform: `translate(${-mousePosition.x * 0.01}px, ${mousePosition.y * 0.02}px) rotate(${-Math.sin(time * 0.7) * 1}deg)`,
-              }}
-            >
-              <div className="bg-white/10 backdrop-blur-md rounded-[4rem] p-8 border border-white/20">
-                <p className="text-xl text-white/90 text-pretty leading-relaxed">
-                  Where creativity meets technology in a dance of organic motion and neural intelligence
-                </p>
-                <div className="flex gap-4 mt-6">
-                  <Link href="/contact">
-                    <Button className="bg-amber-500 hover:bg-amber-400 text-black font-semibold rounded-full">
-                      Feel the Magic
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </div>
+            {/* Accomplishment Card - same position and card shell as hero template description */}
+            <AccomplishmentCard time={time} mousePosition={mousePosition} />
 
             {/* Scattered Interactive Elements */}
             <div
@@ -204,9 +298,9 @@ export default function HeroTemplate() {
               left: "-1px",
               top: "-1px",
               background: `
-                linear-gradient(${45 + Math.sin(time) * 10}deg, 
-                  rgba(251, 191, 36, 0.1) 0%, 
-                  rgba(239, 68, 68, 0.1) 50%, 
+                linear-gradient(${45 + Math.sin(time) * 10}deg,
+                  rgba(251, 191, 36, 0.1) 0%,
+                  rgba(239, 68, 68, 0.1) 50%,
                   rgba(194, 65, 12, 0.1) 100%)
               `,
             }}

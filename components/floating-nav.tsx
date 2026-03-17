@@ -3,11 +3,12 @@
 import type React from "react"
 import { useState, useRef, useEffect, useCallback } from "react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 import { useAudioEngine } from "@/components/audio-experience/audio-engine"
 import { NAV_ITEMS, NAV_GROUPS } from "@/lib/floating-nav-schema"
 import { useVoiceNav } from "@/hooks/useVoiceNav"
 import { cn } from "@/lib/utils"
+import { ChevronLeft, ChevronRight, MoveHorizontal } from "lucide-react"
 
 /** Group order for predictable layout */
 const GROUP_ORDER: (typeof NAV_GROUPS)[number]["id"][] = [
@@ -30,6 +31,7 @@ function groupNavItems() {
 
 export default function FloatingNav() {
   const router = useRouter()
+  const pathname = usePathname()
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [opacity, setOpacity] = useState(0.95)
   const [showOpacityControl, setShowOpacityControl] = useState(false)
@@ -39,8 +41,67 @@ export default function FloatingNav() {
   const [isHovered, setIsHovered] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const navRef = useRef<HTMLDivElement>(null)
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [isDragging, setIsDragging] = useState(false)
+  const [autoScroll, setAutoScroll] = useState(false)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(false)
   const { isActive: audioEnabled, toggleAudio } = useAudioEngine()
+
+  const SCROLL_STEP = 120
+
+  const updateScrollState = useCallback(() => {
+    const el = scrollContainerRef.current
+    if (!el) return
+    setCanScrollLeft(el.scrollLeft > 0)
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 1)
+  }, [])
+
+  const scrollLeft = useCallback(() => {
+    const el = scrollContainerRef.current
+    if (!el) return
+    el.scrollBy({ left: -SCROLL_STEP, behavior: "smooth" })
+  }, [])
+
+  const scrollRight = useCallback(() => {
+    const el = scrollContainerRef.current
+    if (!el) return
+    el.scrollBy({ left: SCROLL_STEP, behavior: "smooth" })
+  }, [])
+
+  useEffect(() => {
+    const el = scrollContainerRef.current
+    if (!el) return
+    updateScrollState()
+    const onScroll = () => updateScrollState()
+    const onResize = () => updateScrollState()
+    el.addEventListener("scroll", onScroll, { passive: true })
+    window.addEventListener("resize", onResize)
+    const t = setTimeout(updateScrollState, 50)
+    return () => {
+      el.removeEventListener("scroll", onScroll)
+      window.removeEventListener("resize", onResize)
+      clearTimeout(t)
+    }
+  }, [updateScrollState, isCollapsed])
+
+  useEffect(() => {
+    if (!autoScroll) return
+    const el = scrollContainerRef.current
+    if (!el || el.scrollWidth <= el.clientWidth) return
+    let direction = 1
+    let raf = 0
+    const step = 0.5
+    const tick = () => {
+      if (!el || el.scrollWidth <= el.clientWidth) return
+      el.scrollLeft += step * direction
+      if (el.scrollLeft >= el.scrollWidth - el.clientWidth - 1) direction = -1
+      else if (el.scrollLeft <= 0) direction = 1
+      raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [autoScroll])
 
   const handleVoiceCommand = useCallback(
     (cmd: import("@/hooks/useVoiceNav").VoiceNavCommand) => {
@@ -222,11 +283,57 @@ export default function FloatingNav() {
             </button>
           </div>
         ) : (
-          <div
-            className="flex items-center justify-center gap-x-3 w-full overflow-x-auto overflow-y-hidden scrollbar-hide flex-nowrap"
-            role="menubar"
-            aria-label="Navigation menu"
-          >
+          <div className="flex items-center w-full gap-0">
+            {/* Home - always visible, never in scroll */}
+            <Link
+              href="/"
+              className={cn(
+                "shrink-0 px-2 py-0.5 rounded text-[13px] font-semibold transition-colors focus:outline-none focus:ring-1 focus:ring-white/50",
+                pathname === "/"
+                  ? "ring-1 ring-white/40"
+                  : "text-white/90 hover:text-white hover:bg-white/10"
+              )}
+              style={
+                pathname === "/"
+                  ? {
+                      background: "linear-gradient(135deg, var(--theme-primary), var(--theme-secondary))",
+                      color: "white",
+                    }
+                  : undefined
+              }
+              onClick={(e) => isDragging && e.preventDefault()}
+              aria-label="Home"
+              role="menuitem"
+              aria-current={pathname === "/" ? "page" : undefined}
+            >
+              Home
+            </Link>
+
+            <span className="w-px h-4 bg-white/20 shrink-0" aria-hidden />
+
+            {/* Left scroll arrow */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                scrollLeft()
+              }}
+              disabled={!canScrollLeft}
+              className={cn(
+                "shrink-0 p-1 rounded text-white/80 hover:text-white hover:bg-white/10 transition-colors focus:outline-none focus:ring-1 focus:ring-white/50 disabled:opacity-40 disabled:pointer-events-none",
+                "flex items-center justify-center"
+              )}
+              aria-label="Scroll nav left"
+            >
+              <ChevronLeft className="size-5" aria-hidden />
+            </button>
+
+            <div
+              ref={scrollContainerRef}
+              className="flex items-center justify-start gap-x-3 flex-1 min-w-0 overflow-x-auto overflow-y-hidden scrollbar-hide flex-nowrap"
+              role="menubar"
+              aria-label="Navigation menu"
+            >
             {/* Actions */}
             <div className="flex items-center gap-x-2 shrink-0" role="group" aria-label="Bar controls">
               <button
@@ -282,21 +389,6 @@ export default function FloatingNav() {
 
             <span className="w-px h-4 bg-white/20 shrink-0" aria-hidden />
 
-            {/* Home */}
-            <Link
-              href="/"
-              className="shrink-0 px-2 py-0.5 rounded text-[13px] font-semibold transition-colors focus:outline-none focus:ring-1 focus:ring-white/50"
-              style={{
-                background: "linear-gradient(135deg, var(--theme-primary), var(--theme-secondary))",
-                color: "white",
-              }}
-              onClick={(e) => isDragging && e.preventDefault()}
-              aria-label="Home"
-              role="menuitem"
-            >
-              Home
-            </Link>
-
             {/* Grouped nav items */}
             {GROUP_ORDER.map((groupId) => {
               const items = groupedItems.filter((i) => i.group === groupId)
@@ -311,18 +403,29 @@ export default function FloatingNav() {
                   className="flex items-center gap-x-1 shrink-0"
                 >
                   <span className="w-px h-4 bg-white/20 shrink-0" aria-hidden />
-                  {items.map((item) => (
-                    <Link
-                      key={item.id}
-                      href={item.href}
-                      className="px-2 py-0.5 rounded text-[13px] font-medium text-white/90 hover:text-white hover:bg-white/10 transition-colors focus:outline-none focus:ring-1 focus:ring-white/50 whitespace-nowrap shrink-0"
-                      onClick={(e) => isDragging && e.preventDefault()}
-                      aria-label={item.ariaLabel}
-                      role="menuitem"
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
+                  {items.map((item) => {
+                    const isActive =
+                      pathname === item.href ||
+                      (item.href !== "/" && pathname.startsWith(item.href + "/"))
+                    return (
+                      <Link
+                        key={item.id}
+                        href={item.href}
+                        className={cn(
+                          "px-2 py-0.5 rounded text-[13px] font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-white/50 whitespace-nowrap shrink-0",
+                          isActive
+                            ? "bg-white/20 text-white ring-1 ring-white/40"
+                            : "text-white/90 hover:text-white hover:bg-white/10"
+                        )}
+                        onClick={(e) => isDragging && e.preventDefault()}
+                        aria-label={item.ariaLabel}
+                        role="menuitem"
+                        aria-current={isActive ? "page" : undefined}
+                      >
+                        {item.name}
+                      </Link>
+                    )
+                  })}
                 </div>
               )
             })}
@@ -344,6 +447,41 @@ export default function FloatingNav() {
               aria-pressed={audioEnabled}
             >
               {audioEnabled ? "Audio on" : "Audio off"}
+            </button>
+            </div>
+
+            {/* Right scroll arrow */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                scrollRight()
+              }}
+              disabled={!canScrollRight}
+              className={cn(
+                "shrink-0 p-1 rounded text-white/80 hover:text-white hover:bg-white/10 transition-colors focus:outline-none focus:ring-1 focus:ring-white/50 disabled:opacity-40 disabled:pointer-events-none",
+                "flex items-center justify-center"
+              )}
+              aria-label="Scroll nav right"
+            >
+              <ChevronRight className="size-5" aria-hidden />
+            </button>
+
+            {/* Auto-scroll toggle */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                setAutoScroll((v) => !v)
+              }}
+              className={cn(
+                "shrink-0 px-2 py-0.5 rounded text-[13px] font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-white/50",
+                autoScroll ? "text-green-400 bg-green-400/20" : "text-white/90 hover:text-white hover:bg-white/10"
+              )}
+              aria-label={autoScroll ? "Stop auto-scroll" : "Start auto-scroll"}
+              aria-pressed={autoScroll}
+            >
+              <MoveHorizontal className="size-4" aria-hidden />
             </button>
           </div>
         )}

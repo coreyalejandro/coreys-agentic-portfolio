@@ -1,55 +1,142 @@
-// Plug-and-play project configuration
-// Simply add or remove projects from this array to update your portfolio
+/**
+ * Portfolio project configuration
+ *
+ * Projects map to safety domains per:
+ * safety-identity-refactor/03-domains/project-domain-map.md
+ *
+ * Implementation status per:
+ * safety-identity-refactor/09-status/implementation-status-matrix.md
+ */
 
-export const projects = [
+export type ProjectStatus = "implemented" | "partial" | "prototype" | "planned"
+
+export interface Project {
+  readonly id: string
+  readonly title: string
+  readonly description: string
+  readonly longDescription: string
+  readonly domain: string
+  readonly status: ProjectStatus
+  readonly technologies: readonly string[]
+  readonly githubUrl: string
+  readonly liveUrl?: string
+  readonly images: readonly string[]
+  readonly challenge: string
+  readonly solution: string
+  readonly evidence?: string
+  readonly featured: boolean
+}
+
+export const projects: readonly Project[] = [
   {
-    id: "creative-chaos",
-    title: "Creative Chaos Design System",
+    id: "proactive",
+    title: "PROACTIVE",
     description:
-      "A revolutionary design system that breaks all the rules with deep saturated gradients and living interfaces.",
+      "Constitutional AI safety agent that catches epistemic failures in GitLab merge requests before they reach production.",
     longDescription:
-      "Creative Chaos is a design system that challenges conventional UI/UX patterns. It features breathing backgrounds, 3D perspective effects, and organic positioning that creates truly unique web experiences.",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "React"],
-    githubUrl: "https://github.com/yourusername/creative-chaos",
-    liveUrl: "https://creative-chaos.vercel.app",
-    images: [
-      "/creative-chaos-design-system-hero.jpg",
-      "/breathing-background-effect.jpg",
-      "/laydown-card-animation.jpg",
+      "PROACTIVE is a constitutional AI safety layer for GitLab CI/CD. It extracts claims from merge request code, validates each claim against six safety invariants (I1–I6), and produces structured review comments. Integrates as a GitLab Duo custom agent, an external Claude Code agent, and a CI/CD pipeline safety review stage.",
+    domain: "Epistemic Safety",
+    status: "implemented",
+    technologies: [
+      "Python",
+      "GitLab Duo",
+      "Claude Code",
+      "Constitutional AI",
+      "CI/CD",
     ],
+    githubUrl: "https://github.com/coreyalejandro/28441830",
+    images: [],
     challenge:
-      "Most design systems prioritize minimalism and conformity, making every website look the same. How do we create interfaces that are both functional and emotionally engaging?",
+      "AI-assisted code generation introduces phantom completions, confident false claims, and silent error suppression into codebases. These failures pass code review because they look correct.",
     solution:
-      "By combining deep saturated gradients, organic positioning, and living animations, Creative Chaos creates interfaces that breathe and respond to user interaction, making every moment feel unique.",
-    impact: "Achieved 95% user engagement increase and featured on Awwwards for innovative design approach.",
+      "Enforce six constitutional safety invariants (I1–I6) at CI/CD time. Extract claims from MR diffs, validate each against invariants, produce structured review comments with evidence markers.",
+    evidence:
+      "Validated at n=200 (TruthfulQA): 100% detection rate, 0% false positive rate. 58 tests, 83% coverage.",
     featured: true,
   },
   {
-    id: "neural-depth-scroll",
-    title: "Neural Depth Scroll",
-    description: "An experimental 3D scrolling effect that creates the illusion of walking through dimensional space.",
+    id: "uicare-system",
+    title: "UICare-System",
+    description:
+      "Loop detection and rescue system that prevents neurodivergent developers from being trapped in repetitive patterns.",
     longDescription:
-      "This project explores 3D perspective transforms and scroll-based animations to create a footbridge effect where users feel like they are walking deeper into the interface.",
-    technologies: ["React", "CSS 3D Transforms", "Scroll API", "TypeScript"],
-    githubUrl: "https://github.com/yourusername/neural-depth-scroll",
-    images: ["/3d-perspective-scroll-effect.jpg", "/dimensional-depth-animation.jpg"],
+      "UICare-System deploys two AI agents (MonitorAgent + RescueAgent) that work in tandem. MonitorAgent continuously analyzes user interaction patterns to detect repetitive loops. RescueAgent activates when loops are detected, providing clear, actionable steps for resolution. Dockerized with Kubernetes deployment configuration.",
+    domain: "Human Safety",
+    status: "partial",
+    technologies: [
+      "Node.js",
+      "GPT-4-mini",
+      "Docker",
+      "Kubernetes",
+      "Next.js",
+    ],
+    githubUrl: "https://github.com/coreyalejandro/uicare-system",
+    images: [],
     challenge:
-      "Creating a sense of depth and forward motion in a 2D web interface without using WebGL or heavy 3D libraries.",
+      "Neurodivergent developers can get stuck in repetitive patterns — editing and reverting the same code, cycling through the same debug steps — without any system detecting or intervening.",
     solution:
-      "Leveraging CSS 3D transforms with scroll-triggered animations to simulate perspective and depth, creating an immersive tunnel effect.",
-    impact:
-      "Demonstrated innovative use of native web technologies, inspiring similar effects across the design community.",
-    featured: false,
+      "Two AI agents in tandem: MonitorAgent detects repetitive interaction loops, RescueAgent provides targeted, clear steps to break the pattern and move forward.",
+    featured: true,
   },
-  // Add more projects here - they will automatically appear in your portfolio
+  {
+    id: "instructional-integrity-ui",
+    title: "Instructional Integrity UI",
+    description:
+      "Cognitive safety system ensuring learning environments do not produce false understanding or unsafe mental models.",
+    longDescription:
+      "A Next.js application that evaluates instructional artifacts for cognitive safety. Provides a journey-map flow from framework understanding through evaluation to production packaging. Features evaluator interface with visible evidence states, rubric system, and Prisma-backed data model.",
+    domain: "Cognitive Safety",
+    status: "prototype",
+    technologies: [
+      "Next.js 14",
+      "React 18",
+      "Prisma",
+      "TypeScript",
+      "Vitest",
+    ],
+    githubUrl:
+      "https://github.com/coreyalejandro/instructional-integrity-ui",
+    images: [],
+    challenge:
+      "Learning environments can produce false understanding even when the content is technically correct, because cognitive scaffolding is wrong or absent.",
+    solution:
+      "Evaluator interface with rubric system that assesses instructional artifacts against cognitive safety criteria. Journey-map flow guides users from framework understanding to production evaluation.",
+    featured: true,
+  },
+  {
+    id: "consentchain",
+    title: "ConsentChain",
+    description:
+      "Agent consent governance with cryptographic ledger, policy engine, and revocation — verifiable evidence chains.",
+    longDescription:
+      "A Turborepo monorepo providing consent governance for AI agents. Eight packages handle the full lifecycle: agent-sdk, ledger (cryptographic signing), policy-engine, idempotency, step-up auth, vault-client, google-executor, and shared types. Every agent action is consented, logged, and revocable.",
+    domain: "Empirical Safety",
+    status: "partial",
+    technologies: [
+      "Next.js 14",
+      "Turborepo",
+      "Prisma v7",
+      "NextAuth",
+      "TypeScript",
+    ],
+    githubUrl: "https://github.com/coreyalejandro/consentchain",
+    images: [],
+    challenge:
+      "AI agents act on behalf of users without verifiable consent records. When something goes wrong, there is no audit trail showing what was authorized, by whom, and whether consent was revoked.",
+    solution:
+      "Cryptographic consent ledger with policy engine. Full gateway pipeline: validation → idempotency → revocation check → policy evaluation → step-up auth → execution → ledger entry. Every action auditable.",
+    featured: true,
+  },
 ]
 
-// Helper function to get project by ID
-export function getProjectById(id: string) {
+export function getProjectById(id: string): Project | undefined {
   return projects.find((project) => project.id === id)
 }
 
-// Helper function to get featured projects
-export function getFeaturedProjects() {
+export function getFeaturedProjects(): readonly Project[] {
   return projects.filter((project) => project.featured)
+}
+
+export function getProjectsByDomain(domain: string): readonly Project[] {
+  return projects.filter((project) => project.domain === domain)
 }
