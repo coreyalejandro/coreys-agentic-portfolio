@@ -29,6 +29,7 @@ const CARD_LAYOUT = [
   { rotation: 8, xOffset: 48, size: "medium" as const },
   { rotation: -3, xOffset: 12, size: "medium" as const },
   { rotation: 6, xOffset: 40, size: "large" as const },
+  { rotation: -4, xOffset: 8, size: "large" as const },
 ]
 
 const SIZE_CLASSES = {
@@ -98,7 +99,7 @@ export function FeaturedProductsSection() {
           </div>
 
           {/* Orbiting tech badges */}
-          {["Constitutional AI", "Docker/K8s", "Turborepo", "Next.js 14"].map((tag, i) => (
+          {["Constitutional AI", "Docker/K8s", "Turborepo", "Gemini API", "Next.js 16"].map((tag, i) => (
             <Badge
               key={tag}
               className="absolute backdrop-blur-sm font-semibold z-10 text-xs"
@@ -116,7 +117,7 @@ export function FeaturedProductsSection() {
 
         {/* Scattered product cards */}
         <section className="relative py-16 px-8 pb-48">
-          <div className="relative max-w-7xl mx-auto" style={{ minHeight: "1600px" }}>
+          <div className="relative max-w-7xl mx-auto" style={{ minHeight: "2000px" }}>
             {featured.map((project, i) => {
               const layout = CARD_LAYOUT[i % CARD_LAYOUT.length]
               const domainColor = DOMAIN_COLORS[project.domain] ?? "#888"

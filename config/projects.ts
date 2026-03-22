@@ -44,7 +44,7 @@ export const projects: readonly Project[] = [
       "Constitutional AI",
       "CI/CD",
     ],
-    githubUrl: "https://github.com/coreyalejandro/28441830",
+    githubUrl: "https://gitlab.com/gitlab-ai-hackathon/participants/28441830",
     images: [],
     challenge:
       "AI-assisted code generation introduces phantom completions, confident false claims, and silent error suppression into codebases. These failures pass code review because they look correct.",
@@ -125,6 +125,33 @@ export const projects: readonly Project[] = [
       "AI agents act on behalf of users without verifiable consent records. When something goes wrong, there is no audit trail showing what was authorized, by whom, and whether consent was revoked.",
     solution:
       "Cryptographic consent ledger with policy engine. Full gateway pipeline: validation → idempotency → revocation check → policy evaluation → step-up auth → execution → ledger entry. Every action auditable.",
+    featured: true,
+  },
+  {
+    id: "docen-live",
+    title: "Docen Live",
+    description:
+      "Neurodivergent-first voice docent that transforms Gemini API documentation into adaptive, multimodal learning experiences using voice, text, and image interaction.",
+    longDescription:
+      "Docen Live is a voice-first learning platform built for the Google Gemini API hackathon. Users select a learning mode (Journey, Meditation, or Rabbit Hole), speak naturally, and receive spoken explanations from an AI docent — with a real-time transcript and auto-generated visual companion panel. Seven accessibility features modify both UI and AI behavior: One-Action Mode, Low-Stimulation Mode, Slow Pacing, Repeat, Recap, Explain Simply, and Progress Visibility. Deployed live on Google Cloud Run.",
+    domain: "Cognitive Safety",
+    status: "implemented",
+    technologies: [
+      "Next.js 16",
+      "Gemini 2.5 Flash",
+      "Google Cloud Run",
+      "TypeScript",
+      "ShadCN/ui",
+    ],
+    githubUrl: "https://github.com/coreyalejandro/docen",
+    liveUrl: "https://docen-live-677222981446.us-central1.run.app",
+    images: [],
+    challenge:
+      "Dense documentation walls are not accessible to neurodivergent learners. People with ADHD, autism, anxiety, dyslexia, or cognitive fatigue need guided, paced, voice-first interaction — not another 40-page reading exercise.",
+    solution:
+      "Voice-first AI docent with three learning modes and seven composable accessibility features that modify AI behavior, not just UI appearance. Low-stimulation mode changes how the docent communicates, not just how the page looks.",
+    evidence:
+      "Live on Google Cloud Run. Submitted to Gemini Live Agent Challenge. Seven accessibility features verified in production.",
     featured: true,
   },
 ]
