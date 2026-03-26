@@ -29,12 +29,37 @@ export interface Project {
 
 export const projects: readonly Project[] = [
   {
+    id: "the-living-constitution",
+    title: "The Living Constitution",
+    description:
+      "Constitutional governance-as-code for AI safety. Five articles, four safety domains, six-agent republic. The supreme governing layer.",
+    longDescription:
+      "The Living Constitution is the governance-as-code framework that governs the entire Safety Systems Design Commonwealth. Five articles modeled on the U.S. Constitution encode safety rules as executable constraints: Bill of Rights (Article I), Execution Law (Article II), Purpose Law (Article III), Separation of Powers (Article IV), and Amendment Process (Article V). Four doctrines — Idempotency, Calibrated Truth, Census, and Default User — ensure governance is rigorous, honest, and neurodivergent-accessible.",
+    domain: "All Four Domains",
+    status: "implemented",
+    technologies: [
+      "TypeScript",
+      "Claude Code",
+      "Constitutional AI",
+      "Governance-as-Code",
+    ],
+    githubUrl: "https://github.com/coreyalejandro/the-living-constitution",
+    images: [],
+    challenge:
+      "AI safety rules exist as documentation — not enforced, not measurable, not amendable. When rules are not code, they are suggestions.",
+    solution:
+      "Encode constitutional governance as executable constraints. Five articles, six agent roles with defined power boundaries, formal amendment process that converts failures into rule improvements.",
+    evidence:
+      "53 tracked claims in evidence ledger. 34 proven, 6 partial, 13 pending. Every status label backed by specific evidence.",
+    featured: true,
+  },
+  {
     id: "proactive",
     title: "PROACTIVE",
     description:
-      "Constitutional AI safety agent that catches epistemic failures in GitLab merge requests before they reach production.",
+      "Constitutional AI safety agent — 100% detection rate across test cases, 212/212 tests passing. GitLab AI Hackathon submission.",
     longDescription:
-      "PROACTIVE is a constitutional AI safety layer for GitLab CI/CD. It extracts claims from merge request code, validates each claim against six safety invariants (I1–I6), and produces structured review comments. Integrates as a GitLab Duo custom agent, an external Claude Code agent, and a CI/CD pipeline safety review stage.",
+      "PROACTIVE is a constitutional AI safety layer for GitLab CI/CD. It extracts claims from merge request code, validates each claim against six safety invariants (I1–I6), and produces structured review comments. Integrates as a GitLab Duo custom agent, an external Claude Code agent, and a CI/CD pipeline safety review stage. Submitted to GitLab AI Hackathon 2026-03-25.",
     domain: "Epistemic Safety",
     status: "implemented",
     technologies: [
@@ -44,28 +69,82 @@ export const projects: readonly Project[] = [
       "Constitutional AI",
       "CI/CD",
     ],
-    githubUrl: "https://gitlab.com/gitlab-ai-hackathon/participants/28441830",
+    githubUrl: "https://github.com/coreyalejandro/proactive-gitlab-agent",
     images: [],
     challenge:
       "AI-assisted code generation introduces phantom completions, confident false claims, and silent error suppression into codebases. These failures pass code review because they look correct.",
     solution:
-      "Enforce six constitutional safety invariants (I1–I6) at CI/CD time. Extract claims from MR diffs, validate each against invariants, produce structured review comments with evidence markers.",
+      "Enforce six constitutional safety invariants (I1-I6) at CI/CD time. Extract claims from MR diffs, validate each against invariants, produce structured review comments with evidence markers.",
     evidence:
-      "Validated at n=200 (TruthfulQA): 100% detection rate, 0% false positive rate. 58 tests, 83% coverage.",
+      "100% detection rate across 8 test cases (n=19 violations), 0 false positives. 212/212 tests passing. Validation report VR-V-15C6.",
+    featured: true,
+  },
+  {
+    id: "mad-mall-production",
+    title: "MADMall",
+    description:
+      "Virtual luxury mall & teaching clinic for Black women with Graves' disease. Primary use case for The Living Constitution governance.",
+    longDescription:
+      "MADMall reclaims malls as third-place infrastructure for Black women — a space that has been disappearing from the physical world. It combines a dignified user experience modeled after real luxury malls (Stanford Shopping Center, La Cantera) with serious healthcare AI/ML infrastructure. The primary use case for The Living Constitution: ConsentChain gates every data touch, PROACTIVE validates every ML claim, UICare monitors cognitive load for chronically ill users.",
+    domain: "Human Safety",
+    status: "partial",
+    technologies: [
+      "Next.js 16",
+      "Turborepo",
+      "React 19",
+      "Prisma",
+      "PostgreSQL",
+      "Python ML",
+      "Clerk",
+      "Stripe",
+    ],
+    githubUrl: "https://github.com/coreyalejandro/mad-mall-production",
+    images: [],
+    challenge:
+      "Black women with Graves' disease have no dedicated digital space that treats them with dignity while providing serious healthcare support. Existing platforms are clinical and impersonal.",
+    solution:
+      "A virtual luxury mall that combines cultural significance with healthcare AI. Constitutional governance ensures every data collection is consented, every ML claim is validated, and every interface respects cognitive load limits.",
+    evidence:
+      "6 apps, 22 packages, ~152K LOC. Clerk auth, Stripe payments, Prisma/PostgreSQL. ML Python package with CRISP-DM methodology. Phase 1 of 4 complete.",
+    featured: true,
+  },
+  {
+    id: "sentinelos",
+    title: "SentinelOS",
+    description:
+      "Invariant enforcement platform. TypeScript Turborepo monorepo with hexagonal architecture. 6 safety invariants as executable constraints.",
+    longDescription:
+      "SentinelOS translates The Living Constitution's articles into executable TypeScript code. Hexagonal architecture with ports (what the constitution requires) and adapters (how each platform implements those requirements). Nine packages: core + article-i through article-v + incident + safety-case. 180+ Object.freeze calls enforce strict immutability. Zero cross-adapter dependencies.",
+    domain: "All Four Domains",
+    status: "partial",
+    technologies: [
+      "TypeScript",
+      "Turborepo",
+      "Vitest",
+      "Hexagonal Architecture",
+    ],
+    githubUrl: "https://github.com/coreyalejandro/sentinelos",
+    images: [],
+    challenge:
+      "Safety invariants exist as documentation. When they are not code, they cannot be enforced, measured, or tested.",
+    solution:
+      "Encode six invariants (I1-I6) as TypeScript ports with adapters for each constitutional article. Every check is immutable, testable, and fail-closed.",
+    evidence:
+      "1,037 LOC source + 994 LOC tests. 7 of 8 adapters implemented. All tests passing. Strict immutability enforced throughout.",
     featured: true,
   },
   {
     id: "uicare-system",
     title: "UICare-System",
     description:
-      "Loop detection and rescue system that prevents neurodivergent developers from being trapped in repetitive patterns.",
+      "Developer safety monitor. Absence-over-presence signal detection for neurodivergent developers. Human Safety domain.",
     longDescription:
-      "UICare-System deploys two AI agents (MonitorAgent + RescueAgent) that work in tandem. MonitorAgent continuously analyzes user interaction patterns to detect repetitive loops. RescueAgent activates when loops are detected, providing clear, actionable steps for resolution. Dockerized with Kubernetes deployment configuration.",
+      "UICare-System monitors developer workflows for signs of cognitive overwhelm. Uses absence-over-presence signal detection — what the developer is NOT doing is the signal, not what they are doing. GPT-4o-mini for cognitive load assessment, Kubernetes deployment, memory-bank architecture for context persistence across sessions.",
     domain: "Human Safety",
     status: "partial",
     technologies: [
       "Node.js",
-      "GPT-4-mini",
+      "GPT-4o-mini",
       "Docker",
       "Kubernetes",
       "Next.js",
@@ -73,35 +152,34 @@ export const projects: readonly Project[] = [
     githubUrl: "https://github.com/coreyalejandro/uicare-system",
     images: [],
     challenge:
-      "Neurodivergent developers can get stuck in repetitive patterns — editing and reverting the same code, cycling through the same debug steps — without any system detecting or intervening.",
+      "Neurodivergent developers can enter cognitive overwhelm without any system detecting or intervening. The signal is absence — when they stop interacting — not presence.",
     solution:
-      "Two AI agents in tandem: MonitorAgent detects repetitive interaction loops, RescueAgent provides targeted, clear steps to break the pattern and move forward.",
+      "Absence-over-presence detection with AI-powered cognitive load assessment. Memory-bank architecture preserves context across sessions so recovery is seamless.",
     featured: true,
   },
   {
-    id: "instructional-integrity-ui",
-    title: "Instructional Integrity UI",
+    id: "junior-gpt-crisp-dm",
+    title: "JuniorGPT",
     description:
-      "Cognitive safety system ensuring learning environments do not produce false understanding or unsafe mental models.",
+      "Visible thinking AI platform. 4-agent system with CRISP-DM methodology, real-time SSE streaming, and automated evaluation framework.",
     longDescription:
-      "A Next.js application that evaluates instructional artifacts for cognitive safety. Provides a journey-map flow from framework understanding through evaluation to production packaging. Features evaluator interface with visible evidence states, rubric system, and Prisma-backed data model.",
+      "JuniorGPT is a four-agent reasoning system (Analyst, Strategist, Creative, Logic) built in Python/FastAPI. Every reasoning step is streamed visibly to the user via Server-Sent Events — transparent thinking is not a logging feature but the interface itself. Includes automated evaluation framework tracking task success rate, factual accuracy, tool reliability, latency, and safety violations.",
     domain: "Cognitive Safety",
-    status: "prototype",
+    status: "implemented",
     technologies: [
-      "Next.js 14",
-      "React 18",
-      "Prisma",
-      "TypeScript",
-      "Vitest",
+      "Python",
+      "FastAPI",
+      "OpenAI API",
+      "SSE",
+      "JSON Schema",
     ],
-    githubUrl:
-      "https://github.com/coreyalejandro/instructional-integrity-ui",
+    githubUrl: "https://github.com/coreyalejandro/junior-gpt-crisp-dm",
     images: [],
     challenge:
-      "Learning environments can produce false understanding even when the content is technically correct, because cognitive scaffolding is wrong or absent.",
+      "AI reasoning is a black box. Users cannot learn structured thinking from a system that hides its thought process.",
     solution:
-      "Evaluator interface with rubric system that assesses instructional artifacts against cognitive safety criteria. Journey-map flow guides users from framework understanding to production evaluation.",
-    featured: true,
+      "Stream every reasoning step visibly. Four specialized agents with distinct roles. Schema-validated events create complete audit trails. Users learn structured reasoning by watching it happen.",
+    featured: false,
   },
   {
     id: "consentchain",
