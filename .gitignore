@@ -42,3 +42,6 @@ next-env.d.ts
 .playwright-mcp/
 AGENTS.md
 CLAUDE.md
+
+# Local refactor scratch (spec source; optional)
+CLAUDE_MD_REFACTOR.md
