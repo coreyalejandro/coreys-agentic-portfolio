@@ -23,3 +23,12 @@
 
 ## Cursor Rules
 See `.cursor/rules/` for UPOS-7-VS prompt engineering framework (always applied).
+
+## Cursor Cloud specific instructions
+
+- **Runtime**: Node.js v22+ with pnpm 10.32.1 (via corepack). The update script runs `pnpm install` automatically.
+- **ESLint**: The repo ships without a committed `.eslintrc.json`. The dev-environment setup creates `.eslintrc.json` with `{ "extends": "next/core-web-vitals" }` and installs `eslint`/`eslint-config-next` as devDependencies. If `pnpm lint` prompts interactively, ensure `.eslintrc.json` exists.
+- **Lint pre-existing issues**: `pnpm lint` reports `react/no-unescaped-entities` errors in several files (e.g., `CTASection.tsx`, `contact/page.tsx`, `documentation/` pages). These are pre-existing and not caused by agent changes.
+- **Dev server**: `pnpm dev` starts on port 3000. No external services (databases, Redis, Docker) are required — the app is fully self-contained for local development.
+- **No test framework**: There are no automated tests configured. Verification is done via `pnpm build` (typechecks) and `pnpm lint`.
+- **Playground AI chat**: The `/playground` chat feature requires an `OPENAI_API_KEY` (or equivalent LLM provider key) to function. All other pages work without it.
