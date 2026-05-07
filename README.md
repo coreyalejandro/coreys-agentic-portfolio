@@ -55,35 +55,6 @@ The goal is to make my work legible to both **humans** and **AI systems** by com
 
 ---
 
-## Safety Research Systems Map
-
-Five safety research projects organized under a common governance layer. The Living Constitution provides the constitutional framework that governs the behavioral contracts, invariants, and evidence standards the other four systems inherit or reference.
-
-```mermaid
-flowchart TD
-  TLC["The Living Constitution\ngithub.com/coreyalejandro/the-living-constitution\nRuntime governance layer\nContract Window + Evidence Observatory\n59 machine-readable invariants\nFalsifiable hypotheses H1-H3"]
-
-  AS["Agent Sentinel\ngithub.com/coreyalejandro/Agent-Sentinel-Alignment-Anomaly-Detector\nBehavioral observability\n17-category anomaly taxonomy\nJSON audit records\nGemini-backed structured detection"]
-
-  UI["UICare-System\ngithub.com/coreyalejandro/UICare-System\nHuman safety\nMonitorAgent + RescueAgent\nAbsence-over-presence detection\nBehavioral state machine"]
-
-  MPA["Meta-Prompt-Architect\ngithub.com/coreyalejandro/Meta-Prompt-Architect\nPrompt governance\nAudit-Stress-Test-Synthesis pipeline\nLCI compression\nEncrypted local audit trail"]
-
-  PORT["coreys-agentic-portfolio\ngithub.com/coreyalejandro/coreys-agentic-portfolio\nSentinelOS platform\nFive-system portfolio surface\nSafety Systems Design narrative"]
-
-  TLC -- "governance model informs" --> AS
-  TLC -- "governance model informs" --> UI
-  TLC -- "BMT doctrine informs" --> MPA
-  TLC -- "constitutional framing informs" --> PORT
-  AS -- "anomaly detection surfaces to" --> PORT
-  UI -- "human safety domain in" --> PORT
-  MPA -- "prompt governance in" --> PORT
-```
-
-**Reading this diagram without sight:** Five repositories are shown. The Living Constitution sits at the top and has directional relationships to all four others: it informs Agent Sentinel's governance model, informs UICare-System's governance model, informs Meta-Prompt-Architect through its BMT (Blind Man's Test) doctrine, and informs the portfolio's constitutional framing. Agent Sentinel surfaces to the portfolio as the anomaly detection component of the Safety Systems Design platform. UICare-System contributes the human safety domain to the portfolio. Meta-Prompt-Architect contributes prompt governance. The portfolio (coreys-agentic-portfolio) is the synthesis surface where all five systems are presented as a unified platform called SentinelOS.
-
----
-
 ## Featured Projects
 
 - **Zero-Shot Prompt Composer** – Productized prompt-to-artifact system that converts user ideas into structured zero-shot, all-in-one prompt specifications.
@@ -111,31 +82,6 @@ My work turns ambiguous ideas into structured systems through:
 - reusable human-AI communication patterns
 
 This portfolio includes work toward a user-facing system that helps people transform raw ideas into **zero-shot, all-in-one prompt artifacts**—structured prompts designed to make intent clearer, outputs stronger, and AI collaboration more reliable.
-
----
-
-## Site Architecture
-
-The portfolio is a Next.js App Router application. Each section below maps to a directory or page component in `app/`. Researchers can navigate the site section by section to see evidence for each domain claim.
-
-```mermaid
-flowchart LR
-  ENTRY["app/page.tsx\nPortfolio entry point"]
-
-  ENTRY --> H["HeroSection\npositioning statement\ntwo reviewer paths: Safety / Product"]
-  ENTRY --> E["EvidenceSection\nEvidence Map table\nlive status labels"]
-  ENTRY --> SD["SafetyDomainsSection\nfour safety domains"]
-  ENTRY --> FP["FeaturedProductsSection\nfive repos with status labels"]
-  ENTRY --> P["PlatformSection\nSentinelOS invariants I1-I6"]
-  ENTRY --> D["DoctrineSection\nSafety Axiom"]
-  ENTRY --> C["CTASection\ncontact and Anthropic Fellows"]
-
-  ENTRY --> SEN["app/sentinel/\nincident simulation\nTruthStatusTable.tsx"]
-  ENTRY --> PG["app/playground/\nlive chat interface\nplayground/chat API route"]
-  ENTRY --> DOC["app/documentation/\ndocumentation viewer"]
-```
-
-**Reading this diagram without sight:** The entry point is app/page.tsx, which mounts seven sections in order: HeroSection (positioning statement with two reviewer paths for Safety and Product reviewers), EvidenceSection (a live Evidence Map table with status labels), SafetyDomainsSection (four safety domains), FeaturedProductsSection (five repositories with status labels), PlatformSection (SentinelOS invariants I1 through I6), DoctrineSection (the Safety Axiom), and CTASection (contact and Anthropic Fellows link). The entry point also routes to three sub-applications: app/sentinel/ for incident simulation with a TruthStatusTable component, app/playground/ for a live chat interface with a playground/chat API route, and app/documentation/ for a documentation viewer.
 
 ---
 
@@ -251,9 +197,9 @@ My present focus is centered on:
 
 ## Contact
 
-**Corey Alejandro**
-Portfolio: [coreyalejandro.com](https://coreyalejandro.com)
-GitHub: [github.com/coreyalejandro](https://github.com/coreyalejandro)
+**Corey Alejandro**  
+Portfolio: [coreyalejandro.com](https://coreyalejandro.com)  
+GitHub: [github.com/coreyalejandro](https://github.com/coreyalejandro)  
 LinkedIn: [linkedin.com/in/corey-alejandro](https://linkedin.com/in/corey-alejandro)
 
 ---
